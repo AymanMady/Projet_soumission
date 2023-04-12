@@ -1,20 +1,21 @@
 <?php
     session_start() ;
    if(isset($_POST['boutton-valider'])){ 
-    if(empty($_POST["nom"]) || empty($_POST["pwd"]) ) {
+    if(empty($_POST["login"]) || empty($_POST["pwd"]) ) {
         $erreur = "Veuillez remplir tous les champs obligatoires";
     } else {
-        $nom = $_POST['nom'] ;
+        $login = $_POST['login'] ;
         $pwd = $_POST['pwd'] ;
         $erreur = "" ;
         include_once "connexion.php";
-        $req = mysqli_query($conn , "SELECT * FROM utilisateur WHERE nom = '$nom' AND pwd ='$pwd' ") ;
+        $sql =  "SELECT * FROM utilisateur WHERE pwd ='$pwd'  AND login = '$login'  ";
+        $req = mysqli_query($conn ,$sql) ;
         $num_ligne = mysqli_num_rows($req) ;
         if($num_ligne > 0 ){
             header("Location:index.php") ;
             $_SESSION["admin"]="oui";
         }else {
-            $erreur = "Nom ou Mots de passe incorrectes !";
+            $erreur = "login ou Mots de passe incorrectes !";
         }    
     }
     }
@@ -39,20 +40,8 @@
             }
             ?>
             <div class="form-container">
-                    <input type="text" class="input" name="nom" placeholder="Votre Nom" >
+                    <input type="text" class="input" name="login" placeholder="Votre login" >
                     <input type="password" class="input" name="pwd" placeholder="Password">
-                    <?php 
-                        include_once "connexion.php";
-                        $sql = "SELECT id_role, profile  FROM role";
-                        $resultat = mysqli_query($conn, $sql);
-                    ?>
-                    <select name="role">
-                        <?php
-                        while ($row = mysqli_fetch_assoc($resultat)) {
-                            echo "<option value='" . $row['id'] . "'>" . $row['profile'] . "</option>";
-                        }
-                        ?>
-                    </select>
             </div>
             <input type="submit" id="submit" value="Valider" name="boutton-valider">
         </form>
