@@ -12,7 +12,7 @@
         $num_ligne = mysqli_num_rows($req) ;
         if($num_ligne > 0 ){
             header("Location:index.php") ;
-            $_SESSION["autoriser"]="oui";
+            $_SESSION["admin"]="oui";
         }else {
             $erreur = "Nom ou Mots de passe incorrectes !";
         }    
@@ -32,7 +32,7 @@
 <div class="container">
     <div class="form-box">
         <form class="form" action="" method="POST">
-            <span class="title">authentifier</span>
+            <span class="title">Authentifier</span>
             <?php 
             if(isset($erreur)){
                 echo "<p class='erreur'>".$erreur."</p>"  ;

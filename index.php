@@ -2,8 +2,7 @@
 session_start();
 
 // Vérifier si la session est active
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  // Rediriger l'utilisateur vers la page de connexion
+if (!$_SESSION['admin']) {
   header('Location: authentification.php');
   session_destroy();
   exit();
@@ -24,6 +23,21 @@ header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
     <title>Document</title>
 </head>
 <body>
-    <h1>hello</h1>
+<body>
+  <div class="titre"> 
+    <h1>Page d'administration</h1> 
+  </div>
+  <div class="navbar">
+    <ul>
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#">Les etudiants</a></li>
+    <li><a href="#">les enseignants</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <!-- Contenu de la page -->
+  </div>
+</body>
+
 </body>
 </html>
