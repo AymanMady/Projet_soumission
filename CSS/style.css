@@ -93,17 +93,37 @@ body {
 
   /* Page d'administration */
 
-  .titre {
+  .entete {
     background-color: #0d4b89;
     color: #fff;
     padding: 10px;
     text-align: center;
     border: 1px solid #fff;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .titre {
+    width: 3500px;
   }
 
   .titre h1 {
     margin: 0;
     font-size: 2em;
+  }
+
+  .logout {
+    background-color: #2C3E50;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+  }
+  .logout a {
+    text-decoration: none;
+    color: #fff;
   }
   .navbar {
     position: fixed;
@@ -117,7 +137,6 @@ body {
 
   .content {
     margin-left: 200px;
-    /* La marge à gauche doit être égale à la largeur de la barre de navigation */
   }
   .navbar ul {
     list-style: none;
@@ -141,3 +160,4 @@ body {
     background-color: #fff;
     color: #333;
   }
+

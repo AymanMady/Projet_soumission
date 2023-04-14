@@ -1,12 +1,8 @@
-<?php
-session_start();
-
-if (!$_SESSION['admin']) {
-  header('Location: authentification.php');
-  session_destroy();
-  exit();
+<?php 
+session_start() ;
+if($_SESSION["admin"]!="oui"){
+    header("location:authentification.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +15,9 @@ if (!$_SESSION['admin']) {
 </head>
 <body>
 <body>
-  <div class="titre"> 
-    <h1>Page d'administration</h1> 
+  <div class="entete"> 
+    <div class="titre" ><h1>Page d'administration</h1></div>  
+    <div class="logout" ><a href="supprimer_session.php">Se déconnecte</a></div>
   </div>
   <div class="navbar">
     <ul>

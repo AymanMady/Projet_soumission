@@ -8,7 +8,7 @@
         $pwd = $_POST['pwd'] ;
         $erreur = "" ;
         include_once "connexion.php";
-        $sql =  "SELECT * FROM utilisateur WHERE pwd ='$pwd'  AND login = '$login'  ";
+        $sql =  "SELECT * FROM utilisateur inner join role using(id_role) WHERE pwd ='$pwd'  AND login = '$login' AND profile='administrateur'  ";
         $req = mysqli_query($conn ,$sql) ;
         $num_ligne = mysqli_num_rows($req) ;
         if($num_ligne > 0 ){
@@ -36,7 +36,7 @@
             <span class="title">Authentifier</span>
             <?php 
             if(isset($erreur)){
-                echo "<p class='erreur'>".$erreur."</p>"  ;
+                echo "<p class='erreur'>".$erreur."</p>";
             }
             ?>
             <div class="form-container">
