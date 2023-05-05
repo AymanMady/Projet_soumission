@@ -40,14 +40,12 @@
             }
             ?>
             <div class="form-container">
-                    <input type="text" class="input" name="login" placeholder="Votre login" >
+                    <input type="text" class="input" name="login" placeholder="login" >
                     <input type="password" class="input" name="pwd" placeholder="Password">
             </div>
             <input type="submit" id="submit" value="Valider" name="boutton-valider">
         </form>
     </div>
-    <!-- hello -->
-    <!-- hello git -->
 </div>
 </body>
 </html>

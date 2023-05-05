@@ -1,0 +1,124 @@
+CREATE TABLE `groupe` (
+  `id_groupe` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `groupe_cm` varchar(50) DEFAULT NULL,
+  `groupe_tp` varchar(50) DEFAULT NULL,
+  `filiere` varchar(50) DEFAULT NULL
+);
+
+CREATE TABLE `soumission` (
+  `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `date_sous` datetime DEFAULT NULL,
+  `date_limite` datetime DEFAULT NULL,
+  `valide` tinyint(1) DEFAULT NULL,
+  `note_devoir` float DEFAULT NULL,
+  `note_examen` float DEFAULT NULL
+);
+
+CREATE TABLE `role` (
+  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `profile` varchar(50) DEFAULT NULL
+);
+
+CREATE TABLE `utilisateur` (
+  `id_user` int(10) PRIMARY KEY AUTO_INCREMENT  ,
+  `nom` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `date_naiss` date DEFAULT NULL,
+  `lieu_naiss` varchar(50) DEFAULT NULL,
+  `login` varchar(50) DEFAULT NULL,
+  `pwd` varchar(50) DEFAULT NULL,
+  `id_role` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `devoir` (
+  `id_devoir` int(10) PRIMARY KEY AUTO_INCREMENT,
+  `matiere` varchar(50) DEFAULT NULL,
+  `type_devoir` varchar(50) DEFAULT NULL,
+  `data_devoir` longblob DEFAULT NULL,
+  `date_devoir` date DEFAULT NULL,
+  `id_sous` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `examen` (
+  `id_examen` int(10) PRIMARY KEY AUTO_INCREMENT  ,
+  `matiere` varchar(50) DEFAULT NULL,
+  `type_examen` varchar(50) DEFAULT NULL,
+  `data_examen` longblob DEFAULT NULL,
+  `date_examen` date DEFAULT NULL,
+  `id_sous` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `enseignant` (
+  `id_ens` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `code` int(10) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `prenom` varchar(60) DEFAULT NULL,
+  `Date_naiss` date DEFAULT NULL,
+  `lieu_naiss` varchar(30) DEFAULT NULL,
+  `login` varchar(100) DEFAULT NULL,
+  `pwd` varchar(20) DEFAULT NULL,
+  `id_role` int(11) NOT NULL,
+  `active` tinyint(1) DEFAULT 0,
+  `id_sous` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `ens_devoir` (
+  `id_ens` int(10) DEFAULT NULL,
+  `id_devoir` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `ens_examen` (
+  `id_ens` int(10) DEFAULT NULL,
+  `id_examen` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `etudiant` (
+  `id_etud` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `matricule` int(20) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `lieu_naiss` varchar(100) DEFAULT NULL,
+  `Date_naiss` date DEFAULT NULL,
+  `semestre` varchar(50) DEFAULT NULL,
+  `annee` varchar(50) DEFAULT NULL,
+  `login` varchar(100) DEFAULT NULL,
+  `pwd` varchar(20) DEFAULT NULL,
+  `id_role` int(11) NOT NULL,
+  `active` tinyint(1) DEFAULT 0,
+  `id_sous` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `fait_devoir` (
+  `id_etud` int(10) DEFAULT NULL,
+  `id_devoir` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `fait_examen` (
+  `id_etud` int(10) DEFAULT NULL,
+  `id_examen` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `matiere` (
+  `id_matiere` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `id_devoir` int(10) DEFAULT NULL,
+  `id_examen` int(10) DEFAULT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `lebele` varchar(20) DEFAULT NULL,
+  `semestre` varchar(20) DEFAULT NULL
+);
+
+CREATE TABLE `etudie` (
+  `id_matiere` int(10) DEFAULT NULL,
+  `id_etud` int(10) DEFAULT NULL
+);
+
+
+CREATE TABLE `enseigner` (
+  `id_matiere` int(10) DEFAULT NULL,
+  `id_ens` int(10) DEFAULT NULL
+);
+
+CREATE TABLE `appartient` (
+  `id_etud` int(10) DEFAULT NULL ,
+  `id_groupe` int(10) DEFAULT NULL
+);
