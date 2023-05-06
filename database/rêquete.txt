@@ -84,6 +84,7 @@ CREATE TABLE `etudiant` (
   `login` varchar(100) DEFAULT NULL,
   `pwd` varchar(20) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
+  `id_groupe` int(10) DEFAULT NULL,
   `active` tinyint(1) DEFAULT 0,
   `id_sous` int(10) DEFAULT NULL
 );
@@ -116,9 +117,4 @@ CREATE TABLE `etudie` (
 CREATE TABLE `enseigner` (
   `id_matiere` int(10) DEFAULT NULL,
   `id_ens` int(10) DEFAULT NULL
-);
-
-CREATE TABLE `appartient` (
-  `id_etud` int(10) DEFAULT NULL ,
-  `id_groupe` int(10) DEFAULT NULL
 );

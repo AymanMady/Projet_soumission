@@ -16,8 +16,8 @@
     <div class="content">
         <div>
             <div class="button">
-                <div><a href="ajouter_groupe.php" class="Btn_add"> <img src="images/plus.png"> Ajouter</a></div> 
-                <div><a href="import_groupe.php" class="Btn_add"> <img src="images/plus.png"> importer</a></div>    
+                <div><a href="ajouter_groupe.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
+                <div><a href="import_groupe.php" class="Btn_add"> <img title="Importer" src="images/importer.png"> importer</a></div>    
             </div>
             <table >
                 <tr id="items">

@@ -15,7 +15,7 @@
             header("Location:index.php") ;
             $_SESSION["admin"]="oui";
         }else {
-            $erreur = "login ou Mots de passe incorrectes !";
+            $erreur = "Login ou Mots de passe incorrectes !";
         }    
     }
     }
