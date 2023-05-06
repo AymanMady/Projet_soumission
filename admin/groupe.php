@@ -40,7 +40,7 @@
                                 <td><?=$row['groupe_tp']?></td>
                                 <td><?=$row['filiere']?></td>
                                 <td><a href="modifier_groupe.php?id_groupe=<?=$row['id_groupe']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprimer_groupe.php?id_groupe=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet equipe ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
+                                <td><a href="supprimer_groupe.php?id_groupe=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé cette groupe ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
                             </tr>
                             <?php
                         }
