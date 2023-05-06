@@ -63,7 +63,7 @@ if($_SESSION["admin"]!="oui"){
         <input type="text" name="groupe_cm">
         <label>groupe_tp</label>
         <input type="text" name="groupe_tp">
-        <label>filiere</label>
+        <label>filiére</label>
         <input type="text" name="filiere">
         <input type="submit" value="ajouteur" name="button">
         </form>

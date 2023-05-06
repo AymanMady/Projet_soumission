@@ -13,14 +13,14 @@
       include "nav_bar.php"
     ?>
     <div class="content_import">
-		<h1>Importation de données à partir d'un fichier XLSX</h1>
+		<h1>Importation de données à partir d'un fichier Excel</h1>
 		<form action="" method="post" enctype="multipart/form-data">
-		<label for="file">Sélectionner un fichier XLSX :</label>
+		<label for="file">Sélectionner un fichier Excel :</label>
 		<input type="file" id="file" name="file" accept=".xlsx" required>
 		<input type="submit" name="import" value="Importer">
 	</form>
 	<footer>
-		<p>&copy; 2023 - Importation de données à partir d'un fichier XLSX</p>
+		<p>&copy; 2023 - Importation de données à partir d'un fichier Excel</p>
 	</footer>
 		
 		<?php

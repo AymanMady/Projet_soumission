@@ -15,8 +15,8 @@
     <div class="content">
         <div>
             <div class="button">
-                <div><a href="ajouter_enseignant.php" class="Btn_add"> <img src="images/plus.png"> Ajouter</a></div> 
-                <div><a href="import_enseignant.php" class="Btn_add"> <img src="images/plus.png"> importer</a></div>    
+                <div><a href="ajouter_enseignant.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
+                <div><a href="import_enseignant.php" class="Btn_add"> <img title="Importer" src="images/importer.png"> importer</a></div>    
             </div>
             <table >
                 <tr id="items">
@@ -45,7 +45,7 @@
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['login']?></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
+                                <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
                             </tr>
                             <?php
                         }
