@@ -45,14 +45,21 @@
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['login']?></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
+                                <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce enseignant ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
                             </tr>
                             <?php
                         }
+                        
                     }
+                    
                 ?>
             </table>
         </div>
     </div>
+    <script>
+        // if(confirm() ===true){
+        //     alert(`L'enseignant  à eté supprimmer `)
+        // }
+    </script>
 </body>
 </html>
