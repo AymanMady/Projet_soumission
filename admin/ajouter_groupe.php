@@ -30,11 +30,11 @@ if($_SESSION["admin"]!="oui"){
                 return $data;
             }
        if(isset($_POST['button'])){
-        $groupe_cm = test_input($_POST['groupe_cm']);
-        $groupe_tp =  test_input($_POST['groupe_tp']);
+        $libelle = test_input($_POST['libelle']);
         $filiere = test_input($_POST['filiere']); 
-           if( isset($groupe_cm) && isset($groupe_tp) && isset($filiere) ){
-                $req = mysqli_query($conn , "INSERT INTO groupe(`groupe_cm`, `groupe_tp`, `filiere`) VALUES('$groupe_cm', '$groupe_tp', '$filiere')");
+           if( isset($libelle) && isset($filiere) ){
+                $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`)
+                 VALUES('$libelle', '$filiere')");
                 if($req){
                     header("location: groupe.php");
                 }else {
@@ -59,11 +59,9 @@ if($_SESSION["admin"]!="oui"){
 
         </p>
         <form action="" method="POST">
-        <label>groupe_cm</label>
-        <input type="text" name="groupe_cm">
-        <label>groupe_tp</label>
-        <input type="text" name="groupe_tp">
-        <label>filiere</label>
+        <label>Libellé</label>
+        <input type="text" name="libelle">
+        <label>Filiére</label>
         <input type="text" name="filiere">
         <input type="submit" value="ajouteur" name="button">
         </form>

@@ -23,8 +23,8 @@
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( isset($code) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)  ){
-            $req = mysqli_query($conn, "UPDATE enseignant SET  code = '$code' , nom = '$nom' , prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login' WHERE id_ens = $id_ens");
+        if(isset($nom_prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)  && isset($diplome)  && isset($grade) ){
+            $req = mysqli_query($conn, "UPDATE enseignant SET   nom_prenom = '$nom_prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login', diplome = '$diplome', grade = '$grade' WHERE id_ens = $id_ens");
             if($req){
                 header("location: enseignant.php");
             }else {
@@ -49,18 +49,18 @@
         ?>
         </p>
         <form action="" method="POST">
-        <label>Code</label>
-        <input type="number" name="code" value="<?=$row['code']?>">
-        <label>Nom</label>
-        <input type="text" name="nom" value="<?=$row['nom']?>">
-        <label>Prénom</label>
-        <input type="text" name="prenom" value="<?=$row['prenom']?>">
+        <label>Nom et Prénom</label>
+        <input type="text" name="nom_prenom" value="<?=$row['nom_prenom']?>">
         <label>Date de naissance</label>
         <input type="date" name="Date_naiss" value="<?=$row['Date_naiss']?>">
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss" value="<?=$row['lieu_naiss']?>">
         <label>Email</label>
         <input type="email" name="login" value="<?=$row['login']?>">
+        <label>Diplôme</label>
+        <input type="text" name="diplome" value="<?=$row['diplome']?>">
+        <label>Grade</label>
+        <input type="text" name="grade" value="<?=$row['grade']?>">
         <input type="submit" value="Modifier" name="button">
         </form>
     </div>

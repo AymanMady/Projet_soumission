@@ -16,14 +16,13 @@
     <div class="content">
         <div>
             <div class="button">
-                <div><a href="ajouter_groupe.php" class="Btn_add"> <img src="images/plus.png"> Ajouter</a></div> 
-                <div><a href="import_groupe.php" class="Btn_add"> <img src="images/plus.png"> importer</a></div>    
+                <div><a href="ajouter_groupe.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
+                <div><a href="import_groupe.php" class="Btn_add"> <img title="Importer" src="images/importer.png"> importer</a></div>    
             </div>
             <table >
                 <tr id="items">
-                    <th>groupe_cm</th>
-                    <th>groupe_tp</th>
-                    <th>filiere</th>
+                    <th>Libelle</th>
+                    <th>Filière</th>
                     <th colspan="2">action</th>
                 </tr>
                 <?php 
@@ -36,11 +35,10 @@
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
-                                <td><?=$row['groupe_cm']?></td>
-                                <td><?=$row['groupe_tp']?></td>
+                                <td><?=$row['libelle']?></td>
                                 <td><?=$row['filiere']?></td>
                                 <td><a href="modifier_groupe.php?id_groupe=<?=$row['id_groupe']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprimer_groupe.php?id_groupe=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet equipe ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
+                                <td><a href="supprimer_groupe.php?id_groupe=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé cette groupe ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
                             </tr>
                             <?php
                         }

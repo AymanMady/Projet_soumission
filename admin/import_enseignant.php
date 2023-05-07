@@ -13,15 +13,15 @@
       include "nav_bar.php"
     ?>
     <div class="content_import">
-		<h1>Importation de données à partir d'un fichier XLSX</h1>
+		<h1>Importation de données à partir d'un fichier Excel </h1>
 		<form action="" method="post" enctype="multipart/form-data">
-		<label for="file">Sélectionner un fichier XLSX :</label>
+		<label for="file">Sélectionner un fichier Excel :</label>
 		<input type="file" id="file" name="file" accept=".xlsx" required>
 		<input type="submit" name="import" value="Importer">
 		</form>
 		<!-- souleiman modi -->
 		<footer>
-		<p>&copy; 2023 - Importation de données à partir d'un fichier XLSX</p>
+		<p>&copy; 2023 - Importation de données à partir d'un fichier Excel</p>
 		</footer>
 		
 		<?php
@@ -50,8 +50,15 @@
                 $login = $row[5];
 
 
-			if(mysqli_query($conn, "INSERT INTO enseignant( `code`, `nom`, `prenom`,  `Date_naiss`,`lieu_naiss` ,`login`,`id_role`) VALUES('$code', '$nom','$prenom','$Date_naiss', '$lieu_naiss', '$login',3)")){
-                header("location:enseignant.php");
+			if(mysqli_query($conn, "INSERT INTO enseignant( 
+					`			code`, `nom`, `prenom`,
+								`Date_naiss`,`lieu_naiss` ,
+								`login`,`id_role`)
+								VALUES(
+								'$code', '$nom','$prenom',
+								'$Date_naiss', '$lieu_naiss', 
+								'$login',3)")){
+                		header("location:enseignant.php");
             }	
             }
 
