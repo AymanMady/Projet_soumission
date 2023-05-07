@@ -19,6 +19,7 @@
 		<input type="file" id="file" name="file" accept=".xlsx" required>
 		<input type="submit" name="import" value="Importer">
 		</form>
+		<!-- souleiman modi -->
 		<footer>
 		<p>&copy; 2023 - Importation de données à partir d'un fichier XLSX</p>
 		</footer>
