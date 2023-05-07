@@ -22,9 +22,7 @@
             <table >
                 <tr id="items">
                     <th>Matricule</th>
-                    
-                    <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>Nom et Prénom</th>
                     <th>Lieu de naissance</th>
                     <th>Date de naissance</th>
                     <th>Semestre</th>
@@ -43,8 +41,7 @@
                             ?>
                             <tr>
                                 <td><?=$row['matricule']?></td>
-                                <td><?=$row['nom']?></td>
-                                <td><?=$row['prenom']?></td>
+                                <td><?=$row['nom_prenom']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['semestre']?></td>

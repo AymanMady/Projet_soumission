@@ -24,8 +24,8 @@
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( isset($groupe_cm) && isset($groupe_tp) && isset($filiere) ){
-            $req = mysqli_query($conn, "UPDATE groupe SET  groupe_cm = '$groupe_cm' , groupe_tp = '$groupe_tp' , filiere = '$filiere' WHERE id_groupe = $id_groupe");
+        if( isset($libelle) && isset($filiere) ){
+            $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$filiere' WHERE id_groupe = $id_groupe");
             if($req){
                 header("location: groupe.php");
             }else {
@@ -50,11 +50,9 @@
         ?>
         </p>
         <form action="" method="POST">
-        <label>groupe_cm</label>
-        <input type="text" name="groupe_cm" value="<?=$row['groupe_cm']?>">
-        <label>groupe_tp</label>
-        <input type="text" name="groupe_tp" value="<?=$row['groupe_tp']?>">
-        <label>filiere</label>
+        <label>Libellé</label>
+        <input type="text" name="libelle" value="<?=$row['libelle']?>">
+        <label>Filiere</label>
         <input type="text" name="filiere" value="<?=$row['filiere']?>">
         <input type="submit" value="Modifier" name="button">
         </form>
