@@ -43,8 +43,8 @@
             // $active =  test_input($_POST['active']);
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
-            if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) ){
-                $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom' , prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login' WHERE id_etud = $id_etud");
+            if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom_prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) ){
+                $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom_prenom = '$nom_prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login' WHERE id_etud = $id_etud");
                 if($req){
                     header("location: etudiant.php");
                 }else {
@@ -60,7 +60,7 @@
 
             <div class="form">
             <a href="les_joueurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-            <h2 class="title_joueur">Modifier l'etudiant : <?=$row['nom']?> </h2>
+            <h2 class="title_joueur">Modifier l'etudiant : <?=$row['nom_prenom']?> </h2>
             <p class="erreur_message">
             <?php 
                 if(isset($message)){
@@ -70,11 +70,9 @@
             </p>
             <form action="" method="POST">
             <label>Matricule</label>
-            <input type="number" name="matricule"  value="<?=$row['matricule']?>">
-            <label>Nom</label>
-            <input type="text" name="nom" value="<?=$row['nom']?>">
-            <label>Prénom</label>
-            <input type="text" name="prenom" value="<?=$row['prenom']?>">
+            <input type="text" name="matricule"  value="<?=$row['matricule']?>">
+            <label>Nom et Prénom</label>
+            <input type="text" name="nom_prenom" value="<?=$row['nom_prenom']?>">
             <label>Lieu de naissance</label>
             <input type="text" name="lieu_naiss" value="<?=$row['lieu_naiss']?>">
             <label>Date de naissance</label>

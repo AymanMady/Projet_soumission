@@ -25,18 +25,23 @@
                 return $data;
             }
        if(isset($_POST['button'])){
-        $code = test_input($_POST['code']);
-        $nom =  test_input($_POST['nom']);
-        $prenom = test_input($_POST['prenom']); 
-        $Date_naiss = test_input($_POST['Date_naiss']); 
-        $lieu_naiss =  test_input($_POST['lieu_naiss']);
-        $login =  test_input($_POST['login']);
-           if( isset($code) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)  ){
-                $req = mysqli_query($conn , "INSERT INTO enseignant(`code`, `nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `login`, `id_role`) VALUES('$code', '$nom', '$prenom','$Date_naiss','$lieu_naiss','$login',3)");
-                if($req){
+        // $nom_prenom = test_input($_POST['nom_prenom']); 
+        // $Date_naiss = test_input($_POST['Date_naiss']); 
+        // $lieu_naiss =  test_input($_POST['lieu_naiss']);
+        // $login =  test_input($_POST['login']);
+        // $diplome =  test_input($_POST['diplome']);
+        // $grade =  test_input($_POST['grade']);
+            test_input(extract($_POST));
+           if( isset($nom_prenom) && isset($Date_naiss) 
+           && isset($lieu_naiss)  && isset($login) && isset($diplome) && isset($grade)  ){
+                $req = "INSERT INTO `enseignant`(`nom_prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom_prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade' 3)";
+                                                                    //
+                                                                    //
+            
+                if(mysqli_query($conn , $req)){
                     header("location: enseignant.php");
                 }else {
-                    $message = "enseignant non ajouté";
+                    $message = "Enseignant non ajouté";
                 }
 
            }else {
@@ -57,18 +62,18 @@
 
         </p>
         <form action="" method="POST">
-        <label>code</label>
-        <input type="number" name="code">
-        <label>Nom</label>
-        <input type="text" name="nom">
-        <label>prenom</label>
-        <input type="text" name="prenom">
+        <label>Nom et Prénom</label>
+        <input type="text" name="nom_prenom">
         <label>Date de naissance</label>
         <input type="date" name="Date_naiss">
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
-        <label>Email</label>
+        <label>E-mail</label>
         <input type="email" name="login">
+        <label>Diplôme</label>
+        <input type="text" name="diplome">
+        <label>Grade</label>
+        <input type="text" name="grade">
         <input type="submit" value="ajouteur" name="button">
         </form>
    </div>

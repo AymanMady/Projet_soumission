@@ -1,7 +1,6 @@
 CREATE TABLE `groupe` (
   `id_groupe` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `groupe_cm` varchar(50) DEFAULT NULL,
-  `groupe_tp` varchar(50) DEFAULT NULL,
+  `libelle` varchar(50) DEFAULT NULL,
   `filiere` varchar(50) DEFAULT NULL
 );
 
@@ -21,8 +20,7 @@ CREATE TABLE `role` (
 
 CREATE TABLE `utilisateur` (
   `id_user` int(10) PRIMARY KEY AUTO_INCREMENT  ,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
+  `nom_prenom` varchar(60) DEFAULT NULL,
   `date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(50) DEFAULT NULL,
   `login` varchar(50) DEFAULT NULL,
@@ -50,13 +48,13 @@ CREATE TABLE `examen` (
 
 CREATE TABLE `enseignant` (
   `id_ens` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `code` int(10) DEFAULT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(60) DEFAULT NULL,
+  `nom_prenom` varchar(60) DEFAULT NULL,
   `Date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(30) DEFAULT NULL,
   `login` varchar(100) DEFAULT NULL,
   `pwd` varchar(20) DEFAULT NULL,
+  `diplome` varchar(20) DEFAULT NULL,
+  `grade` varchar(20) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
   `active` tinyint(1) DEFAULT 0,
   `id_sous` int(10) DEFAULT NULL
@@ -74,9 +72,8 @@ CREATE TABLE `ens_examen` (
 
 CREATE TABLE `etudiant` (
   `id_etud` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `matricule` int(20) NOT NULL,
-  `nom` varchar(100) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
+  `matricule` varchar(50) NOT NULL,
+ `nom_prenom` varchar(60) DEFAULT NULL,
   `lieu_naiss` varchar(100) DEFAULT NULL,
   `Date_naiss` date DEFAULT NULL,
   `semestre` varchar(50) DEFAULT NULL,
@@ -104,7 +101,7 @@ CREATE TABLE `matiere` (
   `id_devoir` int(10) DEFAULT NULL,
   `id_examen` int(10) DEFAULT NULL,
   `code` varchar(20) DEFAULT NULL,
-  `lebele` varchar(20) DEFAULT NULL,
+  `libelle` varchar(50) DEFAULT NULL,
   `semestre` varchar(20) DEFAULT NULL
 );
 
