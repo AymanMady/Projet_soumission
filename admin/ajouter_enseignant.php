@@ -25,18 +25,16 @@
                 return $data;
             }
        if(isset($_POST['button'])){
-        // $nom_prenom = test_input($_POST['nom_prenom']); 
+        // $nom = test_input($_POST['nom']); 
+        // $prenom = test_input($_POST['prenom']); 
         // $Date_naiss = test_input($_POST['Date_naiss']); 
         // $lieu_naiss =  test_input($_POST['lieu_naiss']);
         // $login =  test_input($_POST['login']);
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
-           if( isset($nom_prenom) && isset($Date_naiss) 
-           && isset($lieu_naiss)  && isset($login) && isset($diplome) && isset($grade)  ){
-                $req = "INSERT INTO `enseignant`(`nom_prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom_prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade' 3)";
-                                                                    //
-                                                                    //
+           if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($diplome) && isset($grade)  ){
+                $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade', 3);";
             
                 if(mysqli_query($conn , $req)){
                     header("location: enseignant.php");
@@ -62,8 +60,10 @@
 
         </p>
         <form action="" method="POST">
-        <label>Nom et Prénom</label>
-        <input type="text" name="nom_prenom">
+        <label>Nom</label>
+        <input type="text" name="nom">
+        <label>Prénom</label>
+        <input type="text" name="prenom">
         <label>Date de naissance</label>
         <input type="date" name="Date_naiss">
         <label>Lieu de naissance</label>

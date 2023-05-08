@@ -35,8 +35,8 @@
                 // $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 // $login =  test_input($_POST['login']);
                 test_input(extract($_POST));
-           if(  isset($nom_prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)  && isset($role) ){
-                $req = "INSERT INTO utilisateur ( `nom_prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `login`,`id_role`)VALUES('$nom_prenom','$lieu_naiss','$Date_naiss','$login',$role)";
+           if(  isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)  && isset($role) ){
+                $req = "INSERT INTO utilisateur ( `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `login`,`id_role`)VALUES('$nom','$prenom','$lieu_naiss','$Date_naiss','$login',$role)";
                                 
                 $req = mysqli_query($conn , $req);
                 if($req){
@@ -63,8 +63,10 @@
 
         </p>
         <form action="" method="POST">
-        <label>Nom et prénom</label>
-        <input type="text" name="nom_prenom">
+        <label>Nom</label>
+        <input type="text" name="nom">
+        <label>prénom</label>
+        <input type="text" name="prenom">
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
         <label>Date de naissance</label>

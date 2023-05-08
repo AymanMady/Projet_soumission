@@ -27,7 +27,7 @@
             ?>
            <input type="email" name="email" required placeholder="Enter your email">
       <input type="submit" name="submit" value="Verifier" class="form-btn">
-      <p> <a href="authentification.php">Connecter Vous</a></p>
+      <p> <a href="authentification.php">Connectez Vous</a></p>
    </form>
 
 </div>

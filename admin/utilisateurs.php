@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-      include "nav_bar.php"
+    //   include "nav_bar.php"
     ?>
     <div class="content">
     <div>
@@ -37,7 +37,8 @@
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
-                                <td><?=$row['nom_prenom']?></td>
+                                <td><?=$row['nom']?>
+                                <?=$row['prenom']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['login']?></td>

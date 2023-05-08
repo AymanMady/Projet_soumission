@@ -38,7 +38,8 @@
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
-                                <td><?=$row['nom_prenom']?></td>
+                            <td><?=$row['nom']?>
+                                <?=$row['prenom']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['login']?></td>
