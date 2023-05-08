@@ -2,8 +2,8 @@
 include_once("connexion.php");
 include_once("controller.php");
 if(isset($_POST['verifyEmail'])){
-$user=$_POST['test'];
-$email=$_POST['otpverify'];
+$user=$_POST['choix'];
+$email=$_POST['email'];
 if($user=='enseignant'){
     $sql="select * from enseignant where login=$email";
 }
@@ -27,69 +27,52 @@ if(mysqli_num_rows($resu)>0){
     <link rel="stylesheet" href="CSS/style_verifier.css">
 </head>
 <style>
-        .custom-select {
-        position: relative;
-        font-family: Arial;
-        width: 200px;
-        height: 35px;
-        margin: 20px;
-        background-color: #f4f4f4;
-        overflow: hidden;
-        border-radius: 5px;
+      /* styles pour le formulaire */
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
       }
-
-      .custom-select select {
-        position: absolute;
-        top: 0;
-        left: 0;
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      
+      select, input[type="email"] {
+        display: block;
         width: 100%;
-        height: 100%;
-        opacity: 0;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        font-size: 16px;
+      }
+      
+      select:focus, input[type="email"]:focus {
+        outline: none;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      }
+      
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
         cursor: pointer;
       }
-
-      .custom-select span {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10px;
-        box-sizing: border-box;
-        transition: all 0.3s ease;
-      }
-
-      .custom-select span::before {
-        content: '\f107';
-        font-family: FontAwesome;
-        font-size: 20px;
-        color: #888;
-        margin-right: 5px;
-        transform: rotate(0deg);
-        transition: all 0.3s ease;
-      }
-
-      .custom-select.open span::before {
-        transform: rotate(-180deg);
-      }
-
       
-      .custom-select select option {
-        background-color: #f4f4f4;
-        color: #333;
-        font-family: Arial;
-        font-size: 14px;
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
       }
-      .custom-select select option:checked {
-        background-color: #ccc;
-        color: #fff;
-      }
-body{
-    background:white;
-}
+
 
 </style>
 <body >
@@ -107,14 +90,17 @@ body{
                 }
             }
             ?> 
-         <div class="custom-select">
-            <select name="test">
-  <option value="enseignant">enseignant</option>
-  <option value="etudiant" >etudiant</option>
-</select>
-</div>
-            <input type="number" name="otpverify" placeholder="email" required><br>
-            <input type="submit" name="verifyEmail" value="test">
+       <label for="ville">choix :</label>
+      <select id="ville" name="choix">
+        <option value="etudiant">etudiant</option>
+        <option value="enseignant">enseignant</option>
+        
+      </select>
+      
+      <label for="email">E-mail :</label>
+      <input type="email" id="email" name="email" placeholder="Entrez votre e-mail">
+      
+      <input type="submit" value="Envoyer">
         </form>
     </div>
 
