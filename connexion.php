@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "integrateur_projet";
+$dbname = "pi";
 
 // Connexion
 $conn = mysqli_connect($servername, $username, $password, $dbname);
