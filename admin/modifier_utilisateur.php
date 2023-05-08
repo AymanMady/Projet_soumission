@@ -69,8 +69,10 @@
             ?>
             </p>
             <form action="" method="POST">
-            <label>Nom et prénom</label>
-            <input type="text" name="nom_prenom">
+            <label>Nom</label>
+            <input type="text" name="nom">
+            <label>Prénom</label>
+            <input type="text" name="Prenom">
             <label>Lieu de naissance</label>
             <input type="text" name="lieu_naiss">
             <label>Date de naissance</label>

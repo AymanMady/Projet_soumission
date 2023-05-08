@@ -15,7 +15,7 @@
    
 <div class="form-container">
 
-<form action="controller.php" method="POST" autocomplete="off" class="sign-in-form">
+<form action="authentification.php" method="POST" autocomplete="off" class="sign-in-form">
       <h3>Sign in</h3>
       <?php
             if($errors > 0){
