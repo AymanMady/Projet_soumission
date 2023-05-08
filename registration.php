@@ -33,6 +33,7 @@
         <input type="password" name="confirmPassword" required placeholder="Confirmer Mot de passe">
         <input type="submit" name="signup" value="S'authentifier" class="form-btn">
         <p>Vous avez déjà un compte ? <a href="index.php">connectez-vous</a></p>
+        
     </form>
 
 </div>

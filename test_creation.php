@@ -1,7 +1,7 @@
 <?php
 include_once("connexion.php");
 include_once("controller.php");
-if(isset($_POST['verifyEmail'])){
+if(isset($_POST['submit'])){
 $user=$_POST['choix'];
 $email=$_POST['email'];
 if($user=='enseignant'){
@@ -12,6 +12,8 @@ else{
 }
 $resu=mysqli_query($conn,$sql);
 if(mysqli_num_rows($resu)>0){
+    session_start();
+    $_SESSION['nom']=$email;
     header("location:registration.php");
 }
 
@@ -100,7 +102,7 @@ if(mysqli_num_rows($resu)>0){
       <label for="email">E-mail :</label>
       <input type="email" id="email" name="email" placeholder="Entrez votre e-mail">
       
-      <input type="submit" value="Envoyer">
+      <input type="submit" name="submit" value="Envoyer">
         </form>
     </div>
 
