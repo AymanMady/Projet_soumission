@@ -20,13 +20,14 @@ CREATE TABLE `role` (
 
 CREATE TABLE `utilisateur` (
   `id_user` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `code` varchar(20) DEFAULT NULL,
-  `nom_prenom` varchar(60) DEFAULT NULL,
+  `nom` varchar(60) DEFAULT NULL,
+  `prenom` varchar(60) DEFAULT NULL,
   `date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(50) DEFAULT NULL,
   `login` varchar(50) DEFAULT NULL,
   `pwd` varchar(50) DEFAULT NULL,
   `active` tinyint(1) DEFAULT 0,
+  `code` varchar(20) DEFAULT NULL,
   `id_role` int(10) DEFAULT NULL,
   FOREIGN KEY (id_role) REFERENCES role(id_role)
 );
@@ -53,7 +54,8 @@ CREATE TABLE `examen` (
 
 CREATE TABLE `enseignant` (
   `id_ens` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `nom_prenom` varchar(60) DEFAULT NULL,
+  `nom` varchar(60) DEFAULT NULL,
+  `prenom` varchar(60) DEFAULT NULL,
   `Date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(30) DEFAULT NULL,
   `login` varchar(100) DEFAULT NULL,
@@ -84,7 +86,8 @@ CREATE TABLE `ens_examen` (
 CREATE TABLE `etudiant` (
   `id_etud` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `matricule` varchar(50) NOT NULL,
- `nom_prenom` varchar(60) DEFAULT NULL,
+  `nom` varchar(60) DEFAULT NULL,
+  `prenom` varchar(60) DEFAULT NULL,
   `lieu_naiss` varchar(100) DEFAULT NULL,
   `Date_naiss` date DEFAULT NULL,
   `semestre` varchar(50) DEFAULT NULL,

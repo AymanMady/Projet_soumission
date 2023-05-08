@@ -32,9 +32,9 @@
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
-           if( isset($nom_prenom) && isset($Date_naiss) 
+           if( isset($nom) && isset($prenom) && isset($Date_naiss) 
            && isset($lieu_naiss)  && isset($login) && isset($diplome) && isset($grade)  ){
-                $req = "INSERT INTO `enseignant`(`nom_prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom_prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade' 3)";
+                $req = "INSERT INTO `enseignant`(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade' 3)";
                                                                     //
                                                                     //
             
@@ -62,8 +62,10 @@
 
         </p>
         <form action="" method="POST">
-        <label>Nom et Prénom</label>
-        <input type="text" name="nom_prenom">
+        <label>Nom</label>
+        <input type="text" name="nom">
+        <label>Prénom</label>
+        <input type="text" name="prenom">
         <label>Date de naissance</label>
         <input type="date" name="Date_naiss">
         <label>Lieu de naissance</label>

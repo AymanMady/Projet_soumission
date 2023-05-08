@@ -41,7 +41,6 @@
 
 			$reader = new SpreadsheetReader($targetDirectory);
 			foreach($reader as $key => $row){
-				$code = $row[0];
 				$nom = $row[1];
                 $prenom = $row[2];
                 $Date_naiss = $row[3];
@@ -50,11 +49,11 @@
 
 
 			if(mysqli_query($conn, "INSERT INTO enseignant( 
-					`			code`, `nom`, `prenom`,
+					`			 `nom`, `prenom`,
 								`Date_naiss`,`lieu_naiss` ,
 								`login`,`id_role`)
 								VALUES(
-								'$code', '$nom','$prenom',
+								'$nom','$prenom',
 								'$Date_naiss', '$lieu_naiss', 
 								'$login',3)")){
                 		header("location:enseignant.php");
