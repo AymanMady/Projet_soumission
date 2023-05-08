@@ -186,13 +186,12 @@ $alert = "";
             $status = $row['active'];
                 if ($status == 1) {
                     echo 'test';
-                    header("location:index.php");
-                    //  if($row['id_role']==3){
-                    //     header("location:index.php");
-                    //     }
-                    // elseif($row['id_role']==2){
-                    //     header("location:index_enseignant.php");
-                    // }   
+                     if($row['id_role']==1){
+                        header("location:index.php");
+                        }
+                    elseif($row['id_role']==2){
+                        header("location:index_enseignant.php");
+                    }   
                 }
         } else {
             $errors['email']= 'Email ou mot de passe incorect';
