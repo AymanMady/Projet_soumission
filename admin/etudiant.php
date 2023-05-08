@@ -41,7 +41,8 @@
                             ?>
                             <tr>
                                 <td><?=$row['matricule']?></td>
-                                <td><?=$row['nom_prenom']?></td>
+                                <td><?=$row['nom']?>
+                                <?=$row['prenom']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['semestre']?></td>

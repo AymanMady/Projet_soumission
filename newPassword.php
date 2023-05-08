@@ -11,7 +11,6 @@
 <body>
 <div id="container">
         <h2>mot de passe</h2>
-        <p>C’est rapide et facile.</p>
         <div id="line"></div>
         <form action="newPassword.php" method="POST" autocomplete="off">
             <?php

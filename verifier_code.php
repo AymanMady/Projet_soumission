@@ -11,7 +11,6 @@
 <body>
     <div id="container">
         <h2>Sign Up</h2>
-        <p>C’est rapide et facile.</p>
         <div id="line"></div>
         <form action="verifier_code.php" method="POST" autocomplete="off">
             <?php

@@ -73,6 +73,7 @@
             <input type="text" name="nom">
             <label>Prénom</label>
             <input type="text" name="prenom">
+            <input type="text" name="Prenom">
             <label>Lieu de naissance</label>
             <input type="text" name="lieu_naiss">
             <label>Date de naissance</label>
