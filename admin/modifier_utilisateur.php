@@ -46,7 +46,7 @@
             if( isset($nom_prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($role)){
                 $req = mysqli_query($conn, "UPDATE utilisateur SET   nom_prenom = '$nom_prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login', role = '$role'  WHERE id_user = $id_user");
                 if($req){
-                    header("location: utilisateur.php");
+                    header("location: utilisateurs.php");
                 }else {
                     $message = "utilisateur non modifié";
                 }
@@ -59,7 +59,7 @@
             ?>
 
             <div class="form">
-            <a href="les_joueurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
+            <a href="utilisateurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
             <h2 class="title_joueur">Modifier l'utilisateur : <?=$row['nom_prenom']?> </h2>
             <p class="erreur_message">
             <?php 
@@ -72,6 +72,7 @@
             <label>Nom</label>
             <input type="text" name="nom">
             <label>Prénom</label>
+            <input type="text" name="prenom">
             <input type="text" name="Prenom">
             <label>Lieu de naissance</label>
             <input type="text" name="lieu_naiss">

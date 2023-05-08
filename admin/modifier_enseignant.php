@@ -40,7 +40,7 @@
 
         <div class="form">
         <a href="les_joueurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Modifier le enseignant : <?=$row['id_ens']?> </h2>
+        <h2 class="title_joueur">Modifier l'enseignant : <?=$row['nom']?> </h2>
         <p class="erreur_message">
         <?php 
             if(isset($message)){
