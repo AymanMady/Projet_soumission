@@ -40,7 +40,7 @@
                                 <td><?=$row['nom']?>
                                 <?=$row['prenom']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['Date_naiss']?></td>
+                                <td><?=$row['date_naiss']?></td>
                                 <td><?=$row['login']?></td>
                                 <td><?=$row['id_role']?></td>
                                 <td><a href="modifier_utilisateur.php?id_user=<?=$row['id_user']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>

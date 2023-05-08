@@ -53,6 +53,34 @@ $alert = "";
     // Store All Errors
     $errors = [];
 
+
+// include_once "verification.php";
+
+    
+        //verifier:
+            if(isset($_POST['verifier'])){
+                $role =  $_POST['role'];
+                $email = $_POST['email'];
+                    if(isset($role) && isset($email)){
+                        if($role == "etudiant"){
+                            session_start();
+                            $_SESSION['nom']= "etudiant";
+                            $_SESSION['email']= $email; 
+                            header('location: registration.php');
+                        }
+                        else if($role == "enseignant"){
+                            session_start();
+                            $_SESSION['nom']= "enseignant";
+                            $_SESSION['email']= $email;   
+                            header('location: registration.php');    
+                        }
+                    }else {
+                        $message = "Veuillez remplir tous les champs !";
+                    }
+            }
+
+
+
     // When Sign Up Button Clicked
     if (isset($_POST['signup'])) {
         function test($data){
@@ -60,25 +88,28 @@ $alert = "";
         $data=trim($data) ;
         $data=strtolower($data) ;
     return $data ;
-}
+    }
+    $role = $_SESSION['nom'];
+    $email = $_SESSION['email'];
+
+    if($role == "etudiant"){
+        $sql_etud=mysqli_query($conn,"select * from etudiant where login='$email'");
+        $query1="select id_role from etudiant where login='$email' limit 1";
+        $query=mysqli_query($conn,$query1);
+        $droit=mysqli_fetch_assoc($query);
+        $id_role=$droit['id_role'];
+    }else{
+        $sql_ens=mysqli_query($conn,"select * from enseignant where login='$email'");
+        $query1="select id_role from enseignant where login='$email' limit 1";
+        $query=mysqli_query($conn,$query1);
+        $droit=mysqli_fetch_assoc($query); 
+        $id_role=$droit['id_role'];
+    }
+
         $fname = test(mysqli_real_escape_string($conn, $_POST['fname']));
         $lname = test(mysqli_real_escape_string($conn, $_POST['lname']));
-        $email = test($_POST['email']);
-        @$test=explode("@", test($_POST['email']));
-        $sql_ens=mysqli_query($conn,"select * from enseignant where login='$email'");
-        $sql_etud=mysqli_query($conn,"select * from etudiant where login='$email'");
-         if(mysqli_num_rows($sql_ens)==1){
-            $query1="select id_role from enseignant where login='$email' limit 1";
-            $query=mysqli_query($conn,$query1);
-            $droit=mysqli_fetch_assoc($query);
-            $id_role=3;
-         }
-         elseif(mysqli_num_rows($sql_etud)==1){
-            $query1="select id_role from etudiant where login='$email' limit 1";
-            $query=mysqli_query($conn,$query1);
-            $droit=mysqli_fetch_assoc($query);
-            $id_role=$droit['id_role'];
-         }
+        @$test=explode("@", test($email));
+
 
          if(mysqli_num_rows($query)==0){
            $errors['password'] = "Vous n'avez pas les droits pour cree un compt!";}
@@ -182,11 +213,9 @@ $alert = "";
         $Query_check = mysqli_query($conn, $Query) or die("erreur");
         $row = mysqli_fetch_assoc($Query_check);
         if (mysqli_num_rows($Query_check) > 0) {
-            echo "hello";
             $status = $row['active'];
                 if ($status == 1) {
-                    echo 'test';
-                     if($row['id_role']==1){
+                     if($row['id_role']==3){
                         header("location:index.php");
                         }
                     elseif($row['id_role']==2){

@@ -28,10 +28,9 @@
         <form name="fo" method="post" action="">
         <input type="text" name="fname" required placeholder="Nom">
         <input type="text" name="lname" required placeholder="Prénom">
-        <input type="email" name="email" required placeholder="Email">
         <input type="password" name="password" required placeholder="Mot de passe">
         <input type="password" name="confirmPassword" required placeholder="Confirmer Mot de passe">
-        <input type="submit" name="signup" value="S'authentifier" class="form-btn">
+        <input type="submit" name="signup" value="Valider" class="form-btn">
         <p>Vous avez déjà un compte ? <a href="index.php">connectez-vous</a></p>
     </form>
 
