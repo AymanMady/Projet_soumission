@@ -16,7 +16,7 @@
     <div class="content">
     <?php
               include_once "../connexion.php";
-            function test_input($data){
+                function test_input($data){
                 $data = htmlspecialchars($data);
                 $data = trim($data);
                 $data = htmlentities($data);

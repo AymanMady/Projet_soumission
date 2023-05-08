@@ -1,5 +1,6 @@
 
 <head>
+
 <meta charset="UTF-8">
     <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -82,7 +83,6 @@ $alert = "";
 
          if(mysqli_num_rows($query)==0){
            $errors['password'] = "Vous n'avez pas les droits pour cree un compt!";}
-         else{
             if($test[1]=='supnum.mr'){
         if (strlen(trim($_POST['password'])) < 8) {
             $errors['password'] = 'Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles';
@@ -141,7 +141,7 @@ $alert = "";
         }
     }
 }
-}
+
 
 
     // if Verify Button Clicked
