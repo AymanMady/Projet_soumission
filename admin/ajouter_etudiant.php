@@ -26,15 +26,14 @@
             }
 
        if(isset($_POST['button'])){
-                // $matricule = test_input($_POST['matricule']);
-                // $semestre = test_input($_POST['semestre']);
-                // $annee = test_input($_POST['annee']);
-                // $nom =  test_input($_POST['nom']);
-                // $prenom = test_input($_POST['prenom']); 
-                // $Date_naiss = test_input($_POST['Date_naiss']); 
-                // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-                // $login =  test_input($_POST['login']);
-                test_input(extract($_POST));
+                $matricule = test_input($_POST['matricule']);
+                $semestre = test_input($_POST['semestre']);
+                $annee = test_input($_POST['annee']);
+                $nom =  test_input($_POST['nom']);
+                $prenom = test_input($_POST['prenom']); 
+                $Date_naiss = test_input($_POST['Date_naiss']); 
+                $lieu_naiss =  test_input($_POST['lieu_naiss']);
+                $login =  test_input($_POST['login']);
            if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)){
                 $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `login`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$login',2)";
                                 
@@ -69,7 +68,7 @@
         <label>Nom</label>
         <input type="text" name="nom">
         <label>Prénom</label>
-        <input type="text" name="Prenom">
+        <input type="text" name="prenom">
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
         <label>Date de naissance</label>

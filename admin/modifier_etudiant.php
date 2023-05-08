@@ -60,7 +60,7 @@
 
             <div class="form">
             <a href="les_joueurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-            <h2 class="title_joueur">Modifier l'etudiant : <?=$row['nom_prenom']?> </h2>
+            <h2 class="title_joueur">Modifier l'etudiant : <?=$row['nom']?> </h2>
             <p class="erreur_message">
             <?php 
                 if(isset($message)){
@@ -71,9 +71,10 @@
             <form action="" method="POST">
             <label>Matricule</label>
             <input type="text" name="matricule"  value="<?=$row['matricule']?>">
-            <input type="text" name="nom">
+            <label>nom</label>
+            <input type="text" name="nom" value="<?=$row['nom']?>">
             <label>Prénom</label>
-            <input type="text" name="Prenom">
+            <input type="text" name="prenom" value="<?=$row['prenom']?>">
             <label>Lieu de naissance</label>
             <input type="text" name="lieu_naiss" value="<?=$row['lieu_naiss']?>">
             <label>Date de naissance</label>

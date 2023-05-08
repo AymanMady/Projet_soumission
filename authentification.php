@@ -17,20 +17,22 @@
 
 <form action="authentification.php" method="POST" autocomplete="off" class="sign-in-form">
       <h3>Sign in</h3>
+      
       <?php
-            if($errors > 0){
+            if(count($errors) > 0){
                 foreach($errors AS $displayErrors){
+                   
                 ?>
-                <div id="alert"><?php echo $displayErrors; ?></div>
+                <div><?php echo $displayErrors; ?></div>
                 <?php
                 }
             }
             ?>
       <input type="email" name="email" required placeholder="Email">
       <input type="password" name="password" required placeholder="Password">
-      <input type="submit" name="login" value="login" class="form-btn">
+      <input type="submit" name="entrer" value="login" class="form-btn">
       <a href="forgot.php" id="forgot">Mot de passe oublier?</a>
-      <p>Cree un compte <a href="registration.php">Sign Up</a></p>
+      <p>Cree un compte <a href="verification.php">Sign Up</a></p>
    </form>
 
 </div>

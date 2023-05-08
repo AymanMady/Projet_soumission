@@ -20,7 +20,8 @@
             </div>
             <table >
                 <tr id="items">
-                    <th>Nom et Prénom</th>
+                    <th>Nom</th>
+                     <th>Prénom</th>
                     <th>Date de naissance</th>
                     <th>Lieu de naissance</th>
                     <th>E-mail</th>
@@ -38,7 +39,8 @@
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
-                                <td><?=$row['nom_prenom']?></td>
+                                <td><?=$row['nom']?></td>
+                                <td><?=$row['prenom']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['login']?></td>

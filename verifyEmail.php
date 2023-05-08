@@ -17,7 +17,6 @@ body{
 <body >
     <div id="container">
         <h2>Email</h2>
-        <p>C’est rapide et facile.</p>
         <div id="line"></div>
         <form action="verifyEmail.php" method="POST" autocomplete="off">
             <?php

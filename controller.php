@@ -77,7 +77,7 @@ $alert = "";
             $query1="select id_role from etudiant where login='$email' limit 1";
             $query=mysqli_query($conn,$query1);
             $droit=mysqli_fetch_assoc($query);
-            $id_role=2;
+            $id_role=$droit['id_role'];
          }
 
          if(mysqli_num_rows($query)==0){
@@ -158,7 +158,7 @@ $alert = "";
             $update_status = 1;
             $update_code = 0;
 
-            $update_query = "UPDATE utilisateur SET active = '$update_status' , code = $update_code WHERE code = $fetch_code";
+            $update_query = "UPDATE utilisateur SET active = '$update_status' , code = $update_code WHERE code = $fetch_code;";
             $update_result = mysqli_query($conn, $update_query);
 
             if ($update_result) {
@@ -173,66 +173,82 @@ $alert = "";
 
     // if login Button clicked so
 
-    if (isset($_POST['login'])) {
+    if (isset($_POST['entrer'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = md5($_POST['password']);
         $matricule=explode("@",$email);
         $_SESSION['matricule']=$matricule[0];
-        $emailQuery = "SELECT * FROM utilisateur WHERE login = '$email'";
-        $email_check = mysqli_query($conn, $emailQuery) or die("erreur");
-        $row = mysqli_fetch_assoc($email_check);
-        if (mysqli_num_rows($email_check) > 0) {
-            $passwordQuery = "SELECT * FROM utilisateur WHERE login = '$email' ";
-    // ##############################################################
-        $alert = '<div class="alert alert-danger  row-md-15" id="success-alert">
-        <span aria-hidden="true">&times;</span>
-        <strong>Mot de passe ou Email incorrect! </strong>
-        </div>';
-    // ################################################################
-            $password_check = mysqli_query($conn, $passwordQuery);
-            if (mysqli_num_rows($password_check) > 0) {
-                $fetchInfo = mysqli_fetch_assoc($password_check);
-                $status = $fetchInfo['active'];
-                $name = $fetchInfo['nom'] . " " . $fetchInfo['prenom'];
-                $_SESSION['name'] = $name;
-                $_SESSION['email'] = $fetchInfo['login'];
-                $_SESSION['password'] = $fetchInfo['pwd'];
-                echo $status;
-                if ($status == '1') {
-                    @$login=$_POST["email"];
-                    @$pass=md5($_POST["password"]);
-                    @$valider=$_POST["login"];
-                    $erreur="";
-                    $sql = "select id_role from utilisateur where login='$login' and pwd='$pass' limit 1";
-      $query=mysqli_query($conn,$sql);
-      $tab=mysqli_fetch_assoc($query)or die("tfou");
-      print_r($tab['id_role']);
-      if(mysqli_num_rows($query)==1){
-        echo "hello";
-        print_r($tab);
-         if($tab['id_role']==3){
-             header("location:index.php");
+        $Query = "SELECT * FROM utilisateur WHERE login = '$email' and  pwd ='$password'";
+        $Query_check = mysqli_query($conn, $Query) or die("erreur");
+        $row = mysqli_fetch_assoc($Query_check);
+        if (mysqli_num_rows($Query_check) > 0) {
+            echo "hello";
+            $status = $row['active'];
+                if ($status == 1) {
+                    echo 'test';
+                     if($row['id_role']==1){
+                        header("location:index.php");
+                        }
+                    elseif($row['id_role']==2){
+                        header("location:index_enseignant.php");
+                    }   
+                }
+        } else {
+            $errors['email']= 'Email ou mot de passe incorect';
         }
-        elseif($tab['id_role']==1){
-            header("location:index.php");
 
-            }
+
+
+
+
+    //         //$passwordQuery = "SELECT * FROM utilisateur WHERE login = '$email'and  pwd ='$password'";
+    // // ##############################################################
+    //     $alert = '<div class="alert alert-danger  row-md-15" id="success-alert">
+    //     <span aria-hidden="true">&times;</span>
+    //     <strong>Mot de passe ou Email incorrect! </strong>
+    //     </div>';
+    // // ################################################################
+    //         $password_check = mysqli_query($conn, $passwordQuery);
+    //         if (mysqli_num_rows($password_check) > 0) {
+    //             $fetchInfo = mysqli_fetch_assoc($password_check);
+    //             $status = $fetchInfo['active'];
+    //             $name = $fetchInfo['nom'];
+    //             $_SESSION['name'] = $name;
+    //             $_SESSION['email'] = $fetchInfo['login'];
+    //             $_SESSION['password'] = $fetchInfo['pwd'];
+                
+    //             if ($status == 1) {
+    //                 @$login=$_POST["email"];
+    //                 @$pass=md5($_POST["password"]);
+    //                 @$valider=$_POST["entrer"];
+    //                 $erreur="";
+    //   $query=mysqli_query($conn,"select id_role from utilisateur where login='$login' and pwd='$pass' limit 1;");
+    //   $tab=mysqli_fetch_assoc($query)or die("tfou");
+    //   print_r($tab);
+    //   print_r($tab['id_role']);
+    //   if(mysqli_num_rows($query)==1){
+    //     print_r($tab);
+    
           
-         else {
-            $errors['email'] = 'Le mot de passe ne correspondait pas';
-        }
+    //      else {
+    //         $errors['email'] = 'Le mot de passe ne correspondait pas';
+    //     }
    
                    
-                } else {
-                    $info = "Il semble que vous n’ayez pas encore vérifié votre e-mail $email";
-                    $_SESSION['message'] = $info;
-                    header('location: verifier_code.php');
-                }
-            } else {
-                $errors['email'] = $alert;
-            }
-        }
-    }
+    // } else {
+    //                 $info = "Il semble que vous n’ayez pas encore vérifié votre e-mail $email";
+    //                 $_SESSION['message'] = $info;
+    //                 header('location: verifier_code.php');
+    //             }
+    //     } else {
+    //             $errors['email'] = $alert;
+    //         }
+    //     }else {
+
+    //         $errors['email'] = 'Le mot de passe ne correspondait pas';
+    //     }
+        
+    // }
     
 }
 
