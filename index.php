@@ -9,7 +9,6 @@
   </head>
   <body>
     <?php
-    echo 'test';
       include "nav_bar.php"
     ?>
     <div class="content">

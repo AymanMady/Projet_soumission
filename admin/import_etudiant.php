@@ -48,9 +48,9 @@
                 $Date_naiss = $row[4];
                 $semestre = $row[5];
                 $annee = $row[6];
-                $login = $row[7];
+                $email = $row[7];
 
-			if(mysqli_query($conn, "INSERT INTO etudiant( `matricule`, `nom`, `prenom`, `lieu_naiss`, `Date_naiss`, `semestre`, `annee`, `login`,`id_role`) VALUES('$matricule', '$nom','$prenom', '$lieu_naiss','$Date_naiss', '$semestre', '$annee','$login',2)")){
+			if(mysqli_query($conn, "INSERT INTO etudiant( `matricule`, `nom`, `prenom`, `lieu_naiss`, `Date_naiss`, `semestre`, `annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom', '$lieu_naiss','$Date_naiss', '$semestre', '$annee','$email',2)")){
                 header("location:etudiant.php");
             }	
             }

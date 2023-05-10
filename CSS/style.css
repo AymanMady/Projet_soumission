@@ -109,7 +109,7 @@ select {
   align-items: center;
   padding: 0 0%;
   position: relative;
-  /* position: fixed; */
+  position: fixed;
   }
   ul {
       list-style: none;
@@ -165,6 +165,12 @@ select {
 
 
   /* pages CRUD */
+.content_crud {
+  width: 80%;
+}
+.content_a table {
+  width: 100%;
+}
 .Btn_add {
     width: fit-content;
     margin-bottom:20px;
@@ -189,7 +195,6 @@ table {
 th {
     font-size: 14px;
     text-align: center;
-    border-bottom: 3px solid #ffcb61;
     padding: 2px 2px;
     font-weight: 500;
 }

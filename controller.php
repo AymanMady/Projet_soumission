@@ -215,12 +215,13 @@ $alert = "";
         if (mysqli_num_rows($Query_check) > 0) {
             $status = $row['active'];
                 if ($status == 1) {
-                     if($row['id_role']==3){
+                     if($row['id_role']==1){
                         header("location:index.php");
                         }
                     elseif($row['id_role']==2){
-                        header("location:index_enseignant.php");
-                    }   
+                        header("location:index.php");
+                    } 
+                    header("location:index.php");
                 }
         } else {
             $errors['email']= 'Email ou mot de passe incorect';

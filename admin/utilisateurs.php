@@ -11,10 +11,10 @@
 </head>
 <body>
     <?php
-    //   include "nav_bar.php"
+      include "nav_bar.php"
     ?>
     <div class="content">
-    <div>
+    <div class="content_crud">
             <div class="button">
                 <div><a href="ajouter_utilisateur.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
             </div>

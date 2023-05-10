@@ -33,9 +33,9 @@
                 $prenom = test_input($_POST['prenom']); 
                 $Date_naiss = test_input($_POST['Date_naiss']); 
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
-                $login =  test_input($_POST['login']);
-           if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)){
-                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `login`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$login',2)";
+                $email =  test_input($_POST['email']);
+           if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($email)){
+                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
                                 
                 $req = mysqli_query($conn , $req);
                 if($req){
@@ -78,7 +78,7 @@
         <label>Année</label>
         <input type="text" name="annee">
         <label>E-mail</label>
-        <input type="email" name="login">
+        <input type="email" name="email">
         
         <input type="submit" value="ajouteur" name="button">
         </form>
