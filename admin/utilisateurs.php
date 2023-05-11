@@ -11,11 +11,7 @@
 </head>
 <body>
     <?php
-<<<<<<< HEAD
-     include "nav_bar.php"
-=======
       include "nav_bar.php"
->>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
     ?>
     <div class="content">
     <div class="content_crud">

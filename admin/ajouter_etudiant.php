@@ -33,18 +33,10 @@
                 $prenom = test_input($_POST['prenom']); 
                 $Date_naiss = test_input($_POST['Date_naiss']); 
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
-<<<<<<< HEAD
-                $login =  test_input($_POST['login']);
-           if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)){
-                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`)
-                                     VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$login',2)";
-                echo $req;              
-=======
                 $email =  test_input($_POST['email']);
            if( !empty($matricule) && !empty($semestre)  && !empty($annee) && !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email)){
                 $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
                                 
->>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
                 $req = mysqli_query($conn , $req);
                 if($req){
                     header("location: etudiant.php");

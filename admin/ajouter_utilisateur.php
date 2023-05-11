@@ -36,26 +36,15 @@
                 // $prenom = test_input($_POST['prenom']); 
                 // $Date_naiss = test_input($_POST['Date_naiss']); 
                 // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-<<<<<<< HEAD
-                
-
-                
-                $login =  test_input($_POST['login']);
-                $pwd =  md5(test_input($_POST['pwd']));
-                $role =  test_input($_POST['role']);
+                   $login =  test_input($_POST['login']);
+                   $pwd =  md5(test_input($_POST['pwd']));
+                   $role =  test_input($_POST['role']);
                 //test_input(extract($_POST));
-           if(isset($login)  && isset($pwd) && isset($role) ){
-
-                $req = "INSERT INTO utilisateur (`login`,`pwd`,`active`,`id_role`)VALUES('$login','$pwd',1,$role)";
-=======
-                // $login =  test_input($_POST['login']);
-                test_input(extract($_POST));
-           if(  isset($login)  && isset($pwd)  && isset($role) ){
+           if(  !empty($login)  && !empty($pwd)  && !empty($role) ){
 
                 $req = "INSERT INTO utilisateur (`login`,`pwd`,`active`,`id_role`)VALUES('$login','$pwd',1,'$role')";
->>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
 
-                                
+                //echo $req;               
                 $req = mysqli_query($conn , $req);
                 if($req){
                     header("location: utilisateurs.php");
@@ -80,10 +69,7 @@
             ?>
 
         </p>
-<<<<<<< HEAD
         <form action="" method="POST">
-=======
->>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
         <label>E-mail</label>
         <input type="email" name="login">
         <label>Mot de passe</label>
