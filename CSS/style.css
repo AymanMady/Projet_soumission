@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    position: relative;
+    /* position: relative; */
     max-width: 100%;
 }
 /* page authentification */
@@ -110,6 +110,7 @@ select {
   padding: 0 0%;
   position: relative;
   /* position: fixed; */
+  top: 0;
   }
   ul {
       list-style: none;
@@ -165,6 +166,14 @@ select {
 
 
   /* pages CRUD */
+.content_crud {
+  position: relative;
+  top: 100px;
+  width: 80%;
+}
+.content_a table {
+  width: 100%;
+}
 .Btn_add {
     width: fit-content;
     margin-bottom:20px;
@@ -192,6 +201,7 @@ table {
     text-align: center;
     border-bottom: 3px solid #ffcb61;
     padding: 6px 6px;
+    padding: 2px 2px;
     font-weight: 500;
 
 }

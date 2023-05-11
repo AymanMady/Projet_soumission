@@ -96,13 +96,13 @@ $alert = "";
 
     if($role == "etudiant"){
         $sql_etud=mysqli_query($conn,"select * from etudiant where login='$email'");
-        $query1="select id_role from etudiant where login='$email' limit 1";
+        $query1="select id_role from etudiant where email='$email' limit 1";
         $query=mysqli_query($conn,$query1);
         $droit=mysqli_fetch_assoc($query);
         $id_role = $droit['id_role'];
     }else{
         $sql_ens=mysqli_query($conn,"select * from enseignant where login='$email'");
-        $query1="select id_role from enseignant where login='$email' limit 1";
+        $query1="select id_role from enseignant where email='$email' limit 1";
         $query=mysqli_query($conn,$query1);
         $droit=mysqli_fetch_assoc($query); 
         $id_role=$droit['id_role'];
@@ -139,8 +139,8 @@ $alert = "";
 
         // count erros
         if (count($errors) === 0) {
-            $insertQuery = "INSERT INTO utilisateur (nom,prenom,`login`,pwd,id_role,active,code)
-            VALUES ('$fname','$lname','$email','$password',$id_role,'$status','$code');";
+            $insertQuery = "INSERT INTO utilisateur (`login`,pwd,id_role,active,code)
+            VALUES ('$email','$password',$id_role,'$status','$code');";
             $insertInfo = mysqli_query($conn, $insertQuery) or die("hhh");
 
             // Send Varification Code In Gmail
@@ -229,6 +229,10 @@ $alert = "";
                     elseif($row['id_role']==2){
                         header("location:index_etudiant.php");
                     }   
+                    elseif($row['id_role']==2){
+                        header("location:index.php");
+                    } 
+                    header("location:index.php");
                 }
                 else{
                     $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacte l\'admimistrateure pour active le'; 

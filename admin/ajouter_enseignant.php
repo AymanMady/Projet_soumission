@@ -13,6 +13,7 @@
     <?php
       include "nav_bar.php"
     ?>
+    <br><br><br>
     <div class="content">
     <?php
           include_once "../connexion.php";
@@ -29,10 +30,11 @@
         // $prenom = test_input($_POST['prenom']); 
         // $Date_naiss = test_input($_POST['Date_naiss']); 
         // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-        // $login =  test_input($_POST['login']);
+        // $email =  test_input($_POST['email']);
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
+<<<<<<< HEAD
            if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss) 
                      && isset($email) && isset($diplome) && isset($grade)  ){
                 $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`,
@@ -40,6 +42,11 @@
                                         VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,
                                         '$email' , '$diplome', '$grade', 3)";
                     echo $req;
+=======
+           if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
+                $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2);";
+            
+>>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
                 if(mysqli_query($conn , $req)){
                     header("location: enseignant.php");
                 }else {

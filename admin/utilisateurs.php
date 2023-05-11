@@ -11,10 +11,14 @@
 </head>
 <body>
     <?php
+<<<<<<< HEAD
      include "nav_bar.php"
+=======
+      include "nav_bar.php"
+>>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
     ?>
     <div class="content">
-    <div>
+    <div class="content_crud">
             <div class="button">
                 <div><a href="ajouter_utilisateur.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
             </div>
@@ -26,16 +30,15 @@
                 </tr>
                 <?php 
                     include_once "../connexion.php";
-                    $req = mysqli_query($conn , "SELECT * FROM utilisateur");
+                    $req = mysqli_query($conn , "SELECT * FROM utilisateur inner join role using(id_role)");
                     if(mysqli_num_rows($req) == 0){
                         echo "Il n'y a pas encore des utilisateur ajouter !" ;
-                        
                     }else {
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
                                 <td><?=$row['login']?></td>
-                                <td><?=$row['id_role']?></td>
+                                <td><?=$row['profile']?></td>
                                 <td><a href="modifier_utilisateur.php?id_user=<?=$row['id_user']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
                                 <td><a href="supprimer_utilisateur.php?id_user=<?=$row['id_user']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce utilisateur ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
                             </tr>

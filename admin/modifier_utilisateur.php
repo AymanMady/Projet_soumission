@@ -43,10 +43,15 @@
             // $active =  test_input($_POST['active']);
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
+<<<<<<< HEAD
             if( isset($pwd)  && isset($login) && isset($role)){
                 $req = mysqli_query($conn, "UPDATE utilisateur SET pwd = '$pwd', login = '$login', id_role = '$role'  WHERE id_user = $id_user");
 
                 echo $req;
+=======
+            if( !empty($login) && !empty($role)){
+                $req = mysqli_query($conn, "UPDATE utilisateur SET     login = '$login', role = '$role'  WHERE id_user = $id_user");
+>>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
                 if($req){
                     header("location: utilisateurs.php");
                 }else {
