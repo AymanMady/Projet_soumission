@@ -32,11 +32,7 @@
       <input type="password" name="password" required placeholder="Password">
       <input type="submit" name="entrer" value="login" class="form-btn">
       <a href="forgot.php" id="forgot">Mot de passe oublier?</a>
-<<<<<<< HEAD
-      <p>Cree un compte <a href="test_creation.php">Sign Up</a></p>
-=======
       <p>Cree un compte <a href="verification.php">Sign Up</a></p>
->>>>>>> eed1f47f55757961c60349c19534fa2486fdf6a1
    </form>
 
 </div>
