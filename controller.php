@@ -221,21 +221,19 @@ $alert = "";
                      if($row['id_role']==1){
                         header("location:index.php");
                         }
-                    elseif($row['id_role']==3){
+                    elseif($row['id_role']==2){
                         header("location:index_enseignant.php");
                         session_start();
                         $_SESSION['email']=$email;
+                        $_SESSION['ens']="oui";
+
                     }   
-                    elseif($row['id_role']==2){
+                    elseif($row['id_role']==3){
                         header("location:index_etudiant.php");
                     }   
-                    elseif($row['id_role']==2){
-                        header("location:index.php");
-                    } 
-                    header("location:index.php");
                 }
                 else{
-                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacte l\'admimistrateure pour active le'; 
+                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'admimistrateure pour active le'; 
                 }
         } else {
             $errors['email'] = 'Email ou mot de passe incorect';

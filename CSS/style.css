@@ -171,7 +171,7 @@ select {
   top: 100px;
   width: 80%;
 }
-.content_a table {
+.content_crud table {
   width: 100%;
 }
 .Btn_add {
@@ -199,9 +199,7 @@ table {
 #items th {
     font-size: 14px;
     text-align: center;
-    border-bottom: 3px solid #ffcb61;
     padding: 6px 6px;
-    padding: 2px 2px;
     font-weight: 500;
 
 }
