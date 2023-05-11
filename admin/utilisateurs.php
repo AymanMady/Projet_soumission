@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-    //   include "nav_bar.php"
+     include "nav_bar.php"
     ?>
     <div class="content">
     <div>
@@ -20,9 +20,6 @@
             </div>
             <table >
                 <tr id="items">
-                    <th>Nom et prenom</th>
-                    <th>Lieu de naissance</th>
-                    <th>Date de naissance</th>
                     <th>E-mail</th>
                     <th>Role</th>
                     <th colspan="2">Action</th>
@@ -37,10 +34,6 @@
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
-                                <td><?=$row['nom']?>
-                                <?=$row['prenom']?></td>
-                                <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['date_naiss']?></td>
                                 <td><?=$row['login']?></td>
                                 <td><?=$row['id_role']?></td>
                                 <td><a href="modifier_utilisateur.php?id_user=<?=$row['id_user']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>

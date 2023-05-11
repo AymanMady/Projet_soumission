@@ -3,8 +3,6 @@
 // if($_SESSION["admin"]!="oui"){
 
 //     header("location:../authentification.php");
-
-//     // header("location:../authentification.php");
 // }
 ?>
 <!DOCTYPE html>

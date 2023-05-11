@@ -47,7 +47,7 @@
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['semestre']?></td>
                                 <td><?=$row['annee']?></td>
-                                <td><?=$row['login']?></td>
+                                <td><?=$row['email']?></td>
                                 <td><a href="modifier_etudiant.php?id_etud=<?=$row['id_etud']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
                                 <td><a href="supprimer_etudiant.php?id_etud=<?=$row['id_etud']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce etudiant ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
                             </tr>

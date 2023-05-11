@@ -9,7 +9,7 @@
     </head>
 <body>
     <?php
-      include "nav_bar.php"
+      include "nav_bar.php";
     ?>
     <div class="content_import">
         <h1 class="h">Importation de données à partir d'un fichier XLSX</h1>

@@ -36,11 +36,16 @@
                 // $prenom = test_input($_POST['prenom']); 
                 // $Date_naiss = test_input($_POST['Date_naiss']); 
                 // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-                // $login =  test_input($_POST['login']);
-                test_input(extract($_POST));
-           if(  isset($nom) && isset($prenom) && isset($date_naiss) && isset($lieu_naiss)  && isset($login)  && isset($role) ){
+                
 
-                $req = "INSERT INTO utilisateur ( `nom`,`prenom`,`lieu_naiss`, `date_naiss`, `login`,`id_role`)VALUES('$nom','$prenom','$lieu_naiss','$date_naiss','$login',$role)";
+                
+                $login =  test_input($_POST['login']);
+                $pwd =  md5(test_input($_POST['pwd']));
+                $role =  test_input($_POST['role']);
+                //test_input(extract($_POST));
+           if(isset($login)  && isset($pwd) && isset($role) ){
+
+                $req = "INSERT INTO utilisateur (`login`,`pwd`,`active`,`id_role`)VALUES('$login','$pwd',1,$role)";
 
                                 
                 $req = mysqli_query($conn , $req);
@@ -68,14 +73,6 @@
 
         </p>
         <form action="" method="POST">
-        <label>Nom</label>
-        <input type="text" name="nom">
-        <label>Prénom</label>
-        <input type="text" name="prenom">
-        <label>Lieu de naissance</label>
-        <input type="text" name="lieu_naiss">
-        <label>Date de naissance</label>
-        <input type="date" name="date_naiss">
         <label>E-mail</label>
         <input type="email" name="login">
         <label>Mot de passe</label>

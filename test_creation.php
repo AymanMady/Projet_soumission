@@ -8,7 +8,7 @@ if($user=='enseignant'){
     $sql="select * from enseignant where login=$email";
 }
 else{
-    $sql="select * from etudiant where login=$email";
+    $sql="select * from etudiant where login = $email";
 }
 $resu=mysqli_query($conn,$sql);
 if(mysqli_num_rows($resu)>0){

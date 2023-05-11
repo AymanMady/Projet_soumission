@@ -35,8 +35,9 @@
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 $login =  test_input($_POST['login']);
            if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login)){
-                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `login`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$login',2)";
-                                
+                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`)
+                                     VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$login',2)";
+                echo $req;              
                 $req = mysqli_query($conn , $req);
                 if($req){
                     header("location: etudiant.php");
@@ -79,7 +80,6 @@
         <input type="text" name="annee">
         <label>E-mail</label>
         <input type="email" name="login">
-        
         <input type="submit" value="ajouteur" name="button">
         </form>
    </div>

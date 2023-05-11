@@ -24,6 +24,7 @@
         <option value="etudiant">Etudiant</option>
       </select>
       <input type="submit" name="verifier" value="login" class="form-btn">
+      <p><a href="authentification.php">connectez-vous</a></p>
    </form>
 
 </div>

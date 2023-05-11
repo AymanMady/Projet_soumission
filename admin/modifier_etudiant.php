@@ -44,7 +44,7 @@
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
             if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) ){
-                $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login' WHERE id_etud = $id_etud");
+                $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', email = '$login' WHERE id_etud = $id_etud");
                 if($req){
                     header("location: etudiant.php");
                 }else {
@@ -84,7 +84,7 @@
             <label>Année</label>
             <input type="text" name="annee"  value="<?=$row['annee']?>">
             <label>E-mail</label>
-            <input type="email" name="login" value="<?=$row['login']?>">
+            <input type="email" name="login" value="<?=$row['email']?>">
             <input type="submit" value="Modifier" name="button">
             </form>
             </div>

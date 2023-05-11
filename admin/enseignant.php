@@ -42,7 +42,7 @@
                                 <?=$row['prenom']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['login']?></td>
+                                <td><?=$row['email']?></td>
                                 <td><?=$row['diplome']?></td>
                                 <td><?=$row['grade']?></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>

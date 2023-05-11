@@ -33,19 +33,23 @@
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
-           if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($diplome) && isset($grade)  ){
-                $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade', 3);";
-            
+           if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss) 
+                     && isset($email) && isset($diplome) && isset($grade)  ){
+                $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`,
+                                     `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) 
+                                        VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,
+                                        '$email' , '$diplome', '$grade', 3)";
+                    echo $req;
                 if(mysqli_query($conn , $req)){
                     header("location: enseignant.php");
                 }else {
                     $message = "Enseignant non ajouté";
                 }
 
-           }else {
-               $message = "Veuillez remplir tous les champs !";
-           }
-       }
+                }else {
+                    $message = "Veuillez remplir tous les champs !!";
+                }
+        }
     
     ?>
     <div class="form">
@@ -69,14 +73,14 @@
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
         <label>E-mail</label>
-        <input type="email" name="login">
+        <input type="email" name="email">
         <label>Diplôme</label>
         <input type="text" name="diplome">
         <label>Grade</label>
         <input type="text" name="grade">
         <input type="submit" value="ajouteur" name="button">
         </form>
-   </div>
     </div>
+</div>
 </body>
 </html>

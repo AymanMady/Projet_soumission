@@ -52,6 +52,21 @@ body {
   .navbar-item.active a {
     color: #0066cc;
   }
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+
+
+
+
+ 
+
+
+
+
+
   
   .submit-button {
     background-color: #0066cc;
