@@ -34,6 +34,10 @@
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
+<<<<<<< HEAD
+           
+=======
+>>>>>>> c73708e84a1ddaf1edd7f4e817a981071d17ff8a
            if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
                 $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2);";
             
