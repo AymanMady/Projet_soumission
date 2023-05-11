@@ -1,8 +1,8 @@
 <?php 
-// session_start() ;
-// if($_SESSION["admin"]!="oui"){
-//     header("location:authentification.php");
-// }
+session_start() ;
+if($_SESSION["admin"]!="oui"){
+    header("location:authentification.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +22,13 @@
                     <li>
                         <a href="admin/etudiant.php">Etudiants</a>
                         <a href="admin/enseignant.php">Enseignants</a>
+                        <a href="admin/utilisateurs.php">Utilisateurs</a>
                         <a href="admin/groupe.php">Groupes</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#">soumission</a>
+                <a href="#">Soumission</a>
             </li>
         </ul>
         <div class="logout" >

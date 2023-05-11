@@ -1,9 +1,4 @@
-<?php 
-session_start() ;
-if($_SESSION["admin"]!="oui"){
-    header("location:../authentification.php");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +27,7 @@ if($_SESSION["admin"]!="oui"){
        if(isset($_POST['button'])){
         $libelle = test_input($_POST['libelle']);
         $filiere = test_input($_POST['filiere']); 
-           if( isset($libelle) && isset($filiere) ){
+           if( !empty($libelle) && !empty($filiere) ){
                 $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`)
                  VALUES('$libelle', '$filiere')");
                 if($req){

@@ -46,17 +46,17 @@
                 $prenom = $row[2];
                 $Date_naiss = $row[3];
                 $lieu_naiss = $row[4];
-                $login = $row[5];
+                $email = $row[5];
 
 
 			if(mysqli_query($conn, "INSERT INTO enseignant( 
 					`			 `nom`, `prenom`,
 								`Date_naiss`,`lieu_naiss` ,
-								`login`,`id_role`)
+								`email`,`id_role`)
 								VALUES(
 								'$nom','$prenom',
 								'$Date_naiss', '$lieu_naiss', 
-								'$login',3)")){
+								'$email',3)")){
                 		header("location:enseignant.php");
             }	
             }

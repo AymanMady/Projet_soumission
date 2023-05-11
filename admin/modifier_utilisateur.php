@@ -43,8 +43,10 @@
             // $active =  test_input($_POST['active']);
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
-            if( isset($nom) &&isset($prenom)&& isset($date_naiss) && isset($lieu_naiss)  && isset($login) && isset($role)){
-                $req = mysqli_query($conn, "UPDATE utilisateur SET   nom = '$nom',prenom = '$prenom', date_naiss = '$date_naiss', lieu_naiss = '$lieu_naiss', login = '$login', id_role = '$role'  WHERE id_user = $id_user");
+            if( !empty($pwd)  && !empty($login) && !empty($role)){
+                $req = mysqli_query($conn, "UPDATE utilisateur SET pwd = '$pwd', login = '$login', id_role = '$role'  WHERE id_user = $id_user");
+
+                echo $req;
                 if($req){
                     header("location: utilisateurs.php");
                 }else {
@@ -60,7 +62,7 @@
 
             <div class="form">
             <a href="utilisateurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-            <h2 class="title_joueur">Modifier l'utilisateur : <?=$row['nom']?> </h2>
+            <h2 class="title_joueur">Modifier un utilisateur </h2>
             <p class="erreur_message">
             <?php 
                 if(isset($message)){
@@ -69,19 +71,13 @@
             ?>
             </p>
             <form action="" method="POST">
-            <label>Nom</label >
-            <input type="text" name="nom" value="<?=$row['nom']?>">
-            <label>Prénom</label>
-            <input type="text" name="prenom" value="<?=$row['prenom']?>">
-            <label>Lieu de naissance</label>
-            <input type="text" name="lieu_naiss" value="<?=$row['lieu_naiss']?>">
-            <label>Date de naissance</label>
-            <input type="date" name="date_naiss" value="<?=$row['date_naiss']?>">
             <label>E-mail</label>
             <input type="email" name="login" value="<?=$row['login']?>">
-            <label>Role</label>
+            <label>Mot de passe</label>
+            <input type="password" name="pwd">
+            <label>Rôle</label>
             <input type="text" name="role" value="<?=$row['id_role']?>">
-            <input type="submit" value="Modifier" name="button" >
+            <input type="submit" value="Modifier" name="button">
             </form>
             </div>
     </div>

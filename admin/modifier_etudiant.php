@@ -37,14 +37,14 @@
             // $prenom = test_input($_POST['prenom']); 
             // $Date_naiss = test_input($_POST['Date_naiss']); 
             // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-            // $login =  test_input($_POST['login']);
+            // $email =  test_input($_POST['email']);
             // $pwd =  test_input($_POST['pwd']);
             // $id_role =  test_input($_POST['id_role']);
             // $active =  test_input($_POST['active']);
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
-            if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) ){
-                $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login' WHERE id_etud = $id_etud");
+            if( !empty($matricule) && !empty($semestre)  && !empty($annee) && !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) ){
+                $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', email = '$email' WHERE id_etud = $id_etud");
                 if($req){
                     header("location: etudiant.php");
                 }else {
@@ -84,7 +84,7 @@
             <label>Année</label>
             <input type="text" name="annee"  value="<?=$row['annee']?>">
             <label>E-mail</label>
-            <input type="email" name="login" value="<?=$row['login']?>">
+            <input type="email" name="email" value="<?=$row['email']?>">
             <input type="submit" value="Modifier" name="button">
             </form>
             </div>

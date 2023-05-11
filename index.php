@@ -9,10 +9,11 @@
   </head>
   <body>
     <?php
-    echo 'test';
-      include "nav_bar.php"
+    // echo 'test';
+      include "nav_bar.php";
     ?>
-    <div class="content">
-    </div>
+        <div class="content">
+    <!-- Contenu de la page -->
+  </div>
   </body>
 </html>

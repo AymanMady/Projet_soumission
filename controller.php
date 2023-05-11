@@ -3,7 +3,7 @@
 
 <meta charset="UTF-8">
     <link rel="stylesheet" href="search.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
     <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -11,28 +11,29 @@
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+  <!-- Favicons
   <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link rel="shortcut icon" href="../assets/img/ronk1.jpg" />
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="shortcut icon" href="../assets/img/ronk1.jpg" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
   <!-- <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet"> -->
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <!-- <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet"> -->
 
   <!-- Template Main CSS File -->
-  <link href="../assets/css/style22.css" rel="stylesheet">
+  <!-- <link href="../assets/css/style22.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">  
 <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   -->
   <script>
     $(document).ready(function() {
   $("#success-alert").hide();
@@ -75,7 +76,7 @@ $alert = "";
                             $_SESSION['email']= $email;   
                             header('location: registration.php');    
                         }
-                    }else {
+                        }else {
                         $message = "Veuillez remplir tous les champs !";
                     }
             }
@@ -95,13 +96,13 @@ $alert = "";
 
     if($role == "etudiant"){
         $sql_etud=mysqli_query($conn,"select * from etudiant where login='$email'");
-        $query1="select id_role from etudiant where login='$email' limit 1";
+        $query1="select id_role from etudiant where email='$email' limit 1";
         $query=mysqli_query($conn,$query1);
         $droit=mysqli_fetch_assoc($query);
-        $id_role=$droit['id_role'];
+        $id_role = $droit['id_role'];
     }else{
         $sql_ens=mysqli_query($conn,"select * from enseignant where login='$email'");
-        $query1="select id_role from enseignant where login='$email' limit 1";
+        $query1="select id_role from enseignant where email='$email' limit 1";
         $query=mysqli_query($conn,$query1);
         $droit=mysqli_fetch_assoc($query); 
         $id_role=$droit['id_role'];
@@ -113,7 +114,8 @@ $alert = "";
 
 
          if(mysqli_num_rows($query)==0){
-           $errors['password'] = "Vous n'avez pas les droits pour cree un compt!";}
+                    $errors['password'] = "Vous n'avez pas les droits pour cree un compt!";
+            }   
             if($test[1]=='supnum.mr'){
         if (strlen(trim($_POST['password'])) < 8) {
             $errors['password'] = 'Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles';
@@ -137,8 +139,8 @@ $alert = "";
 
         // count erros
         if (count($errors) === 0) {
-            $insertQuery = "INSERT INTO utilisateur (nom,prenom,`login`,pwd,id_role,active,code)
-            VALUES ('$fname','$lname','$email','$password',$id_role,'$status','$code');";
+            $insertQuery = "INSERT INTO utilisateur (`login`,pwd,id_role,active,code)
+            VALUES ('$email','$password',$id_role,'$status','$code');";
             $insertInfo = mysqli_query($conn, $insertQuery) or die("hhh");
 
             // Send Varification Code In Gmail
@@ -163,7 +165,8 @@ $alert = "";
 
                     $_SESSION['message'] = $message;
                     header('location: verifier_code.php');
-                } else {
+                } 
+                    else {
                     $errors['otp_errors'] = 'Échec lors de l’envoi du code!';
                 }
             } else {
@@ -215,15 +218,25 @@ $alert = "";
         if (mysqli_num_rows($Query_check) > 0) {
             $status = $row['active'];
                 if ($status == 1) {
-                     if($row['id_role']==3){
+                     if($row['id_role']==1){
                         header("location:index.php");
                         }
                     elseif($row['id_role']==2){
                         header("location:index_enseignant.php");
+                        session_start();
+                        $_SESSION['email']=$email;
+                        $_SESSION['ens']="oui";
+
+                    }   
+                    elseif($row['id_role']==3){
+                        header("location:index_etudiant.php");
                     }   
                 }
+                else{
+                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'admimistrateure pour active le'; 
+                }
         } else {
-            $errors['email']= 'Email ou mot de passe incorect';
+            $errors['email'] = 'Email ou mot de passe incorect';
         }
 
 

@@ -13,7 +13,7 @@
       include "nav_bar.php"
     ?>
     <div class="content">
-        <div>
+    <div class="content_crud">
             <div class="button">
                 <div><a href="ajouter_enseignant.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
                 <div><a href="import_enseignant.php" class="Btn_add"> <img title="Importer" src="images/importer.png"> importer</a></div>    
@@ -42,7 +42,7 @@
                                 <?=$row['prenom']?></td>
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['login']?></td>
+                                <td><?=$row['email']?></td>
                                 <td><?=$row['diplome']?></td>
                                 <td><?=$row['grade']?></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>

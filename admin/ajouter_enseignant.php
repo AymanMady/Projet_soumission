@@ -13,6 +13,7 @@
     <?php
       include "nav_bar.php"
     ?>
+    <br><br><br>
     <div class="content">
     <?php
           include_once "../connexion.php";
@@ -29,12 +30,12 @@
         // $prenom = test_input($_POST['prenom']); 
         // $Date_naiss = test_input($_POST['Date_naiss']); 
         // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-        // $login =  test_input($_POST['login']);
+        // $email =  test_input($_POST['email']);
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
-           if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($diplome) && isset($grade)  ){
-                $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `login`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$login' , '$diplome', '$grade', 3);";
+           if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
+                $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2);";
             
                 if(mysqli_query($conn , $req)){
                     header("location: enseignant.php");
@@ -42,10 +43,10 @@
                     $message = "Enseignant non ajouté";
                 }
 
-           }else {
-               $message = "Veuillez remplir tous les champs !";
-           }
-       }
+                }else {
+                    $message = "Veuillez remplir tous les champs !!";
+                }
+        }
     
     ?>
     <div class="form">
@@ -69,14 +70,14 @@
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
         <label>E-mail</label>
-        <input type="email" name="login">
+        <input type="email" name="email">
         <label>Diplôme</label>
         <input type="text" name="diplome">
         <label>Grade</label>
         <input type="text" name="grade">
         <input type="submit" value="ajouteur" name="button">
         </form>
-   </div>
     </div>
+</div>
 </body>
 </html>
