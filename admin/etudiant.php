@@ -13,6 +13,7 @@
     <?php
       include "nav_bar.php"
     ?>
+
     <div class="content">
     <div class="content_crud">
             <div class="button">

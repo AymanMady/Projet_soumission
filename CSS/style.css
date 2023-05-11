@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    position: relative;
+    /* position: relative; */
     max-width: 100%;
 }
 /* page authentification */
@@ -109,7 +109,8 @@ select {
   align-items: center;
   padding: 0 0%;
   position: relative;
-  position: fixed;
+  /* position: fixed; */
+  top: 0;
   }
   ul {
       list-style: none;
@@ -166,6 +167,8 @@ select {
 
   /* pages CRUD */
 .content_crud {
+  position: relative;
+  top: 100px;
   width: 80%;
 }
 .content_a table {

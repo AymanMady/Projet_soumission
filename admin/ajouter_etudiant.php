@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-    //   include "nav_bar.php"
+      include "nav_bar.php"
     ?>
     <div class="content">
     <?php
@@ -34,7 +34,7 @@
                 $Date_naiss = test_input($_POST['Date_naiss']); 
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 $email =  test_input($_POST['email']);
-           if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($email)){
+           if( !empty($matricule) && !empty($semestre)  && !empty($annee) && !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email)){
                 $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
                                 
                 $req = mysqli_query($conn , $req);

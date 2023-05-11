@@ -20,29 +20,21 @@
             </div>
             <table >
                 <tr id="items">
-                    <th>Nom et prenom</th>
-                    <th>Lieu de naissance</th>
-                    <th>Date de naissance</th>
                     <th>E-mail</th>
                     <th>Role</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php 
                     include_once "../connexion.php";
-                    $req = mysqli_query($conn , "SELECT * FROM utilisateur");
+                    $req = mysqli_query($conn , "SELECT * FROM utilisateur inner join role using(id_role)");
                     if(mysqli_num_rows($req) == 0){
                         echo "Il n'y a pas encore des utilisateur ajouter !" ;
-                        
                     }else {
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                             <tr>
-                                <td><?=$row['nom']?>
-                                <?=$row['prenom']?></td>
-                                <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['date_naiss']?></td>
                                 <td><?=$row['login']?></td>
-                                <td><?=$row['id_role']?></td>
+                                <td><?=$row['profile']?></td>
                                 <td><a href="modifier_utilisateur.php?id_user=<?=$row['id_user']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
                                 <td><a href="supprimer_utilisateur.php?id_user=<?=$row['id_user']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce utilisateur ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
                             </tr>

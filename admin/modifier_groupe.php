@@ -24,7 +24,7 @@
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( isset($libelle) && isset($filiere) ){
+        if( !empty($libelle) && !empty($filiere) ){
             $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$filiere' WHERE id_groupe = $id_groupe");
             if($req){
                 header("location: groupe.php");

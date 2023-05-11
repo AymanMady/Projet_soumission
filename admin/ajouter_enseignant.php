@@ -13,6 +13,7 @@
     <?php
       include "nav_bar.php"
     ?>
+    <br><br><br>
     <div class="content">
     <?php
           include_once "../connexion.php";
@@ -33,7 +34,7 @@
         // $diplome =  test_input($_POST['diplome']);
         // $grade =  test_input($_POST['grade']);
             test_input(extract($_POST));
-           if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($email) && isset($diplome) && isset($grade)  ){
+           if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
                 $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2);";
             
                 if(mysqli_query($conn , $req)){

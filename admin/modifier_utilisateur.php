@@ -43,8 +43,8 @@
             // $active =  test_input($_POST['active']);
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
-            if( isset($nom_prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($role)){
-                $req = mysqli_query($conn, "UPDATE utilisateur SET   nom_prenom = '$nom_prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login', role = '$role'  WHERE id_user = $id_user");
+            if( !empty($login) && !empty($role)){
+                $req = mysqli_query($conn, "UPDATE utilisateur SET     login = '$login', role = '$role'  WHERE id_user = $id_user");
                 if($req){
                     header("location: utilisateurs.php");
                 }else {

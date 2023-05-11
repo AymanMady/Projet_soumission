@@ -23,7 +23,7 @@
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($email) && isset($diplome) && isset($grade)  ){
+        if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
             $req = mysqli_query($conn, "UPDATE enseignant SET   nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', `email` = '$email', diplome = '$diplome', grade = '$grade' WHERE id_ens = $id_ens");
             if($req){
                 header("location: enseignant.php");
