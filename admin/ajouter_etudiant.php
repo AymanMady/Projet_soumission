@@ -78,12 +78,8 @@
         <label>Année</label>
         <input type="text" name="annee">
         <label>E-mail</label>
-<<<<<<< HEAD
-        <input type="email" name="login">
-=======
         <input type="email" name="email">
         
->>>>>>> bf358284c614ac7642ba97eb7037737b59a35e5a
         <input type="submit" value="ajouteur" name="button">
         </form>
    </div>

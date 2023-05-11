@@ -225,11 +225,12 @@ $alert = "";
                         header("location:index_enseignant.php");
                         session_start();
                         $_SESSION['email']=$email;
+                        $_SESSION['ens']="oui";
+
                     }   
                     elseif($row['id_role']==3){
                         header("location:index_etudiant.php");
                     }   
-                   
                 }
                 else{
                     $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'admimistrateure pour active le'; 

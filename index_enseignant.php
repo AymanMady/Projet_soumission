@@ -1,7 +1,9 @@
 <?php
  session_start() ;
  $email = $_SESSION['email'];
-
+ if($_SESSION["ens"]!="oui"){
+     header("location:authentification.php");
+ }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,10 +15,6 @@
 </head>
 <body>
  
-<?php
-  //include "nav_bar.php";
-  ?>
-
 
  
 <div class="menu-bar">
@@ -42,12 +40,11 @@
     </div>
 
 
-<!-- 
-  <div class="content">
-    
-  </div>  -->
 
-  <div class="content">
+
+<div class="content">
+  <div class="content_crud">
+
   <table >
           <tr id="items">
               <th>Code</th>
@@ -62,7 +59,7 @@
 
               $req = mysqli_query($conn , $req_ens_mail);
               if(mysqli_num_rows($req) == 0){
-                  echo "Il n'y a pas encore des groupes ajouter !" ;
+                  echo "Il n'y a pas encore des matiere ajouter !" ;
                   
               }else {
                   while($row=mysqli_fetch_assoc($req)){
@@ -78,7 +75,7 @@
               }
           ?>
         </table>
-      </div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php 
-// session_start() ;
-// if($_SESSION["admin"]!="oui"){
-//     header("location:authentification.php");
-// }
+session_start() ;
+if($_SESSION["admin"]!="oui"){
+    header("location:authentification.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
