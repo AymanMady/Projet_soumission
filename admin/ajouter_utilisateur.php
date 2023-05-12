@@ -36,15 +36,10 @@
                 // $prenom = test_input($_POST['prenom']); 
                 // $Date_naiss = test_input($_POST['Date_naiss']); 
                 // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-<<<<<<< HEAD
                    $login =  test_input($_POST['login']);
                    $pwd =  md5(test_input($_POST['pwd']));
                    $role =  test_input($_POST['role']);
                 //test_input(extract($_POST));
-=======
-                // $login =  test_input($_POST['login']);
-                test_input(extract($_POST));
->>>>>>> c73708e84a1ddaf1edd7f4e817a981071d17ff8a
            if(  !empty($login)  && !empty($pwd)  && !empty($role) ){
 
                 $req = "INSERT INTO utilisateur (`login`,`pwd`,`active`,`id_role`)VALUES('$login','$pwd',1,'$role')";
