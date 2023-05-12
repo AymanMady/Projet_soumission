@@ -43,6 +43,8 @@
             // $active =  test_input($_POST['active']);
             if(isset($_POST['button'])){ 
                 test_input(extract($_POST));
+            if( !empty($login) && !empty($role)){
+                $req = mysqli_query($conn, "UPDATE utilisateur SET     login = '$login', role = '$role'  WHERE id_user = $id_user");
             if( !empty($pwd)  && !empty($login) && !empty($role)){
                 $req = mysqli_query($conn, "UPDATE utilisateur SET pwd = '$pwd', login = '$login', id_role = '$role'  WHERE id_user = $id_user");
 
@@ -57,7 +59,7 @@
                 $message = "Veuillez remplir tous les champs !";
             }
             }
-
+        }
             ?>
 
             <div class="form">
