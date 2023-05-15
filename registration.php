@@ -2,21 +2,27 @@
    //session_start();
    include_once ("controller.php");
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-    <link rel="stylesheet" href="CSS/style_registration.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="CSS/bootstrap.css" rel="stylesheet">
+<link href="CSS/modern-business.css" rel="stylesheet">
+<link href="CSS/cssLogin.css" rel="stylesheet" />
+
 </head>
 <body>
-<div class="form-container">
+<div class="card card-container">
 
-    <form action="registration.php" method="post" autocomplete="off" class="sign-up-form">
-        <h3>Sign up</h3>
-        <?php
+
+<form action="" method="POST" class="form-signin">
+
+
+<?php
             if($errors > 0){
                 foreach($errors AS $displayErrors){
                 ?>
@@ -24,17 +30,14 @@
                 <?php
                 }
             }
-            ?> 
-        <form name="fo" method="post" action="">
-        <input type="text" name="fname" required placeholder="Nom">
-        <input type="text" name="lname" required placeholder="Prénom">
-        <input type="password" name="password" required placeholder="Mot de passe">
-        <input type="password" name="confirmPassword" required placeholder="Confirmer Mot de passe">
-        <input type="submit" name="signup" value="Valider" class="form-btn">
+     ?>
+        <input type="text" name="fname" required placeholder="Nom" class="form-control">
+        <input type="text" name="lname" required placeholder="Prénom" class="form-control">
+        <input type="password" name="password" required placeholder="Mot de passe" class="form-control">
+        <input type="password" name="confirmPassword" required placeholder="Confirmer Mot de passe" class="form-control">
+        <input type="submit" name="signup" value="Valider" class="btn btn-lg btn-primary btn-block btn-signin">
         <p>Vous avez déjà un compte ? <a href="authentification.php">connectez-vous</a></p>
-        
-    </form>
-
+</form>
 </div>
 </body>
 </html>
