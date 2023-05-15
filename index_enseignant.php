@@ -1,9 +1,9 @@
 <?php
- session_start() ;
- $email = $_SESSION['email'];
- if($_SESSION["ens"]!="oui"){
-     header("location:authentification.php");
- }
+//  session_start() ;
+//  $email = $_SESSION['email'];
+//  if($_SESSION["ens"]!="oui"){
+//      header("location:authentification.php");
+//  }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,8 +15,14 @@
 </head>
 <body>
  
+<?php 
+include "nav_bar.php";
+?>
 
- 
+
+
+
+<!--  
 <div class="menu-bar">
         <ul>
             <li>
@@ -38,7 +44,7 @@
             <a href="supprimer_session.php">Se déconnecte</a></div>
         </div>
     </div>
-
+ -->
 
 
 

@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>evaluation </title>
-    <link rel="stylesheet" href="CSS/style_verifier.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="CSS/style_registration.css">
+<link href="CSS/bootstrap.css" rel="stylesheet">
+<link href="CSS/modern-business.css" rel="stylesheet">
+<link href="CSS/cssLogin.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="container">
-        <h2>Sign Up</h2>
-        <div id="line"></div>
-        <form action="verifier_code.php" method="POST" autocomplete="off">
+<div class="card card-container">
+    <form action="" method="POST" class="form-signin">
             <?php
             if(isset($_SESSION['message'])){
                 ?>
@@ -20,7 +20,6 @@
                 <?php
             }
             ?>
-
             <?php
             if($errors > 0){
                 foreach($errors AS $displayErrors){
@@ -29,10 +28,11 @@
                 <?php
                 }
             }
-            ?>      
-            <input type="number" name="otp" placeholder="Verification Code" required><br>
-            <input type="submit" name="verify" value="Verify">
-        </form>
-    </div>
+            ?> 
+            <input type="number" name="otp" placeholder="Verification Code" required class="form-control" ><br>
+            <input type="submit" name="verify" value="Verify" class="btn btn-lg btn-primary btn-block btn-signin">
+    </form>
+</div>
+
 </body>
 </html>
