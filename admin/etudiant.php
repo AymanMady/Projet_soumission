@@ -35,7 +35,7 @@
                     include_once "../connexion.php";
                     $req = mysqli_query($conn , "SELECT * FROM etudiant");
                     if(mysqli_num_rows($req) == 0){
-                        echo "Il n'y a pas encore des enseignants ajouter !" ;
+                        echo "Il n'y a pas encore des etudiants ajouter !" ;
                         
                     }else {
                         while($row=mysqli_fetch_assoc($req)){

@@ -11,11 +11,7 @@
 </head>
 <body>
     <?php
-<<<<<<< HEAD
-      include "nav_bar.php"
-=======
      include "nav_bar.php";
->>>>>>> c73708e84a1ddaf1edd7f4e817a981071d17ff8a
     ?>
     <div class="content">
     <div class="content_crud">
@@ -25,7 +21,7 @@
             <table >
                 <tr id="items">
                     <th>E-mail</th>
-                    <th>Role</th>
+                    <th>Rôle</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php 
