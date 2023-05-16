@@ -35,7 +35,7 @@
     </div>
 </div>
         <div align="center">
-            <img id="profile-img" src="~/images/logoUE.png" />
+            <img id="profile-img" src="" />
         </div>
  <div class="card card-container">
 

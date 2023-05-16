@@ -36,9 +36,7 @@ include "../nav_bar.php";
                             </div>
                         </div>
                     </fieldset>
-                
             </div>
-            <!-- /well -->
         </div>
     </div>
     <div class="text-center">
@@ -48,6 +46,7 @@ include "../nav_bar.php";
     <p>
         <a href="ajouter_utilisateur.php" class = "btn btn-primary" >Nouveau</a>
     </p>
+    
     <div style="overflow-x:auto;">
 
         <table class="table table-striped table-bordered">
