@@ -26,26 +26,6 @@ include "../nav_bar.php";
                         <div class="collapse in" id="demo">
                             <div class="search-box">
 
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les utilisateurs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-    <link rel="stylesheet" href="../CSS/style.css">
-</head>
-<body>
-    <?php
-     include "nav_bar.php";
-    ?>
-    <div class="content">
-    <div class="content_crud">
-            <div class="button">
-                <div><a href="ajouter_utilisateur.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
-=======
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-3">
                                         <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
@@ -57,7 +37,6 @@ include "../nav_bar.php";
                         </div>
                     </fieldset>
                 
->>>>>>> 21c8a8f9ea506b12c206018120794937600f76db
             </div>
             <!-- /well -->
         </div>

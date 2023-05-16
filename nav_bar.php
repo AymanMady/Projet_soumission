@@ -66,13 +66,13 @@
                             <a href="#" >Administration</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                <a href="admin/enseignant.php">Enseignants</a>
+                                <a href="enseignant.php">Enseignants</a>
                                 </li>
                                 <li>
-                                    <a href="admin/utilisateurs.php">Utilisateurs</a>
+                                    <a href="utilisateurs.php">Etudiants</a>
                                 </li >  
                                 <li >
-                                    <a href="admin/utilisateurs.php">Utilisateurs</a>
+                                    <a href="utilisateurs.php">Utilisateurs</a>
                                 </li>
                             </ul> 
                         <li  class="dropdown">
