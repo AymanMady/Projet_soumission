@@ -147,7 +147,7 @@ $alert = "";
             if ($insertInfo) {
                 $subject = 'Code de vérification des e-mails';
                 $message = "notre code de vérification est $code";
-                $sender = "From: 22014@gmail.com";
+                $sender = "From: 22014@supnum.mr";
                  $url =  "https://script.google.com/macros/s/AKfycbw2MsBGjkJ7hzw_cnE5jW-CmqHZbibaNjrEz_DNXZZgCXfptPo5B1yy7x37kFrwSZkeFg/exec";
                     $ch = curl_init($url);
             curl_setopt_array($ch, [
@@ -233,7 +233,7 @@ $alert = "";
                     }   
                 }
                 else{
-                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'admimistrateure pour active le'; 
+                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'administrateure pour active le'; 
                 }
         } else {
             $errors['email'] = 'Email ou mot de passe incorect';

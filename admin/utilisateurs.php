@@ -25,7 +25,6 @@ include "../nav_bar.php";
                         </legend>
                         <div class="collapse in" id="demo">
                             <div class="search-box">
-
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-3">
                                         <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
@@ -36,6 +35,7 @@ include "../nav_bar.php";
                             </div>
                         </div>
                     </fieldset>
+                
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@ include "../nav_bar.php";
         <table class="table table-striped table-bordered">
             <tr>
                     <th>E-mail</th>
-                    <th>Role</th>
+                    <th>Rôle</th>
                     <th colspan="2">Action</th>
                
             </tr>
