@@ -1,3 +1,6 @@
+<?php
+include "../nav_bar.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,22 +13,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 </head>
 <body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
-    <div class="content_crud">
-            <div class="button">
-                <div><a href="ajouter_groupe.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
-                <div><a href="import_groupe.php" class="Btn_add"> <img title="Importer" src="images/importer.png"> importer</a></div>    
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12"> 
+            <ol class="breadcrumb">
+                <li><a href="#">Acceuil</a>
+                    
+                </li>
+                <li class="active">Gestion des utisateurs</li>
+                   
+            </ol>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+                
+                    <fieldset class="fsStyle">
+                        <legend class="legendStyle">
+                            <a data-toggle="collapse" data-target="#demo" href="#">Filtre</a>
+                        </legend>
+                        <div class="collapse in" id="demo">
+                            <div class="search-box">
+                                <div class="form-group">
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info">Filtre</button>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                
             </div>
-            <table >
-                <tr id="items">
+        </div>
+    </div>
+    <div class="text-center">
+       
+    </div>
+    <br>
+    <p>
+        <a href="ajouter_utilisateur.php" class = "btn btn-primary" >Nouveau</a>
+    </p>
+    
+    <div style="overflow-x:auto;">
+
+        <table class="table table-striped table-bordered">
+            <tr>
                     <th>Libelle</th>
                     <th>Filière</th>
                     <th colspan="2">action</th>
-                </tr>
-                <?php 
+            </tr>
+
+
+            <?php 
                     include_once "../connexion.php";
                     $req = mysqli_query($conn , "SELECT * FROM groupe");
                     if(mysqli_num_rows($req) == 0){
@@ -37,15 +81,20 @@
                             <tr>
                                 <td><?=$row['libelle']?></td>
                                 <td><?=$row['filiere']?></td>
-                                <td><a href="modifier_groupe.php?id_groupe=<?=$row['id_groupe']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprimer_groupe.php?id_groupe=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé cette groupe ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
+                                <td><a href="modifier_utilisateur.php?id_user=<?=$row['id_groupe']?>">Modifier</a></td>
+                                <td><a href="supprimer_utilisateur.php?id_user=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce utilisateur ?`)"> Supprimer</a></td>
                             </tr>
                             <?php
                         }
                     }
                 ?>
-            </table>
-        </div>
+
+        </table>
     </div>
+    <div class="pager">
+            </div>
+
+</div>
+
 </body>
 </html>
