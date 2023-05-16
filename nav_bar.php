@@ -69,7 +69,7 @@
                                 <a href="enseignant.php">Enseignants</a>
                                 </li>
                                 <li>
-                                    <a href="utilisateurs.php">Etudiants</a>
+                                    <a href="etudiant.php">Etudiants</a>
                                 </li >  
                                 <li >
                                     <a href="utilisateurs.php">Utilisateurs</a>

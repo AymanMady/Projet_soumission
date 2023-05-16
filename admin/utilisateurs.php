@@ -25,7 +25,6 @@ include "../nav_bar.php";
                         </legend>
                         <div class="collapse in" id="demo">
                             <div class="search-box">
-
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-3">
                                         <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
@@ -38,7 +37,6 @@ include "../nav_bar.php";
                     </fieldset>
                 
             </div>
-            <!-- /well -->
         </div>
     </div>
     <div class="text-center">
@@ -48,6 +46,7 @@ include "../nav_bar.php";
     <p>
         <a href="ajouter_utilisateur.php" class = "btn btn-primary" >Nouveau</a>
     </p>
+    
     <div style="overflow-x:auto;">
 
         <table class="table table-striped table-bordered">

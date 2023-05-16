@@ -35,7 +35,11 @@
     </div>
 </div>
         <div align="center">
+<<<<<<< HEAD
             <img id="profile-img" class="img-rounded" src="admin/images/logo-supnum2.png" />
+=======
+            <img id="profile-img" src="" />
+>>>>>>> 6a234358d3909bad44d9fe9411cbbf464cadcde0
         </div>
  <div class="card card-container">
 
