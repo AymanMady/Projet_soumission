@@ -52,14 +52,20 @@ include "../nav_bar.php";
             </div>
         </div>
     </div>
-    
-    <div class="text-center">
+<!--     <div class="text-center">
        
-    </div>
+    </div> -->
     <br>
-    <p>
+    <div>
+        <div class="text-left">
         <a href="ajouter_etudiant.php" class = "btn btn-primary" >Nouveau</a>
-    </p>
+        </div>
+        <div class="text-right">
+        <a href="importer.php"  class="btn btn-primary">importer</a>
+        </div>
+    </div>
+
+
 
 
 

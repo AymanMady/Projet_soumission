@@ -22,7 +22,7 @@
         <br />
         <div id="emblhead" align="center">
 
-            <p id="p1"> <strong>institut supérieur du numérique </strong></p>
+            <p id="p1"> <strong>Institut supérieur du numérique </strong></p>
             <p id="p2">
                 <strong>Plateforme de soumission des devoirs et des examens en ligne</strong>
             </p>

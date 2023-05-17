@@ -37,7 +37,7 @@ include "../nav_bar.php";
             <li><a href="#">Acceuil</a>
                     </li>
                     <li>Gestion des enseignants</li>
-                    <li class="active">Modifier un enseignant</li>
+                    <li >Modifier un enseignant</li>
             </ol>
         </div>
     </div>

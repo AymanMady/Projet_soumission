@@ -25,13 +25,8 @@ if(isset($_POST['submit'])){
          session_start();
          include_once "../connexion.php";
       $departement= $_POST['departement'];
-      // $dep="SELECT `id` FROM `departement` WHERE code='$departement' and id_academic=$id_acd[0] ;";
-      // $id_d=mysqli_query($conn, $dep);
-      // $id_dep=mysqli_fetch_row($id_d);
       $id_sem=$_POST['semester'];
-      $query= "UPDATE `matiere` set code='". $_POST['codematieres'] .
-      "',id_module='" . $_POST['module'] . "', libelle='" . $_POST['nommatieres'] .
-      "' ,`specialite`='$departement',`id_semestre`=$id_sem WHERE id_matiere=$id_matiere"; 
+      $query= "UPDATE `matiere` set code='". $_POST['codematieres'] ."',id_module='" . $_POST['module'] . "', libelle='" . $_POST['nommatieres'] ."' ,`specialite`='$departement',`id_semestre`=$id_sem WHERE id_matiere=$id_matiere"; 
       // update form data from the database
       if (mysqli_query($conn, $query)) {
          $msg = 2;
@@ -73,7 +68,7 @@ if(isset($_POST['submit'])){
             ?>
 
         </p>
-        <form action="nsert.php" method="POST">
+        <form action="insert.php" method="POST">
         <div class="form-group">
             <label class="col-md-1">Code de Matiere</label>
             <div class="col-md-6">
@@ -117,7 +112,7 @@ if(isset($_POST['submit'])){
         <div class="form-group">
             <label class="col-md-1" >deppartement</label>
             <div class="col-md-6" >
-            <select class="form-select" id="deppartement" name="departement" class = "form-control">
+            <select  id="deppartement" name="departement" class = "form-control">
                     <option selected disabled>deppartements</option>
                 </select>
             </div>
