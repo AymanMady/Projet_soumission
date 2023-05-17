@@ -5,7 +5,7 @@ include_once "../connexion.php";
 //include 'include_common/header.php' ;
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);
-$module = "SELECT distinct(id_module) FROM module";
+$module = "SELECT * FROM module";
 $module_qry = mysqli_query($conn,$module);
 
 ?>
@@ -172,7 +172,7 @@ $module_qry = mysqli_query($conn,$module);
                 <select class="form-select" id="academic" value="Semesters" name="semester">
                     <option selected disabled> Semesters </option>
                             <?php while ($row = mysqli_fetch_assoc($semestre_qry)) : ?>
-                        <option value="<?= $row['id_semestre']; ?>"> <?= $row['libelle']; ?> </option>
+                        <option value="<?= $row['id_semestre']; ?>"> <?= $row['nom_semestre']; ?> </option>
                     <?php endwhile; ?> 
                 </select>
 <!-- 
@@ -180,7 +180,7 @@ $module_qry = mysqli_query($conn,$module);
                 <select  name="module" id="modi">
                 <option selected disabled> Modules </option>
                         <?php while ($row = mysqli_fetch_assoc($module_qry)) :?>
-                        <option value="<?= $row['id_module']; ?>"> <?= $row['id_module']; ?> </option>  
+                        <option value="<?= $row['id_module']; ?>"> <?= $row['nom_module']; ?> </option>  
                     <?php endwhile;?>
                 </select>
                 <!-- <img src="new.png" alt="" onclick="myf1()" id="back" style="display:none;margin-left:95%;margin-top:-13.5%;width: 17px;height: 17px;"><img src="edit.png" id="addn" alt="" onclick="myf()" style="margin-left:95%;margin-top:-13.5%;width: 17px;height: 17px;">

@@ -20,16 +20,16 @@
             </div>
             <table >
                 <tr id="items">
-                    <th>code</th>
-                    <th>libelle</th>
-                    <th>specialite</th>
-                    <th>id_modile</th>
-                    <th>id_semester</th>
-                    <th colspan="2">action</th>
+                    <th>Code</th>
+                    <th>Libelle</th>
+                    <th>Specialite</th>
+                    <th>Modile</th>
+                    <th>Semester</th>
+                    <th colspan="2">Action</th>
                 </tr>
                 <?php 
                     include_once "../connexion.php";
-                    $req = mysqli_query($conn , "SELECT * FROM matiere");
+                    $req = mysqli_query($conn , "SELECT * FROM module inner join  matiere using(id_module) inner join semestre using(id_semestre)");
                     if(mysqli_num_rows($req) == 0){
                         echo "Il n'y a pas encore des enseignants ajouter !" ;
                         
@@ -40,8 +40,8 @@
                             <td><?=$row['code']?></td>
                             <td> <?=$row['libelle']?></td>
                                 <td><?=$row['specialite']?></td>
-                                <td><?=$row['id_module']?></td>
-                                <td><?=$row['id_semestre']?></td>
+                                <td><?=$row['nom_module']?></td>
+                                <td><?=$row['nom_semestre']?></td>
                                 <td><a href="modifiere_matiere.php?id_ens=<?=$row['id_matiere']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
                                 <td><a href="supprime_matiere.php?id_ens=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet matiere ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
                             </tr>

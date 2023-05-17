@@ -3,7 +3,7 @@ include_once "../connexion.php";
 //include 'include_common/header.php' ;
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);
-$module = "SELECT distinct(id_module) FROM module";
+$module = "SELECT * FROM module";
 $module_qry = mysqli_query($conn,$module);
 //include 'header.php' ;
 ?>
@@ -214,20 +214,19 @@ $module_qry = mysqli_query($conn,$module);
                   <option selected disabled> Semester</option>
                   <?php while ($row = mysqli_fetch_assoc($semestre_qry)) :                     
                      ?>
-                     <option value="<?php echo $row['id_semestre']; ?>"> <?php echo $row['libelle']; ?> </option>
+                     <option value="<?php echo $row['id_semestre']; ?>"> <?php echo $row['nom_semestre']; ?> </option>
                   <?php 
                      endwhile; 
                   ?>
                </select>
                
 
-         <input type="text" value="<?php echo $student['id_module']; ?>"  placeholder="New module" name="module" id="add" style="display:none;">
             <select  name="module" id="mod">
             <option selected disabled>Module</option>
          
                <?php
                while ($row = mysqli_fetch_assoc($module_qry)) :?>
-                  <option> <?php echo $row['id_module']; ?> </option>  
+                  <option value="<?php echo $row['id_module']; ?>"> <?php echo $row['nom_module']; ?> </option>  
                <?php endwhile;?>
                </select>
          <!-- 
