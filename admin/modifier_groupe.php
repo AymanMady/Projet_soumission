@@ -1,20 +1,8 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-</head>
-<body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
+<?php
+include "../nav_bar.php";
+?>
                 <?php
+                
 
         include_once "../connexion.php";
         $id_groupe = $_GET['id_groupe'];
@@ -24,10 +12,12 @@
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( !empty($libelle) && !empty($filiere) ){
-            $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$filiere' WHERE id_groupe = $id_groupe");
+        if( !empty($libelle) && !empty($Filiere) ){
+            $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$Filiere' WHERE id_groupe = $id_groupe");
             if($req){
-                header("location: groupe.php");
+                header("Location: groupe.php");
+                
+
             }else {
                 $message = "groupe non modifié";
             }
@@ -39,25 +29,56 @@
 
         ?>
 
-        <div class="form">
-        <a href="groupe.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Modifier le groupe : <?=$row['id_groupe']?> </h2>
-        <p class="erreur_message">
-        <?php 
+</br>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a>
+                    
+                    </li>
+                    <li>Gestion des groupes</li>
+                    <li class="active">Ajouter un groupe</li>
+            </ol>
+        </div>
+    </div>
+   
+   <div class="form-horizontal">
+    <br /><br />
+
+    <p class="erreur_message">
+            <?php 
             if(isset($message)){
-                echo $message ;
+                echo $message;
             }
-        ?>
+            ?>
+
         </p>
         <form action="" method="POST">
-        <label>Libellé</label>
-        <input type="text" name="libelle" value="<?=$row['libelle']?>">
-        <label>Filiere</label>
-        <input type="text" name="filiere" value="<?=$row['filiere']?>">
-        <input type="submit" value="Modifier" name="button">
-        </form>
-    </div>
-    </div>
+        <div class="form-group">
+            <label class="col-md-1">Libellé</label>
+            <div class="col-md-6">
+                <input type="text" name="libelle" class = "form-control" value="<?=$row['libelle']?>">
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-md-1" >Filiére</label>
+            <div class="col-md-6">
+            <input type="text" name="Filiere" class = "form-control" value="<?=$row['filiere']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
+
+            </div>
+        </div>
+    </form>
+
+</div>
+</div>
 </body>
 </html>

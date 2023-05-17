@@ -2,23 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTP Verification Form</title>
-    <link rel="stylesheet" href="CSS/style_verifier.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="CSS/bootstrap.css" rel="stylesheet">
+<link href="CSS/modern-business.css" rel="stylesheet">
+<link href="CSS/cssLogin.css" rel="stylesheet" />
 </head>
-<style>
-body{
-    background:white;
-}
 
-</style>
 <body >
-    <div id="container">
-        <h2>Email</h2>
+<div class="card card-container">
         <div id="line"></div>
-        <form action="verifyEmail.php" method="POST" autocomplete="off">
+        <form action="" method="POST" class="form-signin">
             <?php
             if(isset($_SESSION['message'])){
                 ?>
@@ -36,9 +31,11 @@ body{
                 }
             }
             ?>      
-            <input type="number" name="otpverify" placeholder="Verification Code" required><br>
-            <input type="submit" name="verifyEmail" value="Verify">
+            <input type="number" name="otpverify" placeholder="Verification Code" required class="form-control"><br>
+            <input type="submit" name="verifyEmail" value="Verify" class="btn btn-lg btn-primary btn-block btn-signin">
         </form>
     </div>
+
+
 </body>
 </html>

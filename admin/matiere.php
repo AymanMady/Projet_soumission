@@ -1,24 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les enseignants</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-</head>
-<body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
-        <div>
-            <div class="button">
-                <div><a href="ajoute_matiere.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
-                <div><a href="importe_matiere.php" class="Btn_add"> <img title="Importer" src="images/importer.png"> importer</a></div>    
+<title>Les matiéres</title>
+
+
+<?php
+include "../nav_bar.php";
+?>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12"> 
+            <ol class="breadcrumb">
+                <li><a href="#">Acceuil</a>
+                    
+                </li>
+                <li>Gestion des matiéres</li>
+                   
+            </ol>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+                
+                    <fieldset class="fsStyle">
+                        <legend class="legendStyle">
+                            <a data-toggle="collapse" data-target="#demo" href="#">Filtre</a>
+                        </legend>
+                        <div class="collapse in" id="demo">
+                            <div class="search-box">
+
+                                <div class="form-group">
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info">Filtre</button>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                
             </div>
-            <table >
+            <!-- <table >
                 <tr id="items">
                     <th>Code</th>
                     <th>Libelle</th>
@@ -26,7 +49,29 @@
                     <th>Modile</th>
                     <th>Semester</th>
                     <th colspan="2">Action</th>
+            <!-- /well -->
+        </div>
+    </div>
+    <div class="text-center">
+       
+    </div> -->
+    <br>
+    <p>
+        <a href="ajoute_matiere.php" class = "btn btn-primary" >Nouveau</a>
+    </p>
+    <div style="overflow-x:auto;">
+
+        <table class="table table-striped table-bordered">
+                <tr >
+                    <th>code</th>
+                    <th>libelle</th>
+                    <th>specialite</th>
+                    <th>id_modile</th>
+                    <th>id_semester</th>
+                    <th colspan="2">action</th>
                 </tr>
+
+
                 <?php 
                     include_once "../connexion.php";
                     $req = mysqli_query($conn , "SELECT * FROM module inner join  matiere using(id_module) inner join semestre using(id_semestre)");
@@ -42,8 +87,8 @@
                                 <td><?=$row['specialite']?></td>
                                 <td><?=$row['nom_module']?></td>
                                 <td><?=$row['nom_semestre']?></td>
-                                <td><a href="modifiere_matiere.php?id_ens=<?=$row['id_matiere']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprime_matiere.php?id_ens=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet matiere ?`)"><img title="Supprimer" class="img" src="images/trash.png"></a></td>
+                                <td><a href="modifiere_matiere.php?id_ens=<?=$row['id_matiere']?>">modifier</a></td>
+                                <td><a href="supprime_matiere.php?id_ens=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet matiere ?`)">supprime</a></td>
                             </tr>
                             <?php
                         }
@@ -51,13 +96,7 @@
                     }
                     
                 ?>
-            </table>
-        </div>
+        </table>
     </div>
-    <script>
-        // if(confirm() ===true){
-        //     alert(`L'enseignant  à eté supprimmer `)
-        // }
-    </script>
 </body>
 </html>

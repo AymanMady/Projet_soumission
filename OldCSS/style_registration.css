@@ -97,7 +97,9 @@
    background: #eee;
    border-radius: 5px;
 }
-
+input{
+   position: relative;
+}
 .form-container form select option{
    background: #fff;
 }
@@ -134,4 +136,19 @@
    border-radius: 5px;
    font-size: 20px;
    padding:10px;
+   
 }
+/* 
+.img_mail{
+   width: 38;
+   position: absolute;
+   top: 169px;
+   left: 65%;
+}
+.img_pwd{
+   width: 38;
+   position: absolute;
+   top: 227px;
+   left: 65%;
+}
+ */

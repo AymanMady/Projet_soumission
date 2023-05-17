@@ -1,23 +1,13 @@
+<title>Modifier enseignant</title>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-</head>
-<body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
-    <?php
+<?php
+include "../nav_bar.php";
+?>
+<br><br><br>
+<?php
         include_once "../connexion.php";
         $id_ens = $_GET['id_ens'];
-        $req = mysqli_query($conn , "SELECT * FROM enseignant WHERE id_ens = '$id_ens'");
+        $req = mysqli_query($conn , "SELECT * FROM enseignant WHERE id_ens = $id_ens");
         $row = mysqli_fetch_assoc($req);
 
 
@@ -38,35 +28,93 @@
 
         ?>
 
-        <div class="form">
-        <a href="les_joueurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Modifier l'enseignant : <?=$row['nom']?> </h2>
-        <p class="erreur_message">
-        <?php 
-            if(isset($message)){
-                echo $message ;
-            }
-        ?>
-        </p>
-        <form action="" method="POST">
-        <label>Nom </label>
-        <input type="text" name="nom" value="<?=$row['nom']?>">
-        <label> Prénom</label>
-        <input type="text" name="prenom" value="<?=$row['prenom']?>">
-        <label>Date de naissance</label>
-        <input type="date" name="Date_naiss" value="<?=$row['Date_naiss']?>">
-        <label>Lieu de naissance</label>
-        <input type="text" name="lieu_naiss" value="<?=$row['lieu_naiss']?>">
-        <label>Email</label>
-        <input type="email" name="email" value="<?=$row['email']?>">
-        <label>Diplôme</label>
-        <input type="text" name="diplome" value="<?=$row['diplome']?>">
-        <label>Grade</label>
-        <input type="text" name="grade" value="<?=$row['grade']?>">
-        <input type="submit" value="Modifier" name="button">
-        </form>
+</br>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-11">
+            <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a>
+                    </li>
+                    <li>Gestion des enseignants</li>
+                    <li class="active">Modifier un enseignant</li>
+            </ol>
+        </div>
     </div>
-    </div>
+   
+<div class="form-horizontal">
+    <br><br>
 
-</body>
-</html>
+    <p class="erreur_message">
+            <?php 
+            if(isset($message)){
+                echo $message;
+            }
+            ?>
+
+        </p>
+
+        <form action="" method="POST">
+        <div class="form-group">
+            <label class="col-md-1">Nom</label>
+            <div class="col-md-6">
+                <input type="text" name="nom" class = "form-control" value="<?=$row['nom']?>">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-1" >Prénom</label>
+            <div class="col-md-6">
+            <input type="text" name="prenom" class = "form-control"  value="<?=$row['prenom']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Date de naissance</label>
+            <div class="col-md-6" >
+            <input type="date" name="Date_naiss" class = "form-control" value="<?=$row['Date_naiss']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Lieu de naissance</label>
+            <div class="col-md-6" >
+            <input type="text" name="lieu_naiss" class = "form-control" value="<?=$row['lieu_naiss']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >E-mail</label>
+            <div class="col-md-6" >
+            <input type="email" name="email" class = "form-control" value="<?=$row['email']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Diplôme</label>
+            <div class="col-md-6" >
+            <input type="text" name="diplome" class = "form-control" value="<?=$row['diplome']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Grade</label>
+            <div class="col-md-6" >
+            <input type="text" name="grade" class = "form-control" value="<?=$row['grade']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
+
+            </div>
+        </div>
+
+        </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+

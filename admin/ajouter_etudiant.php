@@ -1,3 +1,6 @@
+<?php
+include "../nav_bar.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 </head>
 <body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
+
     <?php
               include_once "../connexion.php";
             function test_input($data){
@@ -27,7 +27,7 @@
 
        if(isset($_POST['button'])){
                 $matricule = test_input($_POST['matricule']);
-                $semestre = test_input($_POST['semestre']);
+                $semestre = test_input($_POST['Semestre']);
                 $annee = test_input($_POST['annee']);
                 $nom =  test_input($_POST['nom']);
                 $prenom = test_input($_POST['prenom']); 
@@ -35,7 +35,7 @@
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 $email =  test_input($_POST['email']);
            if( !empty($matricule) && !empty($semestre)  && !empty($annee) && !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email)){
-                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
+                $req = "INSERT INTO `etudiant`( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
                                 
                 $req = mysqli_query($conn , $req);
                 if($req){
@@ -50,10 +50,27 @@
        }
     
     ?>
-    <div class="form">
-        <a href="etudiant.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Ajouter un etudiant</h2>
-        <p class="erreur_message">
+
+</br>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a>
+                    
+                    </li>
+                    <li>Gestion des utisateurs</li>
+                    <li class="active">Ajouter un etudiant</li>
+            </ol>
+        </div>
+    </div>
+   
+<div class="form-horizontal">
+    <br /><br />
+
+    <p class="erreur_message">
             <?php 
             if(isset($message)){
                 echo $message;
@@ -62,27 +79,67 @@
 
         </p>
         <form action="" method="POST">
-        
-        <label>Matricule</label>
-        <input type="number" autocomplete="off" name="matricule">
-        <label>Nom</label>
-        <input type="text" name="nom">
-        <label>Prénom</label>
-        <input type="text" name="prenom">
-        <label>Lieu de naissance</label>
-        <input type="text" name="lieu_naiss">
-        <label>Date de naissance</label>
-        <input type="date" name="Date_naiss">
-        <label>Semestre</label>
-        <input type="text" name="semestre">
-        <label>Année</label>
-        <input type="text" name="annee">
-        <label>E-mail</label>
-        <input type="email" name="email">
-        
-        <input type="submit" value="ajouteur" name="button">
+        <div class="form-group">
+            <label class="col-md-1">Matricule</label>
+            <div class="col-md-6">
+                <input type="text" name="matricule" class = "form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-1" >Nom</label>
+            <div class="col-md-6">
+            <input type="text" name="nom" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Prénom</label>
+            <div class="col-md-6" >
+            <input type="text" name="prenom" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Lieu de naissance</label>
+            <div class="col-md-6" >
+            <input type="text" name="lieu_naiss" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Date de naissance</label>
+            <div class="col-md-6" >
+            <input type="date" name="Date_naiss" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Semestre</label>
+            <div class="col-md-6" >
+            <input type="text" name="Semestre" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Année</label>
+            <div class="col-md-6" >
+            <input type="text" name="annee" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >E-mail</label>
+            <div class="col-md-6" >
+            <input type="text" name="email" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
+
+            </div>
+        </div>
+
         </form>
-   </div>
-    </div>
+
+</div>
+</div>
+
+
 </body>
 </html>

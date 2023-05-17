@@ -147,7 +147,7 @@ $alert = "";
             if ($insertInfo) {
                 $subject = 'Code de vérification des e-mails';
                 $message = "notre code de vérification est $code";
-                $sender = "From: 22014@gmail.com";
+                $sender = "From: 22014@supnum.mr";
                  $url =  "https://script.google.com/macros/s/AKfycbw2MsBGjkJ7hzw_cnE5jW-CmqHZbibaNjrEz_DNXZZgCXfptPo5B1yy7x37kFrwSZkeFg/exec";
                     $ch = curl_init($url);
             curl_setopt_array($ch, [
@@ -219,7 +219,7 @@ $alert = "";
             $status = $row['active'];
                 if ($status == 1) {
                      if($row['id_role']==1){
-                        header("location:index.php");
+                        header("location:admin/acceuil.php");
                         }
                     elseif($row['id_role']==2){
                         header("location:index_enseignant.php");
@@ -233,7 +233,7 @@ $alert = "";
                     }   
                 }
                 else{
-                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'admimistrateure pour active le'; 
+                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'administrateure pour active le'; 
                 }
         } else {
             $errors['email'] = 'Email ou mot de passe incorect';

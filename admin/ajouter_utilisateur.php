@@ -1,20 +1,8 @@
+<?php
+include "../nav_bar.php";
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-</head>
-<body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
-    <?php
+<?php
               include_once "../connexion.php";
                 function test_input($data){
                 $data = htmlspecialchars($data);
@@ -38,6 +26,10 @@
                 // $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 // $login =  test_input($_POST['login']);
                 test_input(extract($_POST));
+                   $login =  test_input($_POST['login']);
+                   $pwd =  md5(test_input($_POST['pwd']));
+                   $role =  test_input($_POST['role']);
+                //test_input(extract($_POST));
            if(  !empty($login)  && !empty($pwd)  && !empty($role) ){
 
                 $req = "INSERT INTO utilisateur (`login`,`pwd`,`active`,`id_role`)VALUES('$login','$pwd',1,'$role')";
@@ -56,10 +48,28 @@
        }
     
     ?>
-    <div class="form">
-        <a href="utilisateurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Ajouter un utilisateur</h2>
-        <p class="erreur_message">
+
+
+</br>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a>
+                    
+                    </li>
+                    <li>Gestion des utisateurs</li>
+                    <li class="active">Ajouter un utisateur</li>
+            </ol>
+        </div>
+    </div>
+   
+<div class="form-horizontal">
+    <br /><br />
+
+    <p class="erreur_message">
             <?php 
             if(isset($message)){
                 echo $message;
@@ -68,16 +78,33 @@
 
         </p>
         <form action="" method="POST">
-        <label>E-mail</label>
-        <input type="email" name="login">
-        <label>Mot de passe</label>
-        <input type="password" name="pwd">
-        <label>Role</label>
-        <input type="text" name="role">
-        
-        <input type="submit" value="ajouteur" name="button">
+        <div class="form-group">
+            <label class="col-md-1">E-mail</label>
+            <div class="col-md-6">
+                <input type="email" name="login" class = "form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-1" >Password</label>
+            <div class="col-md-6">
+            <input type="password" name="pwd" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Role</label>
+            <div class="col-md-6" >
+            <input type="text" name="role" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
+
+            </div>
+        </div>
+
         </form>
-   </div>
-    </div>
-</body>
-</html>
+
+</div>
+</div>
