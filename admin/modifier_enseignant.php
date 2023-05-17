@@ -33,10 +33,8 @@ include "../nav_bar.php";
 <div class="container">
     <div class="row">
         <div class="col-lg-11">
-            
             <ol class="breadcrumb">
             <li><a href="#">Acceuil</a>
-                    
                     </li>
                     <li>Gestion des enseignants</li>
                     <li class="active">Modifier un enseignant</li>
@@ -108,11 +106,6 @@ include "../nav_bar.php";
         </div>
 
         </form>
-
-
-
-
-
 </div>
 </div>
 

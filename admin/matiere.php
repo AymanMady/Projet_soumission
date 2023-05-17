@@ -54,10 +54,5 @@
             </table>
         </div>
     </div>
-    <script>
-        // if(confirm() ===true){
-        //     alert(`L'enseignant  à eté supprimmer `)
-        // }
-    </script>
 </body>
 </html>

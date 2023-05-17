@@ -52,6 +52,7 @@ include "../nav_bar.php";
             </div>
         </div>
     </div>
+    
     <div class="text-center">
        
     </div>
@@ -59,6 +60,7 @@ include "../nav_bar.php";
     <p>
         <a href="ajouter_etudiant.php" class = "btn btn-primary" >Nouveau</a>
     </p>
+
 
 
     <div style="overflow-x:auto;">
