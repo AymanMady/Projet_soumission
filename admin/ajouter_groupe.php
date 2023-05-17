@@ -1,19 +1,7 @@
+<?php
+include "../nav_bar.php";
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-</head>
-<body>
-    <?php
-      include "nav_bar.php"
-    ?>
-    <div class="content">
     <?php
           include_once "../connexion.php";
         function test_input($data){
@@ -21,12 +9,11 @@
                 $data = trim($data);
                 $data = htmlentities($data);
                 $data = stripcslashes($data);
-
                 return $data;
             }
        if(isset($_POST['button'])){
         $libelle = test_input($_POST['libelle']);
-        $filiere = test_input($_POST['filiere']); 
+        $filiere = test_input($_POST['Filiere']); 
            if( !empty($libelle) && !empty($filiere) ){
                 $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`)
                  VALUES('$libelle', '$filiere')");
@@ -42,10 +29,27 @@
        }
     
     ?>
-    <div class="form">
-        <a href="groupe.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Ajouter un groupe</h2>
-        <p class="erreur_message">
+
+    </br>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a>
+                    
+                    </li>
+                    <li>Gestion des groupes</li>
+                    <li class="active">Ajouter un groupe</li>
+            </ol>
+        </div>
+    </div>
+   
+<div class="form-horizontal">
+    <br /><br />
+
+    <p class="erreur_message">
             <?php 
             if(isset($message)){
                 echo $message;
@@ -54,13 +58,28 @@
 
         </p>
         <form action="" method="POST">
-        <label>Libellé</label>
-        <input type="text" name="libelle">
-        <label>Filiére</label>
-        <input type="text" name="filiere">
-        <input type="submit" value="ajouteur" name="button">
-        </form>
-   </div>
-    </div>
+        <div class="form-group">
+            <label class="col-md-1">Libellé</label>
+            <div class="col-md-6">
+                <input type="text" name="libelle" class = "form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-1" >Filiére</label>
+            <div class="col-md-6">
+            <input type="text" name="Filiere" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
+
+            </div>
+        </div>
+    </form>
+
+</div>
+</div>
 </body>
 </html>

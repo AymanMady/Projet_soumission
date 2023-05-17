@@ -12,7 +12,7 @@ include "../nav_bar.php";
                 <li><a href="#">Acceuil</a>
                           
                 </li>
-                <li class="active">Gestion des matiéres</li>
+                <li>Gestion des matiéres</li>
                    
             </ol>
         </div>
@@ -41,12 +41,20 @@ include "../nav_bar.php";
                     </fieldset>
                 
             </div>
+            <!-- <table >
+                <tr id="items">
+                    <th>Code</th>
+                    <th>Libelle</th>
+                    <th>Specialite</th>
+                    <th>Modile</th>
+                    <th>Semester</th>
+                    <th colspan="2">Action</th>
             <!-- /well -->
         </div>
     </div>
     <div class="text-center">
        
-    </div>
+    </div> -->
     <br>
     <p>
         <a href="ajoute_matiere.php" class = "btn btn-primary" >Nouveau</a>
@@ -66,7 +74,7 @@ include "../nav_bar.php";
 
                 <?php 
                     include_once "../connexion.php";
-                    $req = mysqli_query($conn , "SELECT * FROM matiere");
+                    $req = mysqli_query($conn , "SELECT * FROM module inner join  matiere using(id_module) inner join semestre using(id_semestre)");
                     if(mysqli_num_rows($req) == 0){
                         echo "Il n'y a pas encore des enseignants ajouter !" ;
                         
@@ -77,10 +85,10 @@ include "../nav_bar.php";
                             <td><?=$row['code']?></td>
                             <td> <?=$row['libelle']?></td>
                                 <td><?=$row['specialite']?></td>
-                                <td><?=$row['id_module']?></td>
-                                <td><?=$row['id_semestre']?></td>
-                                <td><a href="modifiere_matiere.php?id_ens=<?=$row['id_matiere']?>">Modifier</a></td>
-                                <td><a href="supprime_matiere.php?id_ens=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet matiere ?`)">Supprimer</a></td>
+                                <td><?=$row['nom_module']?></td>
+                                <td><?=$row['nom_semestre']?></td>
+                                <td><a href="modifiere_matiere.php?id_ens=<?=$row['id_matiere']?>">modifier</a></td>
+                                <td><a href="supprime_matiere.php?id_ens=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet matiere ?`)">supprime</a></td>
                             </tr>
                             <?php
                         }
@@ -88,11 +96,7 @@ include "../nav_bar.php";
                     }
                     
                 ?>
-
-
         </table>
     </div>
-    <div class="pager">
-            </div>
-
-</div>
+</body>
+</html>

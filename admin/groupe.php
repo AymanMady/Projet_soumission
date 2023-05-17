@@ -21,7 +21,7 @@ include "../nav_bar.php";
                 <li><a href="#">Acceuil</a>
                     
                 </li>
-                <li class="active">Gestion des utisateurs</li>
+                <li class="active">Gestion des groupes</li>
                    
             </ol>
         </div>
@@ -56,7 +56,7 @@ include "../nav_bar.php";
     </div>
     <br>
     <p>
-        <a href="ajouter_utilisateur.php" class = "btn btn-primary" >Nouveau</a>
+        <a href="ajouter_groupe.php" class = "btn btn-primary" >Nouveau</a>
     </p>
     
     <div style="overflow-x:auto;">
@@ -81,8 +81,8 @@ include "../nav_bar.php";
                             <tr>
                                 <td><?=$row['libelle']?></td>
                                 <td><?=$row['filiere']?></td>
-                                <td><a href="modifier_utilisateur.php?id_user=<?=$row['id_groupe']?>">Modifier</a></td>
-                                <td><a href="supprimer_utilisateur.php?id_user=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce utilisateur ?`)"> Supprimer</a></td>
+                                <td><a href="modifier_groupe.php?id_groupe=<?=$row['id_groupe']?>">Modifier</a></td>
+                                <td><a href="supprimer_groupe.php?id_groupe=<?=$row['id_groupe']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce utilisateur ?`)"> Supprimer</a></td>
                             </tr>
                             <?php
                         }

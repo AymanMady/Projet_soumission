@@ -7,7 +7,7 @@ include "../nav_bar.php";
 <?php
         include_once "../connexion.php";
         $id_ens = $_GET['id_ens'];
-        $req = mysqli_query($conn , "SELECT * FROM enseignant WHERE id_ens = '$id_ens'");
+        $req = mysqli_query($conn , "SELECT * FROM enseignant WHERE id_ens = $id_ens");
         $row = mysqli_fetch_assoc($req);
 
 
@@ -33,10 +33,8 @@ include "../nav_bar.php";
 <div class="container">
     <div class="row">
         <div class="col-lg-11">
-            
             <ol class="breadcrumb">
             <li><a href="#">Acceuil</a>
-                    
                     </li>
                     <li>Gestion des enseignants</li>
                     <li class="active">Modifier un enseignant</li>
@@ -108,11 +106,6 @@ include "../nav_bar.php";
         </div>
 
         </form>
-
-
-
-
-
 </div>
 </div>
 

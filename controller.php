@@ -219,7 +219,7 @@ $alert = "";
             $status = $row['active'];
                 if ($status == 1) {
                      if($row['id_role']==1){
-                        header("location:index.php");
+                        header("location:admin/acceuil.php");
                         }
                     elseif($row['id_role']==2){
                         header("location:index_enseignant.php");

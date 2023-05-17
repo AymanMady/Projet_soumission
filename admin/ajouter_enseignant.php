@@ -3,6 +3,7 @@ include "../nav_bar.php";
 ?>
 <br><br><br>
 <?php
+
               include_once "../connexion.php";
                 function test_input($data){
                 $data = htmlspecialchars($data);
@@ -12,29 +13,27 @@ include "../nav_bar.php";
 
                 return $data;
             }
-
-            if(isset($_POST['button'])){
-                // $nom = test_input($_POST['nom']); 
-                // $prenom = test_input($_POST['prenom']); 
-                // $Date_naiss = test_input($_POST['Date_naiss']); 
-                // $lieu_naiss =  test_input($_POST['lieu_naiss']);
-                // $email =  test_input($_POST['email']);
-                // $diplome =  test_input($_POST['diplome']);
-                // $grade =  test_input($_POST['grade']);
-                    test_input(extract($_POST));
-                   if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
-                        $req = "INSERT INTO enseignant(`nom`,`prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) VALUES('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2);";
-                    
-                        if(mysqli_query($conn , $req)){
-                            header("location: enseignant.php");
-                        }else {
-                            $message = "Enseignant non ajouté";
-                        }
-        
-                        }else {
-                            $message = "Veuillez remplir tous les champs !!";
-                        }
+       if(isset($_POST['button'])){
+        $nom = test_input($_POST['nom']); 
+        $prenom = test_input($_POST['prenom']); 
+        $Date_naiss = test_input($_POST['Date_naiss']); 
+        $lieu_naiss =  test_input($_POST['lieu_naiss']);
+        $email =  test_input($_POST['email']);
+        $diplome =  test_input($_POST['diplome']);
+        $grade =  test_input($_POST['grade']);
+            // test_input(extract($_POST));
+           
+           if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
+                $req = "INSERT INTO `enseignant`(`nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) values ('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2)";
+            
+                if(mysqli_query($conn , $req)){
+                    header('location:enseignant.php');
+                }else {
+                    $message = "Enseignant non ajouté";
                 }
+
+            }
+            }
     ?>
 
 

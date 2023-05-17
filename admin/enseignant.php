@@ -96,7 +96,5 @@ include "../nav_bar.php";
             </div>
 
 </div>
-
-
-
-
+</body>
+</html>
