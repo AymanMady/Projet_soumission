@@ -16,7 +16,7 @@ include "../nav_bar.php";
         if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
             $req = mysqli_query($conn, "UPDATE enseignant SET   nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', `email` = '$email', diplome = '$diplome', grade = '$grade' WHERE id_ens = $id_ens");
             if($req){
-                header("location: enseignant.php");
+                echo "<script>window.location.href='enseignant.php';</script>";
             }else {
                 $message = "enseignant non modifié";
             }
@@ -37,7 +37,7 @@ include "../nav_bar.php";
             <li><a href="#">Acceuil</a>
                     </li>
                     <li>Gestion des enseignants</li>
-                    <li class="active">Modifier un enseignant</li>
+                    <li>Modifier un enseignant</li>
             </ol>
         </div>
     </div>

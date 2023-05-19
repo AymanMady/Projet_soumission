@@ -39,7 +39,8 @@ include "../nav_bar.php";
                                 
                 $req = mysqli_query($conn , $req);
                 if($req){
-                    header("location: etudiant.php");
+                    //header("location: etudiant.php");
+                    echo "<script>window.location.href='etudiant.php';</script>";
                 }else {
                     $message = "Etudiant non ajouté";
                 }

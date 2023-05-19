@@ -9,7 +9,7 @@ include "../nav_bar.php";
     <div class="row">
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
-                <li><a href="#">Acceuil</a>
+                <li><a href="acceuil.php">Acceuil</a>
                           
                 </li>
                 <li>Gestion des matiéres</li>
@@ -41,20 +41,20 @@ include "../nav_bar.php";
                     </fieldset>
                 
             </div>
-            <!-- <table >
-                <tr id="items">
+            <table >
+                <!-- <tr id="items">
                     <th>Code</th>
                     <th>Libelle</th>
                     <th>Specialite</th>
                     <th>Modile</th>
                     <th>Semester</th>
-                    <th colspan="2">Action</th>
+                    <th colspan="2">Action</th> -->
             <!-- /well -->
         </div>
     </div>
     <div class="text-center">
        
-    </div> -->
+    </div> 
     <br>
     <p>
         <a href="ajoute_matiere.php" class = "btn btn-primary" >Nouveau</a>

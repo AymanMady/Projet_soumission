@@ -6,7 +6,7 @@ include "../nav_bar.php";
     <div class="row">
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
-                <li><a href="#">Acceuil</a>
+                <li><a href="acceuil.php">Acceuil</a>
                     
                 </li>
                 <li class="active">Gestion des utisateurs</li>
@@ -31,27 +31,6 @@ include "../nav_bar.php";
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info">Filtre</button>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les utilisateurs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-    <link rel="stylesheet" href="../CSS/style.css">
-</head>
-<body>
-    <?php
-     include "nav_bar.php";
-    ?>
-    <div class="content">
-    <div class="content_crud">
-            <div class="button">
-                <div><a href="ajouter_utilisateur.php" class="Btn_add"> <img title="Ajouter" src="images/plus.png"> Ajouter</a></div> 
-                            </div>
-                        </div>
                     </fieldset>
                 
             </div>

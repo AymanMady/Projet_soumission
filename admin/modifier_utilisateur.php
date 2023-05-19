@@ -27,14 +27,18 @@ include "../nav_bar.php";
             $req = mysqli_query($conn , "SELECT * FROM utilisateur WHERE id_user = $id_user");
             $row = mysqli_fetch_assoc($req);
             if(isset($_POST['button'])){ 
-                test_input(extract($_POST));
-            if( !empty($login) && !empty($role)){
-                $req = mysqli_query($conn, "UPDATE utilisateur SET     login = '$login', role = '$role'  WHERE id_user = $id_user");
+                $login =  test_input($_POST['login']);
+                $pwd =  md5(test_input($_POST['pwd']));
+                $role =  test_input($_POST['role']);
+
+                //test_input(extract($_POST));
+            
             if( !empty($pwd)  && !empty($login) && !empty($role)){
                 $req = mysqli_query($conn, "UPDATE utilisateur SET pwd = '$pwd', login = '$login', id_role = '$role'  WHERE id_user = $id_user");
 
                 if($req){
-                    header("location: utilisateurs.php");
+                    //header("location: utilisateurs.php");
+                    echo "<script>window.location.href='utilisateurs.php';</script>";
                 }else {
                     $message = "utilisateur non modifié";
                 }
@@ -43,7 +47,7 @@ include "../nav_bar.php";
                 $message = "Veuillez remplir tous les champs !";
             }
             }
-        }
+        
     ?>
     </br>
 </br></br></br>

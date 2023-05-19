@@ -15,8 +15,8 @@ include "../nav_bar.php";
         if( !empty($libelle) && !empty($Filiere) ){
             $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$Filiere' WHERE id_groupe = $id_groupe");
             if($req){
-                header("Location: groupe.php");
-                
+                //header("Location: groupe.php");
+                echo "<script>window.location.href='groupe.php';</script>";
 
             }else {
                 $message = "groupe non modifié";
