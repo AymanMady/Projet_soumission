@@ -68,10 +68,7 @@
                             </ul> 
                         <li  class="dropdown">
                                <a href="supprimer_session.php">Se déconnecte</a></div>
-                        </li>
-                        
-
-                        
+                        </li>                       
                 </ul>
 
             <!-- /.navbar-collapse -->
