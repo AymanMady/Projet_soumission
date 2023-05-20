@@ -1,7 +1,14 @@
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
                 <?php
+                
 
         include_once "../connexion.php";
         $id_groupe = $_GET['id_groupe'];
@@ -11,10 +18,12 @@ include "../nav_bar.php";
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( !empty($libelle) && !empty($filiere) ){
-            $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$filiere' WHERE id_groupe = $id_groupe");
+        if( !empty($libelle) && !empty($Filiere) ){
+            $req = mysqli_query($conn, "UPDATE groupe SET  libelle = '$libelle', filiere = '$Filiere' WHERE id_groupe = $id_groupe");
             if($req){
-                header("location: groupe.php");
+                header("Location: groupe.php");
+                
+
             }else {
                 $message = "groupe non modifié";
             }
@@ -37,7 +46,7 @@ include "../nav_bar.php";
                     
                     </li>
                     <li>Gestion des groupes</li>
-                    <li class="active">Ajouter un groupe</li>
+                    <li>Ajouter un groupe</li>
             </ol>
         </div>
     </div>
@@ -57,14 +66,14 @@ include "../nav_bar.php";
         <div class="form-group">
             <label class="col-md-1">Libellé</label>
             <div class="col-md-6">
-                <input type="text" name="libelle" class = "form-control">
+                <input type="text" name="libelle" class = "form-control" value="<?=$row['libelle']?>">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-1" >Filiére</label>
             <div class="col-md-6">
-            <input type="text" name="Filiere" class = "form-control">
+            <input type="text" name="Filiere" class = "form-control" value="<?=$row['filiere']?>">
             </div>
         </div>
         <div class="form-group">

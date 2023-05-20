@@ -1,58 +1,41 @@
 <?php
-//  session_start() ;
-//  $email = $_SESSION['email'];
-//  if($_SESSION["ens"]!="oui"){
-//      header("location:authentification.php");
-//  }
+ session_start() ;
+ $email = $_SESSION['email'];
+ if($_SESSION["role"]!="ens"){
+     header("location:authentification.php");
+ }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ma page avec une navbar constante</title>
-  <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
  
 <?php 
 include "nav_bar.php";
 ?>
-
-
-
-
-<!--  
-<div class="menu-bar">
-        <ul>
-            <li>
-                <a href="#">Enseignants</a>
-                <ul class="dropdown">
-                    <li>
-                        <a href="#">Matiére</a>
-                        <a href="#">Devoirs</a>
-                        <a href="#">Examens</a>
-                        
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Soumission</a>
-            </li>
-        </ul>
-        <div class="logout" >
-            <a href="supprimer_session.php">Se déconnecte</a></div>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12"> 
+            <ol class="breadcrumb">
+                <li><a href="#">Acceuil</a>
+                    
+                </li>
+                <li class="active">Les matieres </li>
+                   
+            </ol>
         </div>
     </div>
- -->
 
 
 
-<div class="content">
-  <div class="content_crud">
 
-  <table >
-          <tr id="items">
+<div style="overflow-x:auto;">
+  <table class="table table-striped table-bordered">
+          <tr>
               <th>Code</th>
               <th>Libelle</th>
               <th>Specialite</th>
@@ -81,7 +64,7 @@ include "nav_bar.php";
               }
           ?>
         </table>
-        </div>
     </div>
+</div>
 </body>
 </html>

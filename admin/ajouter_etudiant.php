@@ -1,4 +1,10 @@
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
 
@@ -27,7 +33,7 @@ include "../nav_bar.php";
 
        if(isset($_POST['button'])){
                 $matricule = test_input($_POST['matricule']);
-                $semestre = test_input($_POST['semestre']);
+                $semestre = test_input($_POST['Semestre']);
                 $annee = test_input($_POST['annee']);
                 $nom =  test_input($_POST['nom']);
                 $prenom = test_input($_POST['prenom']); 
@@ -35,7 +41,7 @@ include "../nav_bar.php";
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 $email =  test_input($_POST['email']);
            if( !empty($matricule) && !empty($semestre)  && !empty($annee) && !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email)){
-                $req = "INSERT INTO etudiant ( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
+                $req = "INSERT INTO `etudiant`( `matricule`, `nom`,`prenom`,`lieu_naiss`, `Date_naiss`, `semestre`,`annee`, `email`,`id_role`) VALUES('$matricule', '$nom','$prenom','$lieu_naiss','$Date_naiss', '$semestre','$annee','$email',3)";
                                 
                 $req = mysqli_query($conn , $req);
                 if($req){
@@ -62,7 +68,7 @@ include "../nav_bar.php";
                     
                     </li>
                     <li>Gestion des utisateurs</li>
-                    <li class="active">Ajouter un etudiant</li>
+                    <li>Ajouter un etudiant</li>
             </ol>
         </div>
     </div>

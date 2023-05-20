@@ -1,4 +1,10 @@
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
 
@@ -13,10 +19,9 @@ include "../nav_bar.php";
             }
        if(isset($_POST['button'])){
         $libelle = test_input($_POST['libelle']);
-        $filiere = test_input($_POST['filiere']); 
+        $filiere = test_input($_POST['Filiere']); 
            if( !empty($libelle) && !empty($filiere) ){
-                $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`)
-                 VALUES('$libelle', '$filiere')");
+                $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`) VALUES('$libelle', '$filiere')");
                 if($req){
                     header("location: groupe.php");
                 }else {
@@ -41,7 +46,7 @@ include "../nav_bar.php";
                     
                     </li>
                     <li>Gestion des groupes</li>
-                    <li class="active">Ajouter un groupe</li>
+                    <li>Ajouter un groupe</li>
             </ol>
         </div>
     </div>

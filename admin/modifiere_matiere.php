@@ -1,26 +1,29 @@
-<?php 
+<?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+} 
 include_once "../connexion.php";
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);
-$module = "SELECT distinct(id_module) FROM module";
+$module = "SELECT * FROM module";
 $module_qry = mysqli_query($conn,$module);
 ?>
 
 
 <?php
 include "../nav_bar.php";
+$id_matiere = $_GET['id_matiere'];
+$query = "SELECT * FROM `matiere` WHERE id_matiere = $id_matiere  ";
+$result = mysqli_query($conn, $query);
+$student = mysqli_fetch_assoc($result);
 ?>
 <body>
 
 
 <?php
-
-$id_matiere = $_GET['id_ens'];
-$query = "SELECT * FROM `matiere` WHERE id_matiere = $id_matiere  ";
-$result = mysqli_query($conn, $query);
-$student = mysqli_fetch_assoc($result);
-
-if(isset($_POST['submit'])){ 
+if(isset($_POST['submit'])){
       if(count($_POST)>0){
          session_start();
          include_once "../connexion.php";
@@ -52,7 +55,7 @@ if(isset($_POST['submit'])){
                     
                     </li>
                     <li>Gestion des matiere</li>
-                    <li class="active">Ajouter une matiere</li>
+                    <li>Ajouter une matiere</li>
             </ol>
         </div>
     </div>
@@ -89,7 +92,7 @@ if(isset($_POST['submit'])){
                   <option selected disabled> Semester</option>
                   <?php while ($row = mysqli_fetch_assoc($semestre_qry)) :                     
                      ?>
-                     <option value="<?php echo $row['id_semestre']; ?>"> <?php echo $row['libelle']; ?> </option>
+                     <option value="<?php echo $row['id_semestre']; ?>"> <?php echo $row['nom_semestre']; ?> </option>
                   <?php 
                      endwhile; 
                   ?>
@@ -104,7 +107,7 @@ if(isset($_POST['submit'])){
          
                <?php
                while ($row = mysqli_fetch_assoc($module_qry)) :?>
-                  <option> <?php echo $row['id_module']; ?> </option>  
+                  <option value="<?php echo $row['id_module']; ?>"> <?php echo $row['nom_module']; ?> </option>  
                <?php endwhile;?>
                </select>
             </div>

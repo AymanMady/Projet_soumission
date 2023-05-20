@@ -4,8 +4,5 @@
   $req = mysqli_query($conn , "DELETE FROM etudiant WHERE id_etud = $id_etud");
   if($req){
     header("Location:etudiant.php");
-    // include_once 'valide_suppression_etudiant.php' ;
   }
-  
-
 ?>

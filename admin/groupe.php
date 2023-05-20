@@ -1,4 +1,10 @@
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
 
@@ -21,7 +27,7 @@ include "../nav_bar.php";
                 <li><a href="#">Acceuil</a>
                     
                 </li>
-                <li class="active">Gestion des groupes</li>
+                <li>Gestion des groupes</li>
                    
             </ol>
         </div>

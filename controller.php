@@ -220,12 +220,15 @@ $alert = "";
                 if ($status == 1) {
                      if($row['id_role']==1){
                         header("location:admin/acceuil.php");
+                        session_start();
+                        $_SESSION['email']=$email;
+                        $_SESSION['role']="admin";
                         }
                     elseif($row['id_role']==2){
                         header("location:index_enseignant.php");
                         session_start();
                         $_SESSION['email']=$email;
-                        $_SESSION['ens']="oui";
+                        $_SESSION['role']="ens";
 
                     }   
                     elseif($row['id_role']==3){
@@ -233,7 +236,7 @@ $alert = "";
                     }   
                 }
                 else{
-                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'administrateure pour active le'; 
+                    $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'administrateur pour active le'; 
                 }
         } else {
             $errors['email'] = 'Email ou mot de passe incorect';

@@ -1,4 +1,10 @@
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
 
@@ -56,7 +62,7 @@ include "../nav_bar.php";
                     
                     </li>
                     <li>Gestion des utisateurs</li>
-                    <li class="active">Modifier un utisateur</li>
+                    <li>Modifier un utisateur</li>
             </ol>
         </div>
     </div>

@@ -1,15 +1,16 @@
-
 <?php 
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
 
 include_once "../connexion.php";
-//include 'include_common/header.php' ;
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);
-$module = "SELECT distinct(id_module) FROM module";
+$module = "SELECT * FROM module";
 $module_qry = mysqli_query($conn,$module);
 
-?>
-<?php
 include "../nav_bar.php";
 ?>
 
@@ -27,7 +28,7 @@ include "../nav_bar.php";
                     
                     </li>
                     <li>Gestion des matiere</li>
-                    <li class="active">Ajouter une matiere</li>
+                    <li>Ajouter une matiere</li>
             </ol>
         </div>
     </div>
@@ -43,7 +44,7 @@ include "../nav_bar.php";
             ?>
 
         </p>
-        <form action="nsert.php" method="POST">
+        <form action="insert.php" method="POST">
         <div class="form-group">
             <label class="col-md-1">Code de Matiere</label>
             <div class="col-md-6">
@@ -63,7 +64,7 @@ include "../nav_bar.php";
             <select class = "form-control" id="academic" value="Semesters" name="semester">
                     <option selected disabled> Semesters </option>
                             <?php while ($row = mysqli_fetch_assoc($semestre_qry)) : ?>
-                        <option value="<?= $row['id_semestre']; ?>"> <?= $row['libelle']; ?> </option>
+                        <option value="<?= $row['id_semestre']; ?>"> <?= $row['nom_semestre']; ?> </option>
                     <?php endwhile; ?> 
                 </select>            
                </div>
@@ -74,7 +75,7 @@ include "../nav_bar.php";
             <select  name="module" id="modi" class = "form-control">
                 <option selected disabled> Modules </option>
                         <?php while ($row = mysqli_fetch_assoc($module_qry)) :?>
-                        <option value="<?= $row['id_module']; ?>"> <?= $row['id_module']; ?> </option>  
+                        <option value="<?= $row['id_module']; ?>"> <?= $row['nom_module']; ?> </option>  
                     <?php endwhile;?>
                 </select>
             </div>

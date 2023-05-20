@@ -5,13 +5,6 @@
 // }
 //?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ministère de la justice </title>
 
     <!-- Bootstrap -->
     <link href="CSS/bootstrap.css" rel="stylesheet">
@@ -41,11 +34,106 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>ADOMAP:Archivage des Documents de March&eacute;s Publics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="CSS/style.css")" rel="stylesheet">
+    <link href="CSS/style.css" rel="stylesheet">
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<?php
+    session_start();
+     if($_SESSION["role"]=="ens"){
+?>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                     
+
+                        <li id="potfolio" class="dropdown">   
+                            <a href="#" >enseignant</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                <a href="enseignant.php">Soumission</a>
+                                </li>
+                            </ul> 
+                        <li  class="dropdown">
+                               <a href="supprimer_session.php">Se déconnecte</a></div>
+                        </li>
+                        
+
+                        
+                </ul>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+<?php
+     }
+     else if($_SESSION["role"]=="admin"){
+?>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                     
+
+                        <li id="potfolio" class="dropdown">   
+                            <a href="#" >Administration</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                <a href="enseignant.php">Gestion des enseignants</a>
+                                </li>
+                                <li>
+                                    <a href="etudiant.php">Gestion des etudiants</a>
+                                </li >  
+                                <li >
+                                    <a href="utilisateurs.php">Gestion des utilisateurs</a>
+                                </li>
+                                <li >
+                                    <a href="groupe.php">Gestion des groupe</a>
+                                </li>
+                                <li >
+                                    <a href="matiere.php">Gestion des matiere</a>
+                                </li>
+                            </ul> 
+                        <li  class="dropdown">
+                               <a href="../supprimer_session.php">Se déconnecte</a></div>
+                        </li>
+                        
+
+                        
+                </ul>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+<?php
+     }else{
+?>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -93,6 +181,9 @@
         </div>
         <!-- /.container -->
     </nav>
+<?php
+     }
+?>
 
 </body>
 </html>

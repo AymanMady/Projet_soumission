@@ -1,13 +1,19 @@
 <title>Modifier enseignant</title>
 
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
 <br><br><br>
 <?php
         include_once "../connexion.php";
         $id_ens = $_GET['id_ens'];
-        $req = mysqli_query($conn , "SELECT * FROM enseignant WHERE id_ens = '$id_ens'");
+        $req = mysqli_query($conn , "SELECT * FROM enseignant WHERE id_ens = $id_ens");
         $row = mysqli_fetch_assoc($req);
 
 

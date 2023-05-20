@@ -1,4 +1,10 @@
 <?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
 include "../nav_bar.php";
 ?>
 
@@ -30,7 +36,7 @@ include "../nav_bar.php";
             $row = mysqli_fetch_assoc($req);
             if(isset($_POST['button'])){ 
                 $matricule = test_input($_POST['matricule']);
-                $semestre = test_input($_POST['semestre']);
+                $semestre = test_input($_POST['Semestre']);
                 $annee = test_input($_POST['annee']);
                 $nom =  test_input($_POST['nom']);
                 $prenom = test_input($_POST['prenom']); 
@@ -65,7 +71,7 @@ include "../nav_bar.php";
                     
                     </li>
                     <li>Gestion des utisateurs</li>
-                    <li class="active">Modifier un etudiant</li>
+                    <li>Modifier un etudiant</li>
             </ol>
         </div>
     </div>
