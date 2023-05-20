@@ -49,7 +49,7 @@
                     
                     </li>
                     <li>Gestion des enseignants</li>
-                    <li class="active">Ajouter un enseignant</li>
+                    <li>Ajouter un enseignant</li>
             </ol>
         </div>
     </div>
