@@ -23,7 +23,8 @@ include "../nav_bar.php";
            if( !empty($libelle) && !empty($filiere) ){
                 $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`) VALUES('$libelle', '$filiere')");
                 if($req){
-                    header("location: groupe.php");
+                    //header("location: groupe.php");
+                    echo "<script>window.location.href='groupe.php';</script>";
                 }else {
                     $message = "groupe non ajouté";
                 }

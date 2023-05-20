@@ -31,7 +31,7 @@ include "../nav_bar.php";
                 // $Date_naiss = test_input($_POST['Date_naiss']); 
                 // $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 // $login =  test_input($_POST['login']);
-                test_input(extract($_POST));
+                
                    $login =  test_input($_POST['login']);
                    $pwd =  md5(test_input($_POST['pwd']));
                    $role =  test_input($_POST['role']);
@@ -43,7 +43,8 @@ include "../nav_bar.php";
                 //echo $req;               
                 $req = mysqli_query($conn , $req);
                 if($req){
-                    header("location: utilisateurs.php");
+                    //header("location: utilisateurs.php");
+                    echo "<script>window.location.href='utilisateurs.php';</script>";
                 }else {
                     $message = "utilisateur non ajouté";
                 }

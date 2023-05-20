@@ -10,15 +10,15 @@ include "../nav_bar.php";
 <br><br><br>
 <?php
 
-              include_once "../connexion.php";
-                function test_input($data){
-                $data = htmlspecialchars($data);
-                $data = trim($data);
-                $data = htmlentities($data);
-                $data = stripcslashes($data);
+        include_once "../connexion.php";
+        function test_input($data){
+        $data = htmlspecialchars($data);
+        $data = trim($data);
+        $data = htmlentities($data);
+        $data = stripcslashes($data);
 
-                return $data;
-            }
+        return $data;
+        }
        if(isset($_POST['button'])){
         $nom = test_input($_POST['nom']); 
         $prenom = test_input($_POST['prenom']); 
@@ -33,6 +33,7 @@ include "../nav_bar.php";
                 $req = "INSERT INTO `enseignant`(`nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) values ('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2)";
             
                 if(mysqli_query($conn , $req)){
+                    //echo "<script>window.location.href='enseignant.php';</script>";
                     header('location:enseignant.php');
                 }else {
                     $message = "Enseignant non ajouté";
@@ -42,7 +43,9 @@ include "../nav_bar.php";
             }
     ?>
 
-
+<?php
+   include "../nav_bar.php"; 
+?>
 </br>
 </br></br></br>
 <div class="container">
