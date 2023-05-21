@@ -1,9 +1,9 @@
 <?php 
-// session_start() ;
-// if($_SESSION["admin"]!="oui"){
-//     header("location:authentification.php");
-// }
-//?>
+session_start() ;
+if($_SESSION["admin"]!="oui"){
+    header("location:authentification.php");
+}
+?>
 
 
     <!-- Bootstrap -->
@@ -32,7 +32,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ADOMAP:Archivage des Documents de March&eacute;s Publics</title>
+    <title>Soumission</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="CSS/style.css" rel="stylesheet">
 

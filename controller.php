@@ -246,7 +246,7 @@ $alert = "";
 
 
 
-    //         //$passwordQuery = "SELECT * FROM utilisateur WHERE login = '$email'and  pwd ='$password'";
+    //    $passwordQuery = "SELECT * FROM utilisateur WHERE login = '$email'and  pwd ='$password'";
     // // ##############################################################
     //     $alert = '<div class="alert alert-danger  row-md-15" id="success-alert">
     //     <span aria-hidden="true">&times;</span>

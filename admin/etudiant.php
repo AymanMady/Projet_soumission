@@ -1,9 +1,9 @@
 <?php
-session_start() ;
-$email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-}
+// session_start() ;
+// $email = $_SESSION['email'];
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// }
 
 include "../nav_bar.php";
 ?>
@@ -95,6 +95,7 @@ include "../nav_bar.php";
                                 <td><?=$row['semestre']?></td>
                                 <td><?=$row['annee']?></td>
                                 <td><?=$row['email']?></td>
+                                <td><a href="detail_etudiant.php?id_etud=<?=$row['id_etud']?>">Detailler</a></td>
                                 <td><a href="modifier_etudiant.php?id_etud=<?=$row['id_etud']?>">Modifier</a></td>
                                 <td><a href="supprimer_etudiant.php?id_etud=<?=$row['id_etud']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce etudiant ?`)">Supprimer</a></td>
                             </tr>

@@ -1,6 +1,7 @@
 
 <?php
-// session_start() ;
+    //session_start() ;
+    
 // $email = $_SESSION['email'];
 // if($_SESSION["role"]!="admin"){
 //     header("location:authentification.php");
@@ -65,13 +66,16 @@ include "../nav_bar.php";
                     <th>E-mail</th>
                     <th>Diplôme</th>
                     <th>Grade</th>
-                    <th colspan="2">Action</th>
+                    <th colspan="3">Action</th>
                 </tr>
 
 
             <?php 
+
                     include_once "../connexion.php";
+                    
                      $req1 = "SELECT * FROM enseignant;";
+                     
                     $req = mysqli_query($conn , $req1);
                     if(mysqli_num_rows($req) == 0){
                         echo "Il n'y a pas encore des utilisateur ajouter !" ;
@@ -86,14 +90,29 @@ include "../nav_bar.php";
                                 <td><?=$row['email']?></td>
                                 <td><?=$row['diplome']?></td>
                                 <td><?=$row['grade']?></td>
+                                <td><a href="detail_enseignant.php?id_ens=<?=$row['id_ens']?>">Detailler</a></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>">Modifier</a></td>
                                 <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce enseignant ?`)">Supprimer</a></td>
                             </tr>
+                                                       
                             <?php
                         }
                     }
-                ?>
+                   
+                        ?>
 
+
+                    <script>
+            Swal.fire({
+                    title: "<?php echo "Nom: ". $row['nom']." <br> Prenom : " . $row['prenom']."<br>"."Date de naissance: ".$row['Date_naiss']."<br> Lieux de naissance : ". $row['lieu_naiss']."<br> E-mail : ".$row['email']."<br> Diplôme : ".$row['diplome']."<br> Grade : ".$row['grade'];?> ",
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                    })
+            </script>
 
 
         </table>
@@ -103,4 +122,5 @@ include "../nav_bar.php";
 
 </div>
 </body>
+
 </html>

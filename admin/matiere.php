@@ -1,10 +1,10 @@
 <title>Les matiéres</title>
 <?php
-session_start() ;
-$email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-}
+// session_start() ;
+// $email = $_SESSION['email'];
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// }
 
 include "../nav_bar.php";
 ?>
@@ -109,6 +109,7 @@ if (mysqli_num_rows($matiere_result) == 0) {
                         <button type="submit" class = "btn btn-primary">Affecter</button>
                     </form>
                 </td>
+                <td><a href="detail_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Detailler</a></td>
                 <td><a href="modifier_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Modifier</a></td>
                 <td><a href="supprimer_matiere.php?id_matiere=<?= $row['id_matiere'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette matière ?')">Supprimer</a></td>
             </tr>
