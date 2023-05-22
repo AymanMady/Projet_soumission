@@ -1,9 +1,4 @@
-<?php 
-// session_start() ;
-// if($_SESSION["admin"]!="oui"){
-//     header("location:authentification.php");
-// }
-//?>
+
 
 
     <!-- Bootstrap -->
@@ -39,7 +34,6 @@
 </head>
 <body>
 <?php
-    session_start();
      if($_SESSION["role"]=="ens"){
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
