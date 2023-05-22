@@ -1,7 +1,5 @@
-
 <?php
-    session_start() ;
-    
+session_start() ;
 $email = $_SESSION['email'];
 if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
@@ -9,6 +7,18 @@ if($_SESSION["role"]!="admin"){
 
 include "../nav_bar.php";
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les etudiants</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+</head>
+<body>
 </br></br></br>
 <div class="container">
     <div class="row">
@@ -17,7 +27,7 @@ include "../nav_bar.php";
                 <li><a href="acceuil.php">Acceuil</a>
                     
                 </li>
-                <li>Gestion des enseignants</li>
+                <li>Gestion des groupes</li>
                    
             </ol>
         </div>
@@ -33,7 +43,6 @@ include "../nav_bar.php";
                         </legend>
                         <div class="collapse in" id="demo">
                             <div class="search-box">
-
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-3">
                                         <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
@@ -46,7 +55,6 @@ include "../nav_bar.php";
                     </fieldset>
                 
             </div>
-            <!-- /well -->
         </div>
     </div>
     <div class="text-center">
@@ -54,59 +62,42 @@ include "../nav_bar.php";
     </div>
     <br>
     <p>
-        <a href="ajouter_enseignant.php" class = "btn btn-primary" >Nouveau</a>
+        <a href="importe_iscription.php" class = "btn btn-primary" >importe</a>
     </p>
+    
     <div style="overflow-x:auto;">
 
         <table class="table table-striped table-bordered">
-                <tr>
-                    <th>Nom et Prénom</th>
-                    <th>E-mail</th>
-                    
-                    <th colspan="3">Action</th>
-                </tr>
+            <tr>
+                    <th>Matricule de l'etudiant</th>
+                    <th>Code matiere</th>
+            </tr>
 
 
             <?php 
-
                     include_once "../connexion.php";
-                    
-                     $req1 = "SELECT * FROM enseignant;";
-                     
-                    $req = mysqli_query($conn , $req1);
+                    $req = mysqli_query($conn , "SELECT * FROM inscripsion");
                     if(mysqli_num_rows($req) == 0){
-                        echo "Il n'y a pas encore des utilisateur ajouter !" ;
+                        echo "Il n'y a pas encore des des inscription ajouter !" ;
+                        
                     }else {
                         while($row=mysqli_fetch_assoc($req)){
+                            $id_matiere=$row['id_matieres'];
+                            $id_etud=$row['id_etudi'];
+                            $req1 = mysqli_query($conn , "SELECT * FROM matiere where id_matiere = $id_matiere");
+                            $req2 = mysqli_query($conn , "SELECT * FROM etudiant where id_etud =$id_etud ");
+                            $row1=mysqli_fetch_assoc($req1);
+                            $row2=mysqli_fetch_assoc($req2);
+
                             ?>
-                           <tr>
-                            <td><?=$row['nom']?>
-                                <?=$row['prenom']?></td>
-                                <td><?=$row['email']?></td>
-                                <td><a href="detail_enseignant.php?id_ens=<?=$row['id_ens']?>">Detailler</a></td>
-                                <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>">Modifier</a></td>
-                                <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce enseignant ?`)">Supprimer</a></td>
+                            <tr>
+                            <td><?=$row2['matricule']?></td>
+                            <td><?=$row1['code']?></td>
                             </tr>
-                                                       
                             <?php
                         }
                     }
-                   
-                        ?>
-
-
-                    <script>
-            Swal.fire({
-                    title: "<?php echo "Nom: ". $row['nom']." <br> Prenom : " . $row['prenom']."<br>"."Date de naissance: ".$row['Date_naiss']."<br> Lieux de naissance : ". $row['lieu_naiss']."<br> E-mail : ".$row['email']."<br> Diplôme : ".$row['diplome']."<br> Grade : ".$row['grade'];?> ",
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                    })
-            </script>
-
+                ?>
 
         </table>
     </div>
@@ -114,6 +105,6 @@ include "../nav_bar.php";
             </div>
 
 </div>
-</body>
 
+</body>
 </html>

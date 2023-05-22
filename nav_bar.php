@@ -1,9 +1,3 @@
-<?php 
-// session_start() ;
-// if($_SESSION["admin"]!="oui"){
-//     header("location:authentification.php");
-// }
-?>
 
 
     <!-- Bootstrap -->
@@ -39,7 +33,6 @@
 </head>
 <body>
 <?php
-    session_start();
      if($_SESSION["role"]=="ens"){
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -95,7 +88,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-
+                        <li  class="dropdown">
+                        <a href="inscription.php" >insecripition</a> 
+                        </li>
+                        <li  class="dropdown">
+                        <a href="#" >soummission</a> 
+                        </li>
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
                             <ul class="dropdown-menu">
