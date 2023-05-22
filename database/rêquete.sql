@@ -144,7 +144,7 @@ CREATE TABLE `etudie` (
 CREATE TABLE `enseigner` (
   `id_matiere` int(10) DEFAULT NULL,
   `id_ens` int(10) DEFAULT NULL,
-    `id_groupe` int(10) DEFAULT NULL,
+  `id_groupe` int(10) DEFAULT NULL,
   FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere),
   FOREIGN KEY (id_groupe) REFERENCES groupe(id_groupe),
   FOREIGN KEY (id_ens) REFERENCES enseignant(id_ens)
@@ -152,8 +152,8 @@ CREATE TABLE `enseigner` (
 
 CREATE TABLE inscripsion(
   id_insc int AUTO_INCREMENT PRIMARY key ,
-  id_etudi int(10) ,
-  id_matieres INT(10),
+  id_etudi int(10) NOT NULL ,
+  id_matieres INT(10) NOt NULL,
 FOREIGN KEY (id_matieres) REFERENCES matiere(id_matiere),
   FOREIGN KEY (id_etudi) REFERENCES etudiant(id_etud)
 );
