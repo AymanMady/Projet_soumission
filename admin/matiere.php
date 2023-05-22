@@ -62,7 +62,7 @@ include_once "../connexion.php";
 
 
 // Vérification si des matières existent
-$matiere_query = "SELECT * FROM matiere inner join module using(id_module) inner join semestre using(id_semestre)";
+$matiere_query = "SELECT * FROM matiere"; //inner join module using(nom_module) inner join semestre using(nom_semestre)";
 $matiere_result = mysqli_query($conn, $matiere_query);
 
 if (mysqli_num_rows($matiere_result) == 0) {
@@ -74,10 +74,10 @@ if (mysqli_num_rows($matiere_result) == 0) {
             <th>Code</th>
             <th>Libelle</th>
             <th>Specialite</th>
-            <th>Modile</th>
-            <th>Semester</th>
-            <th>Affectation</th>
-            <th colspan="2">Action</th>
+            <!-- <th>Modile</th>
+            <th>Semester</th> -->
+            <!-- <th>Affectation</th> -->
+            <th colspan="3">Action</th>
         </tr>
         <?php
         while ($row = mysqli_fetch_assoc($matiere_result)) {
@@ -86,8 +86,31 @@ if (mysqli_num_rows($matiere_result) == 0) {
                 <td><?= $row['code'] ?></td>
                 <td><?= $row['libelle'] ?></td>
                 <td><?= $row['specialite'] ?></td>
-                <td><?= $row['nom_module'] ?></td>
-                <td><?= $row['nom_semestre'] ?></td>
+                <?= $row['nom_module'] ?>
+                <?= $row['nom_semestre'] ?>
+                
+                    <!-- <form action="affecter_matiere.php" method="POST">
+                        <select class="form-control" name="enseignant_id">
+                            <option selected disabled>Enseignant</option> -->
+                            <?php
+                            // Réinitialisation du curseur des enseignants
+                            // mysqli_data_seek($enseignant_result, 0);
+                            // while ($enseignant_row = mysqli_fetch_assoc($enseignant_result)) {
+                            //     ?>
+                                <!-- <option value=""></option> -->
+                                <?php //$enseignant_row['id_ens']; ?>
+                                <?php //$enseignant_row['nom']; ?>
+                                <?php
+                            //}
+                            ?>
+                        </select>
+                        <!-- <input type="hidden" name="matiere_id" value=""> -->
+                        <?php //$row['id_matiere'] ?>
+                        <br>
+                              <!-- <button type="submit" class = "btn btn-primary">Affecter</button> -->
+                    </form>
+                
+                <td><a href="detail_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Detailler</a></td>
                 <td><a href="modifier_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Modifier</a></td>
                 <td><a href="supprimer_matiere.php?id_matiere=<?= $row['id_matiere'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette matière ?')">Supprimer</a></td>
             </tr>

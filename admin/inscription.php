@@ -1,9 +1,9 @@
 <?php
-// session_start() ;
-// $email = $_SESSION['email'];
-// if($_SESSION["role"]!="admin"){
-//     header("location:authentification.php");
-// }
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
 
 include "../nav_bar.php";
 ?>
@@ -69,8 +69,8 @@ include "../nav_bar.php";
 
         <table class="table table-striped table-bordered">
             <tr>
-                    <th>matricule_etud</th>
-                    <th>code_matiree</th>
+                    <th>Matricule de l'etudiant</th>
+                    <th>Code matiere</th>
             </tr>
 
 

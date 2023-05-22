@@ -1,9 +1,9 @@
 <?php
-session_start() ;
-$email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-}
+// session_start() ;
+// $email = $_SESSION['email'];
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// }
 
 include "../nav_bar.php";
 ?>
@@ -70,10 +70,7 @@ include "../nav_bar.php";
     <tr>
     <th>Matricule</th>
     <th>Nom et Prénom</th>
-    <th>Lieu de naissance</th>
-    <th>Date de naissance</th>
     <th>Semestre</th>
-    <th>Année</th>
     <th>E-mail</th>
     <th colspan="2">Action</th>
     </tr>
@@ -90,11 +87,12 @@ include "../nav_bar.php";
                                 <td><?=$row['matricule']?></td>
                                 <td><?=$row['nom']?>
                                 <?=$row['prenom']?></td>
-                                <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['Date_naiss']?></td>
+                                <?php $row['lieu_naiss']?>
+                                <?php $row['Date_naiss']?>
                                 <td><?=$row['semestre']?></td>
-                                <td><?=$row['annee']?></td>
+                                <?php $row['annee']?>
                                 <td><?=$row['email']?></td>
+                                <td><a href="detail_etudiant.php?id_etud=<?=$row['id_etud']?>">Detailler</a></td>
                                 <td><a href="modifier_etudiant.php?id_etud=<?=$row['id_etud']?>">Modifier</a></td>
                                 <td><a href="supprimer_etudiant.php?id_etud=<?=$row['id_etud']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce etudiant ?`)">Supprimer</a></td>
                             </tr>

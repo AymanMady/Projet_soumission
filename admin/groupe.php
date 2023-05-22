@@ -6,6 +6,7 @@ if($_SESSION["role"]!="admin"){
 }
 
 include "../nav_bar.php";
+
 ?>
 
 <!DOCTYPE html>
