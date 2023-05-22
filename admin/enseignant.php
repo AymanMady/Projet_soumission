@@ -61,11 +61,8 @@ include "../nav_bar.php";
         <table class="table table-striped table-bordered">
                 <tr>
                     <th>Nom et Prénom</th>
-                    <th>Date de naissance</th>
-                    <th>Lieu de naissance</th>
                     <th>E-mail</th>
-                    <th>Diplôme</th>
-                    <th>Grade</th>
+                    
                     <th colspan="3">Action</th>
                 </tr>
 
@@ -85,11 +82,7 @@ include "../nav_bar.php";
                            <tr>
                             <td><?=$row['nom']?>
                                 <?=$row['prenom']?></td>
-                                <td><?=$row['Date_naiss']?></td>
-                                <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['email']?></td>
-                                <td><?=$row['diplome']?></td>
-                                <td><?=$row['grade']?></td>
                                 <td><a href="detail_enseignant.php?id_ens=<?=$row['id_ens']?>">Detailler</a></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>">Modifier</a></td>
                                 <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce enseignant ?`)">Supprimer</a></td>

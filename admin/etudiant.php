@@ -70,10 +70,7 @@ include "../nav_bar.php";
     <tr>
     <th>Matricule</th>
     <th>Nom et Prénom</th>
-    <th>Lieu de naissance</th>
-    <th>Date de naissance</th>
     <th>Semestre</th>
-    <th>Année</th>
     <th>E-mail</th>
     <th colspan="2">Action</th>
     </tr>
@@ -90,10 +87,10 @@ include "../nav_bar.php";
                                 <td><?=$row['matricule']?></td>
                                 <td><?=$row['nom']?>
                                 <?=$row['prenom']?></td>
-                                <td><?=$row['lieu_naiss']?></td>
-                                <td><?=$row['Date_naiss']?></td>
+                                <?php $row['lieu_naiss']?>
+                                <?php $row['Date_naiss']?>
                                 <td><?=$row['semestre']?></td>
-                                <td><?=$row['annee']?></td>
+                                <?php $row['annee']?>
                                 <td><?=$row['email']?></td>
                                 <td><a href="detail_etudiant.php?id_etud=<?=$row['id_etud']?>">Detailler</a></td>
                                 <td><a href="modifier_etudiant.php?id_etud=<?=$row['id_etud']?>">Modifier</a></td>
