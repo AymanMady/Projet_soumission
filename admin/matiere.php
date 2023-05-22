@@ -55,7 +55,7 @@ include "../nav_bar.php";
         <a href="ajoute_matiere.php" class = "btn btn-primary" >Nouveau</a>
     </p>
     <div style="overflow-x:auto;">
-    <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered">
         <tr>
             <th>Code</th>
             <th>Libelle</th>
@@ -63,18 +63,18 @@ include "../nav_bar.php";
             <th colspan="3">Action</th>
         </tr>
     <?php
-        include_once "../connexion.php";
+include_once "../connexion.php";
 
 
 
-        // Vérification si des matières existent
-        $matiere_query = "SELECT * FROM matiere"; 
-        $matiere_result = mysqli_query($conn, $matiere_query);
+// Vérification si des matières existent
+$matiere_query = "SELECT * FROM matiere"; 
+$matiere_result = mysqli_query($conn, $matiere_query);
 
-        if (mysqli_num_rows($matiere_result) == 0) {
-            echo "Il n'y a pas encore de matières ajoutées !";
-        } else {
-            ?>
+if (mysqli_num_rows($matiere_result) == 0) {
+    echo "Il n'y a pas encore de matières ajoutées !";
+} else {
+    ?>
   
         <?php
         while ($row = mysqli_fetch_assoc($matiere_result)) {

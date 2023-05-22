@@ -1,3 +1,11 @@
+<?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
+
+ ?>
 
 <?php require '../connexion.php'; ?>
  <!DOCTYPE html>
@@ -12,17 +20,41 @@
 	<?php
   
     ?>
-    <div class="content_import">
-		<h1>Importation de données à partir d'un fichier Excel</h1>
-		<form action="" method="post" enctype="multipart/form-data">
-		<label for="file">Sélectionner un fichier Excel :</label>
-		<input type="file" id="file" name="file" accept=".xlsx" required>
-		<input type="submit" name="import" value="Importer">
+ 
+</br>
+</br></br></br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a>
+                    
+                    </li>
+                    <li>Gestion des etudiants</li>
+                    <li >importer des inscription</li>
+            </ol>
+        </div>
+    </div>
+
+<div class="form-horizontal">
+<br><br>
+<form action="" method="POST">
+        <div class="form-group">
+            <label class="col-md-1">Sélectionner un fichier Excel : </label>
+            <div class="col-md-6">
+                <input type="file" name="file" class = "form-control" accept=".xlsx" required>
+            </div>
+        </div>
+		<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="import" value=Importer class="btn-primary"  />
+            </div>
+        </div>
 	</form>
-	<footer>
-		<p>&copy; 2023 - Importation de données à partir d'un fichier Excel</p>
-	</footer>
-		
+</div>
+</div>
+
 		<?php
 		if(isset($_POST["import"])){
 			$fileName = $_FILES["file"]["name"];
@@ -60,6 +92,7 @@
 			</script>
 			";
 		}
+		include "../nav_bar.php";
 		?>
         </div>
 	</body>

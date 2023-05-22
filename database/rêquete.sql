@@ -79,11 +79,9 @@ CREATE TABLE `enseignant` (
   `Date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(30) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `pwd` varchar(20) DEFAULT NULL,
   `diplome` varchar(20) DEFAULT NULL,
   `grade` varchar(20) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
-  `active` tinyint(1) DEFAULT 0,
   `id_sous` int(10) DEFAULT NULL,
   FOREIGN KEY (id_role) REFERENCES role(id_role),
   FOREIGN KEY (id_sous) REFERENCES soumission(id_sous)
@@ -113,10 +111,8 @@ CREATE TABLE `etudiant` (
   `semestre` varchar(50) DEFAULT NULL,
   `annee` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `pwd` varchar(20) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
   `id_groupe` int(10) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT 0,
   `id_sous` int(10) DEFAULT NULL,
   FOREIGN KEY (id_role) REFERENCES role(id_role),
   FOREIGN KEY (id_groupe) REFERENCES groupe(id_groupe),
@@ -211,6 +207,7 @@ INSERT INTO `module` ( `nom_module`) VALUES
 ('Outils mathématiques et informatiques'),
 (' Architecture et systèmes'),
 ('Atelier multumédia'),
+('Programmation et développement 2'),
 (' Systèmes et Réseaux');
 
 -- --------------------------------------------------------
@@ -222,3 +219,39 @@ INSERT INTO `departement` (`id`, `code`, `nom`) VALUES
 (2, 'RSS', 'reseaux'),
 (3, 'CNM', 'multimedia'),
 (4, 'TC', 'trancommun');
+
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+INSERT INTO `matiere` (`id_matiere`, `code`, `libelle`, `specialite`, `id_module`, `id_semestre`) VALUES
+(2, 'DEV110', 'Algorithmique et programmation C++', 'TC', 1, 1),
+(3, 'DEV111', 'Introduction aux bases de données', 'TC', 1, 1),
+(4, 'DEV210', 'Programmation Python', 'DSI', 7, 2),
+(5, 'MAI210', 'Algèbre 2', 'CNM', 3, 2),
+(6, 'DPR310', 'Communication', 'CNM', 2, 3),
+(7, 'DPR313', 'Gestion entreprise', 'DSI', 2, 3);
+
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+
+INSERT INTO `enseignant` (`id_ens`, `nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `email`,  `diplome`, `grade`, `id_role`,  `id_sous`) VALUES
+(1, 'haroune', 'meya', '1993-06-22', 'nkt', 'meya.haroune@supnum.mr', 'doctor', 'prof', 2,  NULL),
+(2, 'cheikh', 'dhib', '1983-01-22', 'nkt', 'cheikh.dhib@supnum.mr', 'doctor', 'directeur', 2,  NULL);
+
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+
+INSERT INTO `etudiant` (`id_etud`, `matricule`, `nom`, `prenom`, `lieu_naiss`, `Date_naiss`, `semestre`, `annee`, `email`,  `id_role`, `id_groupe`,  `id_sous`) VALUES
+(1, '22053', 'abderahman', 'abderahman', 'nkt', '2023-05-11', 'S2', '2023', '22053@supnum.mr', 3,  NULL, NULL),
+(2, '22014', 'Bechir', 'Mady', 'nkt', '2023-05-17', 'S2', '2023', '22014@supnum.mr', 3, NULL, NULL),
+(3, '22018', 'souleyman', 'baba', 'nkt', '2023-05-25', 'S2', '2023', '22018@supnum.mr', 3,  NULL, NULL);
+
+
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
