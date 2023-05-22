@@ -16,7 +16,7 @@ include "../nav_bar.php";
                 <li><a href="acceuil.php">Acceuil</a>
                     
                 </li>
-                <li class="active">Gestion des enseignants</li>
+                <li >Gestion des enseignants</li>
                    
             </ol>
         </div>

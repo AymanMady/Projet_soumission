@@ -1,9 +1,9 @@
 <?php
-session_start() ;
-$email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-} 
+// session_start() ;
+// $email = $_SESSION['email'];
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// } 
 include_once "../connexion.php";
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);
@@ -13,7 +13,6 @@ $module_qry = mysqli_query($conn,$module);
 
 
 <?php
-include "../nav_bar.php";
 $id_matiere = $_GET['id_matiere'];
 $query = "SELECT * FROM `matiere` WHERE id_matiere = $id_matiere  ";
 $result = mysqli_query($conn, $query);
@@ -40,6 +39,9 @@ if(isset($_POST['submit'])){
       }
       header ("Location: matiere.php");
       }
+
+ include "../nav_bar.php";
+
 ?>
 
  
@@ -71,7 +73,7 @@ if(isset($_POST['submit'])){
             ?>
 
         </p>
-        <form action="insert.php" method="POST">
+        <form action="" method="POST">
         <div class="form-group">
             <label class="col-md-1">Code de Matiere</label>
             <div class="col-md-6">

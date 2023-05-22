@@ -209,7 +209,7 @@ $alert = "";
 
     if (isset($_POST['entrer'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $matricule=explode("@",$email);
         $_SESSION['matricule']=$matricule[0];
         $Query = "SELECT * FROM utilisateur WHERE login = '$email' and  pwd ='$password'";

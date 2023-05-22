@@ -59,9 +59,7 @@ include "../nav_bar.php";
     <?php
 include_once "../connexion.php";
 
-// Récupération des enseignants
-$enseignant_query = "SELECT * FROM enseignant";
-$enseignant_result = mysqli_query($conn, $enseignant_query);
+
 
 // Vérification si des matières existent
 $matiere_query = "SELECT * FROM matiere inner join module using(id_module) inner join semestre using(id_semestre)";
@@ -90,25 +88,6 @@ if (mysqli_num_rows($matiere_result) == 0) {
                 <td><?= $row['specialite'] ?></td>
                 <td><?= $row['nom_module'] ?></td>
                 <td><?= $row['nom_semestre'] ?></td>
-                <td>
-                    <form action="affecter_matiere.php" method="POST">
-                        <select class="form-control" name="enseignant_id">
-                            <option selected disabled>Enseignant</option>
-                            <?php
-                            // Réinitialisation du curseur des enseignants
-                            mysqli_data_seek($enseignant_result, 0);
-                            while ($enseignant_row = mysqli_fetch_assoc($enseignant_result)) {
-                                ?>
-                                <option value="<?= $enseignant_row['id_ens'] ?>"><?= $enseignant_row['nom'] ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-                        <input type="hidden" name="matiere_id" value="<?= $row['id_matiere'] ?>">
-                        <br>
-                        <button type="submit" class = "btn btn-primary">Affecter</button>
-                    </form>
-                </td>
                 <td><a href="modifier_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Modifier</a></td>
                 <td><a href="supprimer_matiere.php?id_matiere=<?= $row['id_matiere'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette matière ?')">Supprimer</a></td>
             </tr>
