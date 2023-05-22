@@ -1,5 +1,12 @@
 
+<?php
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

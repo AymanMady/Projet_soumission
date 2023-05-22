@@ -5,7 +5,6 @@ if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
 }
 
-include "../nav_bar.php";
 ?>
                 <?php
                 
@@ -33,7 +32,9 @@ include "../nav_bar.php";
         }
         }
 
-        ?>
+        include "../nav_bar.php";
+
+    ?>
 
 </br>
 </br></br></br>

@@ -160,12 +160,17 @@ FOREIGN KEY (id_matieres) REFERENCES matiere(id_matiere),
   FOREIGN KEY (id_etudi) REFERENCES etudiant(id_etud)
 );
 
+
+CREATE TABLE `departement` (
+  `id` int(30) AUTO_INCREMENT PRIMARY key,
+  `code` text NOT NULL,
+  `nom` text NOT NULL
+);
 --
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-
---
 
 INSERT INTO `semestre` (`id_semestre`, `nom_semestre`) VALUES
 (1, 'S1'),
@@ -177,8 +182,8 @@ INSERT INTO `semestre` (`id_semestre`, `nom_semestre`) VALUES
 
 
 
---
 
+-- --------------------------------------------------------
 -- --------------------------------------------------------
 
 
@@ -188,6 +193,7 @@ INSERT INTO `role` (`id_role`, `profile`) VALUES
 (2, 'enseignant'),
 (3, 'etudiant');
 
+-- --------------------------------------------------------
 -- --------------------------------------------------------
 
 
@@ -206,3 +212,13 @@ INSERT INTO `module` ( `nom_module`) VALUES
 (' Architecture et systèmes'),
 ('Atelier multumédia'),
 (' Systèmes et Réseaux');
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+
+INSERT INTO `departement` (`id`, `code`, `nom`) VALUES
+(1, 'DSI', 'Devellopement'),
+(2, 'RSS', 'reseaux'),
+(3, 'CNM', 'multimedia'),
+(4, 'TC', 'trancommun');

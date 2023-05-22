@@ -1,11 +1,10 @@
 <?php
-// session_start() ;
-// $email = $_SESSION['email'];
-// if($_SESSION["role"]!="admin"){
-//     header("location:authentification.php");
-// }
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+}
 
-include "../nav_bar.php";
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +46,7 @@ include "../nav_bar.php";
             if( !empty($matricule) && !empty($semestre)  && !empty($annee) && !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) ){
                 $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', email = '$email' WHERE id_etud = $id_etud");
                 if($req){
-                    //header("location: etudiant.php");
-                    echo "<script>window.location.href='etudiant.php';</script>";
+                    header("location: etudiant.php");
                 }else {
                     $message = "etudiant non modifié";
                 }
@@ -57,6 +55,7 @@ include "../nav_bar.php";
                 $message = "Veuillez remplir tous les champs !";
             }
             }
+            include "../nav_bar.php";
 
     ?>
 

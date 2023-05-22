@@ -1,9 +1,9 @@
 <?php
-// session_start() ;
-// $email = $_SESSION['email'];
-// if($_SESSION["role"]!="admin"){
-//     header("location:authentification.php");
-// } 
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="admin"){
+    header("location:authentification.php");
+} 
 include_once "../connexion.php";
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);

@@ -4,8 +4,6 @@ $email = $_SESSION['email'];
 if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
 }
-
-include "../nav_bar.php";
 ?>
 
     <?php
@@ -23,8 +21,7 @@ include "../nav_bar.php";
            if( !empty($libelle) && !empty($filiere) ){
                 $req = mysqli_query($conn , "INSERT INTO groupe(`libelle`, `filiere`) VALUES('$libelle', '$filiere')");
                 if($req){
-                    //header("location: groupe.php");
-                    echo "<script>window.location.href='groupe.php';</script>";
+                    header("location: groupe.php");
                 }else {
                     $message = "groupe non ajouté";
                 }
@@ -33,7 +30,8 @@ include "../nav_bar.php";
                $message = "Veuillez remplir tous les champs !";
            }
        }
-    
+       include "../nav_bar.php";
+
     ?>
 
     </br>

@@ -5,7 +5,6 @@ if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
 }
 
-include "../nav_bar.php";
 ?>
 <br><br><br>
 <?php
@@ -33,7 +32,6 @@ include "../nav_bar.php";
                 $req = "INSERT INTO `enseignant`(`nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) values ('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2)";
             
                 if(mysqli_query($conn , $req)){
-                    //echo "<script>window.location.href='enseignant.php';</script>";
                     header('location:enseignant.php');
                 }else {
                     $message = "Enseignant non ajouté";
