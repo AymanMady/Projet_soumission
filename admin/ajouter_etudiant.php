@@ -5,7 +5,6 @@ if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
 }
 
-include "../nav_bar.php";
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +44,7 @@ include "../nav_bar.php";
                                 
                 $req = mysqli_query($conn , $req);
                 if($req){
-                    //header("location: etudiant.php");
-                    echo "<script>window.location.href='etudiant.php';</script>";
+                    header("location: etudiant.php");
                 }else {
                     $message = "Etudiant non ajouté";
                 }
@@ -55,7 +53,8 @@ include "../nav_bar.php";
                $message = "Veuillez remplir tous les champs !";
            }
        }
-    
+       include "../nav_bar.php";
+
     ?>
 
 </br>

@@ -5,7 +5,6 @@ if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
 }
 
-include "../nav_bar.php";
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +42,7 @@ include "../nav_bar.php";
                 $req = mysqli_query($conn, "UPDATE utilisateur SET pwd = '$pwd', login = '$login', id_role = '$role'  WHERE id_user = $id_user");
 
                 if($req){
-                    //header("location: utilisateurs.php");
-                    echo "<script>window.location.href='utilisateurs.php';</script>";
+                    header("location: utilisateurs.php");
                 }else {
                     $message = "utilisateur non modifié";
                 }
@@ -53,7 +51,8 @@ include "../nav_bar.php";
                 $message = "Veuillez remplir tous les champs !";
             }
             }
-        
+            include "../nav_bar.php";
+
     ?>
     </br>
 </br></br></br>
