@@ -9,8 +9,7 @@ CREATE TABLE `soumission` (
   `date_sous` datetime DEFAULT NULL,
   `date_limite` datetime DEFAULT NULL,
   `valide` tinyint(1) DEFAULT NULL,
-  `note_devoir` float DEFAULT NULL,
-  `note_examen` float DEFAULT NULL
+  `archive` tinyint(1) DEFAULT NULL,  
 );
 
 CREATE TABLE `role` (
@@ -39,15 +38,23 @@ CREATE TABLE `semestre` (
   `nom_semestre` varchar(50) DEFAULT NULL
 );
 
+CREATE TABLE `type_matiere` (
+  `id_type_matiere` int(10) PRIMARY KEY AUTO_INCREMENT,
+  `libelle_type` varchar(50) NOT NULL
+);
+
 CREATE TABLE `matiere` (
   `id_matiere` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `code` varchar(20)  UNIQUE,
   `libelle` varchar(50) DEFAULT NULL,
   `specialite` varchar(20) DEFAULT NULL,
-  `id_module` int(10)  DEFAULT NULL,
-  `id_semestre` int(10) DEFAULT NULL,
+  `charge` INT(20) NOT NULL,
+  `id_module` int(10)  NOT NULL,
+  `id_semestre` int(10) NOT NULL,
+  `id_type_matiere` int(10) NOT NULL,
   FOREIGN KEY (id_module) REFERENCES module(id_module),
   FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre)
+  FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere)
 );
 
 CREATE TABLE `devoir` (
@@ -122,6 +129,7 @@ CREATE TABLE `etudiant` (
 CREATE TABLE `fait_devoir` (
   `id_etud` int(10) DEFAULT NULL,
   `id_devoir` int(10) DEFAULT NULL,
+  `note_devoir` float DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_devoir) REFERENCES devoir(id_devoir)
 );
@@ -129,6 +137,7 @@ CREATE TABLE `fait_devoir` (
 CREATE TABLE `fait_examen` (
   `id_etud` int(10) DEFAULT NULL,
   `id_examen` int(10) DEFAULT NULL,
+   `note_devoir` float DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_examen) REFERENCES examen(id_examen)
 );
