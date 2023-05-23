@@ -6,8 +6,8 @@ CREATE TABLE `groupe` (
 
 CREATE TABLE `soumission` (
   `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `date_sous` datetime DEFAULT NULL,
-  `date_limite` datetime DEFAULT NULL,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
   `valide` tinyint(1) DEFAULT NULL,
   `archive` tinyint(1) DEFAULT NULL,  
 );
@@ -154,6 +154,8 @@ CREATE TABLE `enseigner` (
   `id_matiere` int(10) DEFAULT NULL,
   `id_ens` int(10) DEFAULT NULL,
   `id_groupe` int(10) DEFAULT NULL,
+  `id_type_matiere` int(10) NOT NULL,
+  FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere),
   FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere),
   FOREIGN KEY (id_groupe) REFERENCES groupe(id_groupe),
   FOREIGN KEY (id_ens) REFERENCES enseignant(id_ens)
