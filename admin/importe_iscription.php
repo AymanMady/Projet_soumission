@@ -31,7 +31,7 @@ if($_SESSION["role"]!="admin"){
             <li><a href="#">Acceuil</a>
                     
                     </li>
-                    <li>Gestion des etudiants</li>
+                    <li>Inscription</li>
                     <li >importer des inscription</li>
             </ol>
         </div>

@@ -60,7 +60,7 @@ include "../nav_bar.php";
             <th>Code</th>
             <th>Libelle</th>
             <th>Specialite</th>
-            <th colspan="3">Action</th>
+            <th colspan="4">Action</th>
         </tr>
     <?php
 include_once "../connexion.php";
@@ -84,6 +84,7 @@ if (mysqli_num_rows($matiere_result) == 0) {
                 <td><?= $row['libelle'] ?></td>
                 <td><?= $row['specialite'] ?></td>               
                 <td><a href="detail_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Detailler</a></td>
+                <td><a href="affecter_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Affecter</a></td>
                 <td><a href="modifier_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Modifier</a></td>
                 <td><a href="supprimer_matiere.php?id_matiere=<?= $row['id_matiere'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette matière ?')">Supprimer</a></td>
             </tr>

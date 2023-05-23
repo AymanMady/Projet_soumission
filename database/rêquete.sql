@@ -9,8 +9,7 @@ CREATE TABLE `soumission` (
   `date_sous` datetime DEFAULT NULL,
   `date_limite` datetime DEFAULT NULL,
   `valide` tinyint(1) DEFAULT NULL,
-  `note_devoir` float DEFAULT NULL,
-  `note_examen` float DEFAULT NULL
+  
 );
 
 CREATE TABLE `role` (
@@ -110,7 +109,7 @@ CREATE TABLE `etudiant` (
   `Date_naiss` date DEFAULT NULL,
   `semestre` varchar(50) DEFAULT NULL,
   `annee` varchar(50) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
   `id_groupe` int(10) DEFAULT NULL,
   `id_sous` int(10) DEFAULT NULL,
@@ -122,6 +121,7 @@ CREATE TABLE `etudiant` (
 CREATE TABLE `fait_devoir` (
   `id_etud` int(10) DEFAULT NULL,
   `id_devoir` int(10) DEFAULT NULL,
+  `note_devoir` float(10) DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_devoir) REFERENCES devoir(id_devoir)
 );
@@ -129,6 +129,7 @@ CREATE TABLE `fait_devoir` (
 CREATE TABLE `fait_examen` (
   `id_etud` int(10) DEFAULT NULL,
   `id_examen` int(10) DEFAULT NULL,
+  `note_examen` float(10) DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_examen) REFERENCES examen(id_examen)
 );
@@ -144,7 +145,7 @@ CREATE TABLE `etudie` (
 CREATE TABLE `enseigner` (
   `id_matiere` int(10) DEFAULT NULL,
   `id_ens` int(10) DEFAULT NULL,
-    `id_groupe` int(10) DEFAULT NULL,
+  `id_groupe` int(10) DEFAULT NULL,
   FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere),
   FOREIGN KEY (id_groupe) REFERENCES groupe(id_groupe),
   FOREIGN KEY (id_ens) REFERENCES enseignant(id_ens)
