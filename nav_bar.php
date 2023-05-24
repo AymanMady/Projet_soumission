@@ -65,7 +65,14 @@
                                 </li>
                             </ul> 
                         <li  class="dropdown">
-                               <a href="supprimer_session.php"><img src="images/supnum.jpg" class="rounded-circle mx-auto" style="width: 40px; height: 30px;  border-radius: 40%;"></a>
+                               
+                               <!-- <div class="container mt-12"> </div> -->
+                                    <button id="myButton" >
+                                        <a href=""><img src="images/supnum.jpg" class="rounded-circle mx-auto" style="width: 40px; height: 30px;  border-radius: 40%;"></a>
+                                    </button>
+                                    
+                               
+
                         </li>
                                 
                 </ul>
@@ -75,6 +82,7 @@
         </div>
         <!-- /.container -->
     </nav>
+    <div id="myDiv" class="mt-3 p-3 bg-light" style="display: none;">Contenu du div <br> seftgdrfgfh</div>
 <?php
      }
      else if($_SESSION["role"]=="admin"){
@@ -187,7 +195,23 @@
 <?php
      }
 ?>
+<script>
+   
+    var button = document.getElementById("myButton");
+    var div = document.getElementById("myDiv");
 
+   
+    function handleClick() {
+     
+      if (div.style.display === "block") {
+        div.style.display = "none"; 
+      } else {
+        div.style.display = "block"; 
+      }
+    }
+
+    button.addEventListener("click", handleClick);
+  </script>
 </body>
 </html>
 

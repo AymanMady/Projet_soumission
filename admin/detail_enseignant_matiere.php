@@ -23,7 +23,7 @@ if($_SESSION["role"]!="ens"){
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
                 <li><a href="acceuil.php">Acceuil</a></li>
-                <li>Détails sur la matière <?php echo  ?> </li>
+                <li>Détails sur la matière <?php //echo  ?> </li>
             </ol>
         </div>
     </div>
