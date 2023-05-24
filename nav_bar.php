@@ -64,7 +64,7 @@
                                 <a href="#">Soumission archifer</a>
                                 </li>
                                 <li>
-                                <a href="admin/cree_une_soumission.php">cree une soumission </a>
+                                <a href="admin/cree_soumission.php">Crée une soumission </a>
                                 </li>
                             </ul> 
                         <li  class="dropdown">
@@ -203,8 +203,6 @@
    
     var button = document.getElementById("myButton");
     var div = document.getElementById("myDiv");
-
-   
     function handleClick() {
      
       if (div.style.display === "block") {
