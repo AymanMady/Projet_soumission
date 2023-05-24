@@ -1,3 +1,4 @@
+-- Active: 1684230870250@@127.0.0.1@3306
 CREATE TABLE `groupe` (
   `id_groupe` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `libelle` varchar(50) DEFAULT NULL,
@@ -6,11 +7,10 @@ CREATE TABLE `groupe` (
 
 CREATE TABLE `soumission` (
   `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `date_debut` datetime ,
-  `date_limite` datetime ,
-  `bool_active` tinyint(0) DEFAULT NULL,
-  `bool_status` tinyint(0) DEFAULT NULL,
-  `type_sous` float  
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  `valide` tinyint(1) DEFAULT NULL,
+  `archive` tinyint(1) DEFAULT NULL,  
 );
 
 CREATE TABLE `role` (
@@ -39,15 +39,23 @@ CREATE TABLE `semestre` (
   `nom_semestre` varchar(50) DEFAULT NULL
 );
 
+CREATE TABLE `type_matiere` (
+  `id_type_matiere` int(10) PRIMARY KEY AUTO_INCREMENT,
+  `libelle_type` varchar(50) NOT NULL
+);
+
 CREATE TABLE `matiere` (
   `id_matiere` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `code` varchar(20)  UNIQUE,
   `libelle` varchar(50) DEFAULT NULL,
   `specialite` varchar(20) DEFAULT NULL,
-  `id_module` int(10)  DEFAULT NULL,
-  `id_semestre` int(10) DEFAULT NULL,
+  `charge` INT(20) NOT NULL,
+  `id_module` int(10)  NOT NULL,
+  `id_semestre` int(10) NOT NULL,
+  `id_type_matiere` int(10) NOT NULL,
   FOREIGN KEY (id_module) REFERENCES module(id_module),
-  FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre)
+  FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre),
+  FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere)
 );
 
 CREATE TABLE `devoir` (
@@ -122,6 +130,7 @@ CREATE TABLE `etudiant` (
 CREATE TABLE `fait_devoir` (
   `id_etud` int(10) DEFAULT NULL,
   `id_devoir` int(10) DEFAULT NULL,
+  `note_devoir` float DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_devoir) REFERENCES devoir(id_devoir)
 );
@@ -129,6 +138,7 @@ CREATE TABLE `fait_devoir` (
 CREATE TABLE `fait_examen` (
   `id_etud` int(10) DEFAULT NULL,
   `id_examen` int(10) DEFAULT NULL,
+   `note_devoir` float DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_examen) REFERENCES examen(id_examen)
 );
@@ -145,6 +155,8 @@ CREATE TABLE `enseigner` (
   `id_matiere` int(10) DEFAULT NULL,
   `id_ens` int(10) DEFAULT NULL,
   `id_groupe` int(10) DEFAULT NULL,
+  `id_type_matiere` int(10) NOT NULL,
+  FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere),
   FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere),
   FOREIGN KEY (id_groupe) REFERENCES groupe(id_groupe),
   FOREIGN KEY (id_ens) REFERENCES enseignant(id_ens)

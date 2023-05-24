@@ -86,9 +86,13 @@ include "../nav_bar.php";
                             $id_etud=$row['id_etudi'];
                             $req1 = mysqli_query($conn , "SELECT * FROM matiere where id_matiere = $id_matiere");
                             $req2 = mysqli_query($conn , "SELECT * FROM etudiant where id_etud =$id_etud ");
+                            try{
                             $row1=mysqli_fetch_assoc($req1);
                             $row2=mysqli_fetch_assoc($req2);
+                            }
+                            catch(Exception){
 
+                            }
                             ?>
                             <tr>
                             <td><?=$row2['matricule']?></td>
