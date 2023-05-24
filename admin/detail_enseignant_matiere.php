@@ -1,10 +1,10 @@
 
 <?php
-// session_start() ;
-// $email = $_SESSION['email'];
-// if($_SESSION["role"]!="admin"){
-//     header("location:authentification.php");
-// }
+session_start() ;
+$email = $_SESSION['email'];
+if($_SESSION["role"]!="ens"){
+    header("location:authentification.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
                 <li><a href="acceuil.php">Acceuil</a></li>
-                <li>Détails sur la matière </li>
+                <li>Détails sur la matière <?php echo  ?> </li>
             </ol>
         </div>
     </div>
@@ -45,10 +45,12 @@
         <div class="col-md-10">
             <fieldset>
                 <br><br>
-                <?php echo "<strong>Nom de l'enseignant : </strong>". $row['nom']; ?><br>
+                <?php echo "<strong>Nom de l'enseignant : </strong>". $row['nom']." ".$row['prenom']; ?><br>
                 <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br>
                 <?php echo "<strong>Libellè : </strong>". $row['libelle']; ?><br>
                 <?php echo "<strong> Specialite : </strong>" . $row['specialite']; ?><br>
+                <?php echo "<strong> E-mail de l'enseignant : </strong>" . $row['email']; ?><br>
+                <?php echo "<strong> Diplôme : </strong>" . $row['diplome']; ?><br>
             </fieldset>
             <br><br>
         </div>
@@ -59,7 +61,7 @@
     include "../nav_bar.php";
     ?>
     <p>
-        <a href="index_enseignant.php" class="btn btn-primary">Retour</a>
+        <a href="../index_enseignant.php" class="btn btn-primary">Retour</a>
     </p>
 
 </div> <!-- Fermeture de la div container -->

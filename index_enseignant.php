@@ -45,9 +45,7 @@ include "nav_bar.php";
           </tr>
           <?php 
               include_once "connexion.php";
-              $req_ens_mail =  "SELECT * FROM matiere
-                  NATURAL JOIN enseigner NATURAL JOIN enseignant
-                  WHERE enseignant.email = '$email'";
+              $req_ens_mail =  "SELECT * FROM matiere,enseigner,enseignant WHERE enseignant.id_ens=enseigner.id_ens and matiere.id_matiere=enseigner.id_matiere and enseignant.email ='$email'";
 
               $req = mysqli_query($conn , $req_ens_mail);
               if(mysqli_num_rows($req) == 0){
