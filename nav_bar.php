@@ -202,7 +202,6 @@
      }
 ?>
 <script>
-<<<<<<< HEAD
   var button = document.getElementById("myButton");
   var div = document.getElementById("myDiv");
   var divVisible = false; // Variable pour suivre l'état du div
@@ -214,7 +213,6 @@
     } else {
       div.style.display = "none";
       divVisible = false; // Le div est maintenant caché
-=======
    
     var button = document.getElementById("myButton");
     var div = document.getElementById("myDiv");
@@ -225,7 +223,6 @@
       } else {
         div.style.display = "block"; 
       }
->>>>>>> dee7bb95489786d2257ec5702f9487116c125e0b
     }
   }
 
