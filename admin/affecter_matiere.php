@@ -4,7 +4,11 @@ $ens = "SELECT * FROM enseignant ";
 $ens_qry = mysqli_query($conn, $ens);
 $groupe = "SELECT * FROM groupe";
 $groupe_qry = mysqli_query($conn,$groupe);
+$type_matiere = "SELECT * FROM type_matiere";
+$type_matiere_qry = mysqli_query($conn,$type_matiere);
 ?>
+
+
 
 <?php
 session_start() ;
@@ -12,6 +16,57 @@ $email = $_SESSION['email'];
 if($_SESSION["role"]!="admin"){
     header("location:authentification.php");
 } 
+?>
+
+
+<?php
+$id_matiere = $_GET['id_matiere'];
+
+function test_input($data){
+        $data = htmlspecialchars($data);
+        $data = trim($data);
+        $data = htmlentities($data);
+        $data = stripcslashes($data);
+        return $data;
+    }
+    if (isset($_POST['button'])) {
+    
+        // Vérifiez si les champs enseignant et groupe sont des tableaux
+        if (isset($_POST['enseignant']) && isset($_POST['groupe']) && isset($_POST['type_matiere']) ) {
+            $enseignants = $_POST['enseignant'];
+            $groupes = $_POST['groupe'];
+            $type_matieres = $_POST['type_matiere'];
+
+    
+            // Parcourez les tableaux enseignant et groupe pour insérer les valeurs correspondantes dans la base de données
+            foreach ($enseignants as $key => $enseignant) {
+                $groupe = $groupes[$key];
+                $type_matiere = $type_matieres[$key];
+
+    
+                if (!empty($enseignant) && !empty($groupe)  && !empty($type_matiere)) {
+                    $req = mysqli_query($conn, "INSERT INTO enseigner (`id_matiere`, `id_ens`, `id_groupe`, `id_type_matiere`) VALUES ('$id_matiere', '$enseignant', '$groupe' , '$type_matiere')");
+    
+                    if (!$req) {
+                        $message = "Erreur lors de l'ajout de l'enseignant et du groupe.";
+                        break;
+                    }
+                } else {
+                    $message = "Veuillez remplir tous les champs.";
+                    break;
+                }
+            }
+    
+            if (!isset($message)) {
+                header("location: matiere.php");
+                exit();
+            }
+        } else {
+            $message = "Veuillez sélectionner au moins un enseignant et un groupe et une type de matiere .";
+        }
+    }
+
+include "../nav_bar.php";
 
 ?>
 <script type="text/JavaScript">
@@ -33,9 +88,10 @@ if($_SESSION["role"]!="admin"){
         var div3 = document.createElement('div');
         var div4 = document.createElement('div');
 
-        div2.className = "col-md-4";
-        div3.className = "col-md-4";
-        div4.className = "col-md-4";
+        div2.className = "col-md-2";
+        div2.className = "col-md-3";
+        div3.className = "col-md-2";
+        div4.className = "col-md-2";
 
       
         // Then add the content (a new input box) of the element.
@@ -46,8 +102,8 @@ if($_SESSION["role"]!="admin"){
         txtNewInputBox.appendChild(div2);
         div3.innerHTML = "<select  name='groupe[]' id='modi1' class = 'form-control' ><option selected disabled> Groupes </option><?php while ($row_groupe = mysqli_fetch_assoc($groupe_qry)) :?><option value='<?= $row_groupe['id_groupe']; ?>'> <?= $row_groupe['libelle']; ?> </option>  <?php endwhile;?></select>";
         txtNewInputBox.appendChild(div3);
-        // div4.innerHTML = "<select  name='groupe " + nm + "' id='modi1' class = 'form-control' ><option selected disabled> Groupes </option><?php while ($row_groupe = mysqli_fetch_assoc($groupe_qry)) :?><option value='<?= $row_groupe['id_groupe']; ?>'> <?= $row_groupe['libelle']; ?> </option>  <?php endwhile;?></select><br>";
-        // txtNewInputBox.appendChild(div4);
+        div4.innerHTML = "<select  name='type_matiere[]' id='modi1' class = 'form-control' ><option selected disabled> Type Matiere </option><?php while ($row_type_matiere = mysqli_fetch_assoc($type_matiere_qry)) :?><option value='<?= $row_type_matiere['id_type_matiere']; ?>'> <?= $row_type_matiere['libelle_type']; ?> </option>  <?php endwhile;?></select><br>";
+        txtNewInputBox.appendChild(div4);
         // div4.innerHTML = "<input type='text' class='form-control' name=" + nm + " multiple/><input type='file' name='files' multiple/>";
         // txtNewInputBox.appendChild(div4);
         document.getElementById("newElementId").appendChild(txtNewInputBox);
@@ -56,53 +112,6 @@ if($_SESSION["role"]!="admin"){
 
 </script>
 
-<?php
-$id_matiere = $_GET['id_matiere'];
-
-function test_input($data){
-        $data = htmlspecialchars($data);
-        $data = trim($data);
-        $data = htmlentities($data);
-        $data = stripcslashes($data);
-        return $data;
-    }
-    if (isset($_POST['button'])) {
-        $id_matiere = $_GET['id_matiere'];
-    
-        // Vérifiez si les champs enseignant et groupe sont des tableaux
-        if (isset($_POST['enseignant']) && is_array($_POST['enseignant']) && isset($_POST['groupe']) ) {
-            $enseignants = $_POST['enseignant'];
-            $groupes = $_POST['groupe'];
-    
-            // Parcourez les tableaux enseignant et groupe pour insérer les valeurs correspondantes dans la base de données
-            foreach ($enseignants as $key => $enseignant) {
-                $groupe = $groupes[$key];
-    
-                if (!empty($enseignant) && !empty($groupe)) {
-                    $req = mysqli_query($conn, "INSERT INTO enseigner (`id_matiere`, `id_ens`, `id_groupe`) VALUES ('$id_matiere', '$enseignant', '$groupe')");
-    
-                    if (!$req) {
-                        $message = "Erreur lors de l'ajout de l'enseignant et du groupe.";
-                        break;
-                    }
-                } else {
-                    $message = "Veuillez remplir tous les champs.";
-                    break;
-                }
-            }
-    
-            if (!isset($message)) {
-                header("location: matiere.php");
-                exit();
-            }
-        } else {
-            $message = "Veuillez sélectionner au moins un enseignant et un groupe.";
-        }
-    }
-
-include "../nav_bar.php";
-
-?>
 
 
 </br>
@@ -131,6 +140,8 @@ include "../nav_bar.php";
             $ens_qry = mysqli_query($conn, $ens);
             $groupe = "SELECT * FROM groupe";
             $groupe_qry = mysqli_query($conn,$groupe);
+            $type_matiere = "SELECT * FROM type_matiere";
+            $type_matiere_qry = mysqli_query($conn,$type_matiere);
             if(isset($message)){
                 echo $message;
             }
@@ -156,19 +167,25 @@ include "../nav_bar.php";
                     <?php endwhile;?>
                 </select>
             </div>
+            <div class="col-md-2">
+            <select  name="type_matiere[]" id="modi1" class = "form-control">
+                <option selected disabled> Type Matiere </option>
+                        <?php  while ($row_type_matiere = mysqli_fetch_assoc($type_matiere_qry)) :?>
+                        <option value="<?= $row_type_matiere['id_type_matiere']; ?>"> <?= $row_type_matiere['libelle_type']; ?> </option>  
+                    <?php endwhile;?>
+                </select>
+            </div>
 
             <br>  <br> <br>
-            <div class="col-md-12">
-            <div class="col-md-2">
+            <div class="form-group" id="newElementId">
             </div>
+            <br>  <br> <br>
+            <div class="col-md-12">
             <button type="button" onclick="createNewElement();">
                  Ajouter un enseignant
             </button>
             </div>
-            <div class="col-md-6" id="newElementId">
-
-        </div>
-
+            <br>  <br> <br>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" name="button" value="Enregistrer" class="btn-primary"  />

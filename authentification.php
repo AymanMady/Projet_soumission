@@ -11,12 +11,9 @@
     <link href="CSS/bootstrap.css" rel="stylesheet">
     <link href="CSS/modern-business.css" rel="stylesheet">
     <link href="CSS/cssLogin.css" rel="stylesheet" />
-
-
     <title>Login</title>
 </head>
 <body>
-
     <div id='page'>
         <div id="head">
             <br/>

@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
-
     <!-- Custom Fonts -->
     <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -53,21 +52,40 @@
                      
 
                         <li id="potfolio" class="dropdown">   
-                            <a href="#" >enseignant</a>
+                            <a href="#" >Soumission</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                <a href="enseignant.php">Soumission</a>
+                                <a href="#">Soumission en ligne</a>
+                                </li>
+                                <li>
+                                <a href="#">Soumission limité</a>
+                                </li>
+                                <li>
+                                <a href="#">Soumission archifer</a>
+                                </li>
+                                <li>
+                                <a href="admin/cree_une_soumission.php">cree une soumission </a>
                                 </li>
                             </ul> 
                         <li  class="dropdown">
-                               <a href="supprimer_session.php">Se déconnecte</a></div>
-                        </li>                       
-                </ul>
+                               
+                               <!-- <div class="container mt-12"> </div> -->
+                                    <button id="myButton" >
+                                        <a href=""><img src="images/supnum.jpg" class="rounded-circle mx-auto" style="width: 40px; height: 30px;  border-radius: 40%;"></a>
+                                    </button>
+                                    
+                               
 
+                        </li>
+                                
+                </ul>
+                
+    
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+    <div id="myDiv" class="mt-3 p-3 bg-light" style="display: none;">Contenu du div <br> seftgdrfgfh</div>
 <?php
      }
      else if($_SESSION["role"]=="admin"){
@@ -88,7 +106,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-
+                        <li  class="dropdown">
+                        <a href="inscription.php" >insecripition</a> 
+                        </li>
+                        <li  class="dropdown">
+                        <a href="#" >soummission</a> 
+                        <ul class="dropdown-menu">
+                        </li>
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
                             <ul class="dropdown-menu">
@@ -116,8 +140,9 @@
                         <a href="#" >Soummission</a> 
                         </li>
                         <li  class="dropdown">
-                               <a href="../supprimer_session.php">Se déconnecte</a></div>
+                               <a href="../supprimer_session.php">Se déconnecte</a>
                         </li>
+                        
                         
 
                         
@@ -181,7 +206,23 @@
 <?php
      }
 ?>
+<script>
+   
+    var button = document.getElementById("myButton");
+    var div = document.getElementById("myDiv");
 
+   
+    function handleClick() {
+     
+      if (div.style.display === "block") {
+        div.style.display = "none"; 
+      } else {
+        div.style.display = "block"; 
+      }
+    }
+
+    button.addEventListener("click", handleClick);
+  </script>
 </body>
 </html>
 

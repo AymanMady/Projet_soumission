@@ -26,7 +26,7 @@ if($_SESSION["role"]!="admin"){
                 <li><a href="acceuil.php">Acceuil</a>
                           
                 </li>
-                <li>Gestion des enseignant</li>
+                <li>Gestion des enseignants</li>
 
             </ol>
         </div>

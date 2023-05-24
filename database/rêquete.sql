@@ -1,19 +1,13 @@
+-- Active: 1684230870250@@127.0.0.1@3306
 CREATE TABLE `groupe` (
   `id_groupe` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `libelle` varchar(50) DEFAULT NULL,
   `filiere` varchar(50) DEFAULT NULL
 );
 
-CREATE TABLE `soumission` (
-  `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `date_debut` datetime NOT NULL,
-  `date_fin` datetime NOT NULL,
-  `valide` tinyint(1) DEFAULT NULL,
-  `archive` tinyint(1) DEFAULT NULL,  
-);
 
 CREATE TABLE `role` (
-  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT,
   `profile` varchar(50) DEFAULT NULL
 );
 
@@ -53,9 +47,20 @@ CREATE TABLE `matiere` (
   `id_semestre` int(10) NOT NULL,
   `id_type_matiere` int(10) NOT NULL,
   FOREIGN KEY (id_module) REFERENCES module(id_module),
-  FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre)
+  FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre),
   FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere)
 );
+
+CREATE TABLE `soumission` (
+  `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  `valide` tinyint(1) DEFAULT NULL,
+  `archive` tinyint(1) DEFAULT NULL,
+  `id_matiere` int(10) DEFAULT NULL,
+  FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere)
+);
+
 
 CREATE TABLE `devoir` (
   `id_devoir` int(10) PRIMARY KEY AUTO_INCREMENT,
@@ -233,17 +238,22 @@ INSERT INTO `departement` (`id`, `code`, `nom`) VALUES
 (3, 'CNM', 'multimedia'),
 (4, 'TC', 'trancommun');
 
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+INSERT INTO `type_matiere` ( `libelle_type`) VALUES ( 'TP');
+INSERT INTO `type_matiere` ( `libelle_type`) VALUES ( 'CM');
+
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------
 
-INSERT INTO `matiere` (`id_matiere`, `code`, `libelle`, `specialite`, `id_module`, `id_semestre`) VALUES
-(2, 'DEV110', 'Algorithmique et programmation C++', 'TC', 1, 1),
-(3, 'DEV111', 'Introduction aux bases de données', 'TC', 1, 1),
-(4, 'DEV210', 'Programmation Python', 'DSI', 7, 2),
-(5, 'MAI210', 'Algèbre 2', 'CNM', 3, 2),
-(6, 'DPR310', 'Communication', 'CNM', 2, 3),
-(7, 'DPR313', 'Gestion entreprise', 'DSI', 2, 3);
+INSERT INTO `matiere` (`id_matiere`, `code`, `libelle`, `specialite`,`charge`, `id_module`, `id_semestre`,`id_type_matiere`) VALUES
+(2, 'DEV110', 'Algorithmique et programmation C++', 'TC',33, 1, 1,1),
+(3, 'DEV111', 'Introduction aux bases de données', 'TC',66, 1, 1,2),
+(4, 'DEV210', 'Programmation Python', 'DSI',55, 1, 2,1),
+(5, 'MAI210', 'Algèbre 2', 'CNM', 3,1, 2,1),
+(6, 'DPR310', 'Communication', 'CNM',22, 2, 3,2),
+(7, 'DPR313', 'Gestion entreprise', 'DSI',99, 2, 3,1);
 
 
 -- --------------------------------------------------------

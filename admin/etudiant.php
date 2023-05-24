@@ -17,7 +17,7 @@ include "../nav_bar.php";
                 <li><a href="acceuil.php">Acceuil</a>
                     
                 </li>
-                <li>Gestion des etudiants</li>
+                    <li>Gestion des etudiants</li>
                    
             </ol>
         </div>
@@ -56,7 +56,7 @@ include "../nav_bar.php";
         <a href="ajouter_etudiant.php" class = "btn btn-primary" >Nouveau</a>
         </div>
         <div class="text-right">
-        <a href="importer.php"  class="btn btn-primary">importer</a>
+        <a href="importer_etudiant.php"  class="btn btn-primary">importer</a>
         </div>
     </div>
 
