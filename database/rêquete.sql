@@ -1,19 +1,13 @@
+-- Active: 1684230870250@@127.0.0.1@3306
 CREATE TABLE `groupe` (
   `id_groupe` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `libelle` varchar(50) DEFAULT NULL,
   `filiere` varchar(50) DEFAULT NULL
 );
 
-CREATE TABLE `soumission` (
-  `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `date_debut` datetime NOT NULL,
-  `date_fin` datetime NOT NULL,
-  `valide` tinyint(1) DEFAULT NULL,
-  `archive` tinyint(1) DEFAULT NULL
-);
 
 CREATE TABLE `role` (
-  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT,
   `profile` varchar(50) DEFAULT NULL
 );
 
@@ -56,6 +50,17 @@ CREATE TABLE `matiere` (
   FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre),
   FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere)
 );
+
+CREATE TABLE `soumission` (
+  `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  `valide` tinyint(1) DEFAULT NULL,
+  `archive` tinyint(1) DEFAULT NULL,
+  `id_matiere` int(10) DEFAULT NULL,
+  FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere)
+);
+
 
 CREATE TABLE `devoir` (
   `id_devoir` int(10) PRIMARY KEY AUTO_INCREMENT,
