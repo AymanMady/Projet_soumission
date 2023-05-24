@@ -64,28 +64,30 @@
                                 <a href="#">Soumission archifer</a>
                                 </li>
                                 <li>
-                                <a href="admin/cree_une_soumission.php">cree une soumission </a>
+                                <a href="admin/cree_soumission.php">Crée une soumission </a>
                                 </li>
                             </ul> 
                         <li  class="dropdown">
                                
                                <!-- <div class="container mt-12"> </div> -->
-                                    <button id="myButton" >
-                                        <a href=""><img src="images/supnum.jpg" class="rounded-circle mx-auto" style="width: 40px; height: 30px;  border-radius: 40%;"></a>
-                                    </button>
-                                    
-                               
+                                 <a href="#"><img id="myButton" class="style-scope yt-img-shadow" src="images/supnum.jpg" draggable="false" style="width: 32px; height: 32px; border-radius: 50%;"></a>
 
                         </li>
-                                
-                </ul>
-                
+                <style>
+                    h1{
+
+                            text-align: center;
+                    }
+                </style>
     
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-    <div id="myDiv" class="mt-3 p-3 bg-light" style="display: none;">Contenu du div <br> seftgdrfgfh</div>
+    <br><br>
+<div id="myDiv" class="mt-10 p-7 bg-light position-absolute top-0 end-0" style="display: none;">Contenu du div <br> seftgdrfgfh</div>
+
+
 <?php
      }
      else if($_SESSION["role"]=="admin"){
@@ -106,12 +108,8 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-                        <li  class="dropdown">
+                        <li >
                         <a href="inscription.php" >insecripition</a> 
-                        </li>
-                        <li  class="dropdown">
-                        <a href="#" >soummission</a> 
-                        <ul class="dropdown-menu">
                         </li>
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
@@ -207,11 +205,20 @@
      }
 ?>
 <script>
+  var button = document.getElementById("myButton");
+  var div = document.getElementById("myDiv");
+  var divVisible = false; // Variable pour suivre l'état du div
+
+  function handleClick() {
+    if (!divVisible) {
+      div.style.display = "block";
+      divVisible = true; // Le div est maintenant visible
+    } else {
+      div.style.display = "none";
+      divVisible = false; // Le div est maintenant caché
    
     var button = document.getElementById("myButton");
     var div = document.getElementById("myDiv");
-
-   
     function handleClick() {
      
       if (div.style.display === "block") {
@@ -220,9 +227,10 @@
         div.style.display = "block"; 
       }
     }
-
-    button.addEventListener("click", handleClick);
-  </script>
+  }
+}
+  button.addEventListener("click", handleClick);
+</script>
 </body>
 </html>
 
