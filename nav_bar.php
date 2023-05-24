@@ -108,12 +108,8 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-                        <li  class="dropdown">
+                        <li >
                         <a href="inscription.php" >insecripition</a> 
-                        </li>
-                        <li  class="dropdown">
-                        <a href="#" >soummission</a> 
-                        <ul class="dropdown-menu">
                         </li>
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
@@ -133,7 +129,11 @@
                                 <li >
                                     <a href="matiere.php">Gestion des matiere</a>
                                 </li>
-                            </ul> 
+                                </ul>
+                        <li  class="dropdown">
+                        <a href="#" >soummission</a> 
+                        </li>
+                  
                         <li  class="dropdown">
                                <a href="../supprimer_session.php">Se déconnecte</a>
                         </li>

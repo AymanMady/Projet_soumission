@@ -45,12 +45,16 @@ if($_SESSION["role"]!="ens"){
         <div class="col-md-10">
             <fieldset>
                 <br><br>
+
+                <h4>
                 <?php echo "<strong>Nom de l'enseignant : </strong>". $row['nom']." ".$row['prenom']; ?><br>
                 <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br>
                 <?php echo "<strong>Libellè : </strong>". $row['libelle']; ?><br>
                 <?php echo "<strong> Specialite : </strong>" . $row['specialite']; ?><br>
                 <?php echo "<strong> E-mail de l'enseignant : </strong>" . $row['email']; ?><br>
                 <?php echo "<strong> Diplôme : </strong>" . $row['diplome']; ?><br>
+                </h4>
+               
             </fieldset>
             <br><br>
         </div>
