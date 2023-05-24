@@ -1,3 +1,5 @@
+
+<br><br><br>
 <?php
  session_start() ;
  $email = $_SESSION['email'];
@@ -24,7 +26,7 @@ include "nav_bar.php";
                 <li><a href="#">Acceuil</a>
                     
                 </li>
-                <li class="active">Les matieres </li>
+                <li>Les matières enseignées par l'enseignant <?php //echo $nom_ens ?> </li>
                    
             </ol>
         </div>
@@ -39,6 +41,7 @@ include "nav_bar.php";
               <th>Code</th>
               <th>Libelle</th>
               <th>Specialite</th>
+              <th>Action</th>
           </tr>
           <?php 
               include_once "connexion.php";
@@ -57,6 +60,7 @@ include "nav_bar.php";
                           <td><?=$row['code']?></td>
                           <td><?=$row['libelle']?></td>
                           <td><?=$row['specialite']?></td>
+                          <td><a href="admin/detail_enseignant_matiere.php?id_matiere=<?=$row['id_matiere']?>">Detailler</a></td>
                           
                       </tr>
                     <?php

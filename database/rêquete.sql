@@ -6,15 +6,15 @@ CREATE TABLE `groupe` (
 
 CREATE TABLE `soumission` (
   `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `date_sous` datetime DEFAULT NULL,
-  `date_limite` datetime DEFAULT NULL,
-  `valide` tinyint(1) DEFAULT NULL,
-  `note_devoir` float DEFAULT NULL,
-  `note_examen` float DEFAULT NULL
+  `date_debut` datetime ,
+  `date_limite` datetime ,
+  `bool_active` tinyint(0) DEFAULT NULL,
+  `bool_status` tinyint(0) DEFAULT NULL,
+  `type_sous` float  
 );
 
 CREATE TABLE `role` (
-  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `id_role` int(10) PRIMARY KEY AUTO_INCREMENT,
   `profile` varchar(50) DEFAULT NULL
 );
 

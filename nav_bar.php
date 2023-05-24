@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
-
     <!-- Custom Fonts -->
     <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -53,17 +52,25 @@
                      
 
                         <li id="potfolio" class="dropdown">   
-                            <a href="#" >enseignant</a>
+                            <a href="#" >Soumission</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                <a href="enseignant.php">Soumission</a>
+                                <a href="#">Soumission en ligne</a>
+                                </li>
+                                <li>
+                                <a href="#">Soumission limité</a>
+                                </li>
+                                <li>
+                                <a href="#">Soumission archifer</a>
                                 </li>
                             </ul> 
                         <li  class="dropdown">
-                               <a href="supprimer_session.php">Se déconnecte</a></div>
-                        </li>                       
+                               <a href="supprimer_session.php"><img src="images/supnum.jpg" class="rounded-circle mx-auto" style="width: 40px; height: 30px;  border-radius: 40%;"></a>
+                        </li>
+                                
                 </ul>
-
+                
+    
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -114,8 +121,9 @@
                                 </li>
                             </ul> 
                         <li  class="dropdown">
-                               <a href="../supprimer_session.php">Se déconnecte</a></div>
+                               <a href="../supprimer_session.php">Se déconnecte</a>
                         </li>
+                        
                         
 
                         
