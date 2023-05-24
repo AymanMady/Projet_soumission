@@ -1,12 +1,12 @@
 <?php 
 session_start() ;
 $email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
+if($_SESSION["role"]!="ens"){
     header("location:authentification.php");
 }
 
 include_once "../connexion.php";
-$semestre = "SELECT * FROM matiere ";
+$semestre = "SELECT * FROM matiere,enseigner,enseignant  where matiere.id_matiere = enseigner.id_matiere AND enseigner.id_ens = enseignant.id_ens and email='$email'  ";
 $semestre_qry = mysqli_query($conn, $semestre);
 include "../nav_bar.php";
 ?>
@@ -44,10 +44,10 @@ include "../nav_bar.php";
         <form action="insert.php" method="POST">
        
         <div class="form-group">
-            <label class="col-md-1" >matiere</label>
+            <label class="col-md-1" >Matière</label>
             <div class="col-md-6" >
             <select class = "form-control" id="academic" value="Semesters" name="semester">
-                    <option selected disabled> matiere </option>
+                    <option selected disabled> Matière </option>
                             <?php while ($row = mysqli_fetch_assoc($semestre_qry)) : ?>
                         <option value="<?= $row['id_matiere']; ?>"> <?= $row['libelle']; ?> </option>
                     <?php endwhile; ?> 
@@ -56,13 +56,13 @@ include "../nav_bar.php";
         </div>
 
         <div class="form-group">
-            <label class="col-md-1">date debut </label>
+            <label class="col-md-1">Date début </label>
             <div class="col-md-6">
                 <input type="datetime-local" name="codematieres" class = "form-control">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-1">date fin</label>
+            <label class="col-md-1">Date fin</label>
             <div class="col-md-6">
                 <input type="datetime-local" name="codematieres" class = "form-control">
             </div>
@@ -83,7 +83,12 @@ include "../nav_bar.php";
                 <input type="file" id="fichier" name="file">
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
 
+            </div>
+        </div>
 
  
 </form>
