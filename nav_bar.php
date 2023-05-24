@@ -58,6 +58,9 @@
                                 <li>
                                 <a href="enseignant.php">Soumission</a>
                                 </li>
+                                <li>
+                                <a href="admin/cree_une_soumission.php">cree une soumission </a>
+                                </li>
                             </ul> 
                         <li  class="dropdown">
                                <a href="supprimer_session.php">Se déconnecte</a></div>
@@ -93,6 +96,7 @@
                         </li>
                         <li  class="dropdown">
                         <a href="#" >soummission</a> 
+                        <ul class="dropdown-menu">
                         </li>
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
