@@ -129,11 +129,14 @@
                                 <li >
                                     <a href="matiere.php">Gestion des matiere</a>
                                 </li>
-                                </ul>
-                        <li  class="dropdown">
-                        <a href="#" >soummission</a> 
+                            </ul> 
                         </li>
-                  
+                        <li  class="dropdown">
+                        <a href="inscription.php" >Inscripition</a> 
+                        </li>
+                        <li  class="dropdown">
+                        <a href="#" >Soummission</a> 
+                        </li>
                         <li  class="dropdown">
                                <a href="../supprimer_session.php">Se déconnecte</a>
                         </li>
@@ -225,7 +228,7 @@
       }
     }
   }
-
+}
   button.addEventListener("click", handleClick);
 </script>
 </body>

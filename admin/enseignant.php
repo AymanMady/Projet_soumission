@@ -75,7 +75,7 @@ include "../nav_bar.php";
                      
                     $req = mysqli_query($conn , $req1);
                     if(mysqli_num_rows($req) == 0){
-                        echo "Il n'y a pas encore des utilisateur ajouter !" ;
+                        echo "Il n'y a pas encore des enseignant ajouter !" ;
                     }else {
                         while($row=mysqli_fetch_assoc($req)){
                             ?>

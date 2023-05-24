@@ -122,7 +122,7 @@ CREATE TABLE `etudiant` (
   `Date_naiss` date DEFAULT NULL,
   `semestre` varchar(50) DEFAULT NULL,
   `annee` varchar(50) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
   `id_groupe` int(10) DEFAULT NULL,
   `id_sous` int(10) DEFAULT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE `etudiant` (
 CREATE TABLE `fait_devoir` (
   `id_etud` int(10) DEFAULT NULL,
   `id_devoir` int(10) DEFAULT NULL,
-  `note_devoir` float DEFAULT NULL,
+  `note_devoir` float(10) DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_devoir) REFERENCES devoir(id_devoir)
 );
@@ -142,7 +142,7 @@ CREATE TABLE `fait_devoir` (
 CREATE TABLE `fait_examen` (
   `id_etud` int(10) DEFAULT NULL,
   `id_examen` int(10) DEFAULT NULL,
-   `note_devoir` float DEFAULT NULL,
+  `note_examen` float(10) DEFAULT NULL,
   FOREIGN KEY (id_etud) REFERENCES etudiant(id_etud),
   FOREIGN KEY (id_examen) REFERENCES examen(id_examen)
 );

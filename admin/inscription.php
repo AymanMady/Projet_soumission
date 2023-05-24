@@ -27,7 +27,7 @@ include "../nav_bar.php";
                 <li><a href="acceuil.php">Acceuil</a>
                     
                 </li>
-                <li>Gestion des groupes</li>
+                <li>Inscription</li>
                    
             </ol>
         </div>
