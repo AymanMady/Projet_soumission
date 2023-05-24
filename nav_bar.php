@@ -63,6 +63,9 @@
                                 <li>
                                 <a href="#">Soumission archifer</a>
                                 </li>
+                                <li>
+                                <a href="admin/cree_soumission.php">Crée une soumission </a>
+                                </li>
                             </ul> 
                         <li  class="dropdown">
                                
@@ -110,6 +113,7 @@
                         </li>
                         <li  class="dropdown">
                         <a href="#" >soummission</a> 
+                        <ul class="dropdown-menu">
                         </li>
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
@@ -198,6 +202,7 @@
      }
 ?>
 <script>
+<<<<<<< HEAD
   var button = document.getElementById("myButton");
   var div = document.getElementById("myDiv");
   var divVisible = false; // Variable pour suivre l'état du div
@@ -209,6 +214,18 @@
     } else {
       div.style.display = "none";
       divVisible = false; // Le div est maintenant caché
+=======
+   
+    var button = document.getElementById("myButton");
+    var div = document.getElementById("myDiv");
+    function handleClick() {
+     
+      if (div.style.display === "block") {
+        div.style.display = "none"; 
+      } else {
+        div.style.display = "block"; 
+      }
+>>>>>>> dee7bb95489786d2257ec5702f9487116c125e0b
     }
   }
 
