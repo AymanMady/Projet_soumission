@@ -42,20 +42,24 @@ function test_input($data){
             foreach ($enseignants as $key => $enseignant) {
                 $groupe = $groupes[$key];
                 $type_matiere = $type_matieres[$key];
-
-    
                 if (!empty($enseignant) && !empty($groupe)  && !empty($type_matiere)) {
-                    $req = mysqli_query($conn, "INSERT INTO enseigner (`id_matiere`, `id_ens`, `id_groupe`, `id_type_matiere`) VALUES ('$id_matiere', '$enseignant', '$groupe' , '$type_matiere')");
+                    $detou=mysqli_query($conn,"SELECT * FROM enseigner WHERE id_matiere=$id_matiere and id_ens=$enseignant and id_groupe=$groupe and id_type_matiere=$type_matiere");
+                    if(mysqli_num_rows($detou)==0){
+                        $req = mysqli_query($conn, "INSERT INTO enseigner (`id_matiere`, `id_ens`, `id_groupe`, `id_type_matiere`) VALUES ('$id_matiere', '$enseignant', '$groupe' , '$type_matiere')");
     
-                    if (!$req) {
-                        $message = "Erreur lors de l'ajout de l'enseignant et du groupe.";
-                        break;
-                    }
-                } else {
+                        if (!$req) {
+                            $message = "Erreur lors de l'ajout de l'enseignant et du groupe.";
+                            break;
+                        }
+                       
+                    } 
+                }
+                else {
                     $message = "Veuillez remplir tous les champs.";
                     break;
                 }
-            }
+                    }
+                 
     
             if (!isset($message)) {
                 header("location: matiere.php");

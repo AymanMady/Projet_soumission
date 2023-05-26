@@ -20,10 +20,27 @@ $id_matiere = test_input($_POST['semester']);
 $date_debus = test_input($_POST['codematieres']);
 $date_fin =  test_input($_POST['fin']);
 $type=test_input($_POST['type']);
-$file= test_input($_POST['file']);
-$sql1="INSERT INTO `soumission`(`date_debut`, `date_fin`, `valide`, `archive`, `id_matiere`) VALUES('$date_debus','$date_fin',0,0,$id_matiere) ";
+$file= $_POST['file'];
+$titre=test_input($_POST['titre_sous']);
+$descri=test_input($_POST['description_sous']);
+$sql1="INSERT INTO `soumission`(`titre_sous`, `description_sous`, `date_debut`, `date_fin`, `valide`, `archive`, `id_matiere`) VALUES('$titre','$descri','$date_debus','$date_fin',0,0,$id_matiere) ";
 
 mysqli_query($conn,$sql1);
+if($type=="examen"){
+$sql2="INSERT INTO `examen` (`date_examen`, `id_sous`, `id_matiere`) VALUES ('$date_debus',(SELECT id_sous FROM soumission WHERE id_sous=(SELECT MAX(id_sous) FROM soumission)),$id_matiere)";
+mysqli_query($conn,$sql2);
+
+$riq3="INSERT INTO `data_test`(`data`, `id_sous`) VALUES ('$file',(SELECT id_sous FROM soumission WHERE id_sous=(SELECT MAX(id_sous) FROM soumission)))";
+mysqli_query($conn,$riq3);
+}
+else {
+
+$sql2="INSERT INTO `devoir`(`date_devoir`, `id_sous`, `id_matiere`) VALUES('$date_debus',(SELECT id_sous FROM soumission WHERE id_sous=(SELECT MAX(id_sous) FROM soumission)),$id_matiere)";
+mysqli_query($conn,$sql2);
+
+$riq3="INSERT INTO `data_test`(`data`, `id_sous`) VALUES ('$file',(SELECT id_sous FROM soumission WHERE id_sous=(SELECT MAX(id_sous) FROM soumission)))";
+mysqli_query($conn,$riq3);
+}
 }
 include "../nav_bar.php";
 
