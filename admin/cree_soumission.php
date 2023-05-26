@@ -8,7 +8,25 @@ if($_SESSION["role"]!="ens"){
 include_once "../connexion.php";
 $semestre = "SELECT * FROM matiere,enseigner,enseignant  where matiere.id_matiere = enseigner.id_matiere AND enseigner.id_ens = enseignant.id_ens and email='$email'  ";
 $semestre_qry = mysqli_query($conn, $semestre);
+function test_input($data){
+    $data = htmlspecialchars($data);
+    $data = trim($data);
+    $data = htmlentities($data);
+    $data = stripcslashes($data);
+    return $data;
+}
+if(isset($_POST['button'])){
+$id_matiere = test_input($_POST['semester']);
+$date_debus = test_input($_POST['codematieres']);
+$date_fin =  test_input($_POST['fin']);
+$type=test_input($_POST['type']);
+$file= test_input($_POST['file']);
+$sql1="INSERT INTO `soumission`(`date_debut`, `date_fin`, `valide`, `archive`, `id_matiere`) VALUES('$date_debus','$date_fin',0,0,$id_matiere) ";
+
+mysqli_query($conn,$sql1);
+}
 include "../nav_bar.php";
+
 ?>
 
 <body>  
@@ -41,7 +59,7 @@ include "../nav_bar.php";
             ?>
 
         </p>
-        <form action="insert.php" method="POST">
+        <form action="" method="POST">
        
         <div class="form-group">
             <label class="col-md-1" >Matière</label>
@@ -64,7 +82,7 @@ include "../nav_bar.php";
         <div class="form-group">
             <label class="col-md-1">Date fin</label>
             <div class="col-md-6">
-                <input type="datetime-local" name="codematieres" class = "form-control">
+                <input type="datetime-local" name="fin" class = "form-control">
             </div>
         </div>
         <div class="form-group">
