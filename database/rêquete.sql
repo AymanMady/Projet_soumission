@@ -66,8 +66,6 @@ CREATE TABLE `soumission` (
 
 CREATE TABLE `devoir` (
   `id_devoir` int(10) PRIMARY KEY AUTO_INCREMENT,
-  `type_devoir` varchar(50) DEFAULT NULL,
-  `data_devoir` longblob DEFAULT NULL,
   `date_devoir` date DEFAULT NULL,
   `id_sous` int(10) DEFAULT NULL,
   `id_matiere` int(10) DEFAULT NULL,
@@ -77,8 +75,6 @@ CREATE TABLE `devoir` (
 
 CREATE TABLE `examen` (
   `id_examen` int(10) PRIMARY KEY AUTO_INCREMENT  ,
-  `type_examen` varchar(50) DEFAULT NULL,
-  `data_examen` longblob DEFAULT NULL,
   `date_examen` date DEFAULT NULL,
   `id_sous` int(10) DEFAULT NULL,
   `id_matiere` int(10) DEFAULT NULL,
@@ -183,6 +179,12 @@ CREATE TABLE `departement` (
   `nom` text NOT NULL
 );
 --
+CREATE TABLE data_test(
+  id_data int AUTO_INCREMENT PRIMARY key ,
+  data longblob NOT NULL ,
+  id_sous INT(10) not NULL,
+  FOREIGN KEY (id_sous) REFERENCES soumission(id_sous)
+);
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------
