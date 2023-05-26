@@ -122,7 +122,13 @@ if(isset($_POST['submit'])){
                 </select>
             </div>
         </div>
-        <div style="overflow-x:auto;">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
+            </div>
+        </div>
+      </form>
+      <div style="overflow-x:auto;">
         <table class="table table-striped table-bordered">
                 <tr>
                     <th>Les enseignants affectés à cette matière</th>
@@ -140,21 +146,16 @@ if(isset($_POST['submit'])){
                     ?>
             <tr>
                 <td><?=$row['nom']?><?=$row['prenom']?></td>
-                <td><a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&$id_matiere?"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)">Supprimer</a></td>
+                <td><a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&id_matiere=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)">Supprimer</a></td>
                 </tr>
                 <?php
                 }
             }
             ?>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
-            </div>
-        </div>
-      </form>
  </div>
 </div>
+                
 
 
 
