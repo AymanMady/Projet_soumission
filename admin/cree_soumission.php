@@ -28,7 +28,34 @@ mysqli_query($conn,$sql1);
 include "../nav_bar.php";
 
 ?>
+<script type="text/JavaScript">
+    var i = 1;
 
+    function ToAction(url) {
+        window.location.href = url;
+    }
+
+    function createNewElement() {
+        i++;
+        // First create a DIV element.
+        var txtNewInputBox = document.createElement('div');
+        txtNewInputBox.className = 'form-group';
+        var div1 = document.createElement('div');
+        var div2 = document.createElement('div');
+
+        div2.className = "col-md-6";
+
+      
+        // Then add the content (a new input box) of the element.
+        var nm =  i;
+        txtNewInputBox.innerHTML = "<label class='col-md-1'>Sélectionnez un fichier : </label>"
+        div2.innerHTML = "<input type='file' id='fichier' name='file' class = 'form-control'>";
+        txtNewInputBox.appendChild(div2);
+        document.getElementById("newElementId").appendChild(txtNewInputBox);
+    }
+
+
+</script>
 <body>  
  
 
@@ -61,6 +88,12 @@ include "../nav_bar.php";
         </p>
         <form action="" method="POST">
        
+        <div class="form-group">
+            <label class="col-md-1">Titre </label>
+            <div class="col-md-6">
+                <input type="text" name="titre_sous" class = "form-control">
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-md-1" >Matière</label>
             <div class="col-md-6" >
@@ -96,11 +129,26 @@ include "../nav_bar.php";
                </div>
         </div>
         <div class="form-group">
-            <label class="col-md-1">Sélectionnez un fichier : </label>
+            <label class="col-md-1">Description </label>
             <div class="col-md-6">
-                <input type="file" id="fichier" name="file">
+                <textarea name="description_sous" id="" class = "form-control" cols="30" rows="10"></textarea>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-md-1">Sélectionnez un fichier : </label>
+            <div class="col-md-6">
+                <input type="file" id="fichier" name="file" class = "form-control">
+            </div>
+        </div>
+        <div  id="newElementId">
+        </div>
+        <br>  <br> <br>
+        <div class="col-md-12">
+        <button type="button" onclick="createNewElement();">
+                Ajouter un fichier
+        </button>
+        </div>
+        <br>  <br> <br>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" name="button" value=Enregistrer class="btn-primary"  />

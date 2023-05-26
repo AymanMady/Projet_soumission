@@ -132,9 +132,6 @@
                             </ul> 
                         </li>
                         <li  class="dropdown">
-                        <a href="inscription.php" >Inscripition</a> 
-                        </li>
-                        <li  class="dropdown">
                         <a href="#" >Soummission</a> 
                         </li>
                         <li  class="dropdown">

@@ -53,6 +53,8 @@ CREATE TABLE `matiere` (
 
 CREATE TABLE `soumission` (
   `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `titre_sous` varchar(50),
+  `description_sous` varchar(50),
   `date_debut` datetime NOT NULL,
   `date_fin` datetime NOT NULL,
   `valide` tinyint(1) DEFAULT NULL,
