@@ -15,6 +15,11 @@ if($_SESSION["role"]!="admin"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detailler matiere</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      h1{
+        
+      }
+    </style>
 </head>
 <body>
     
@@ -37,7 +42,11 @@ include_once "../connexion.php";
 $id_matiere = $_GET['id_matiere'];
 
 
-$req_detail = "SELECT * FROM matiere WHERE id_matiere = $id_matiere";
+$req_detail = "SELECT DISTINCT id_matiere, code, matiere.libelle,
+specialite, charge, nom_semestre,
+nom_module FROM matiere INNER JOIN 
+semestre USING(id_semestre) INNER JOIN
+module USING(id_module) WHERE id_matiere = $id_matiere";
 $req = mysqli_query($conn , $req_detail);
 while($row=mysqli_fetch_assoc($req)){
 ?>
@@ -45,23 +54,81 @@ while($row=mysqli_fetch_assoc($req)){
     <div class="row justify-content-center">
       <div class="col-md-6">
         <fieldset>
-          <legend>Matiére</legend>
-          <br><br>
+          <legend class="legendStyle">
+              <a data-toggle="collapse" data-target="#demo" href="#">Détails sur la matière <?=$row['libelle']?></a>
+          </legend>
+            <br><br>
+            <div class="collapse in" id="demo">
+                <div class="search-box">
+
+                  <div class="form-group">
+                      <div class="col-md-8 col-sm-2">
+                        <h4 >
+                        <?php echo "<strong class='font-weight-bold'>Code de la matiere : </strong>". $row['code']; ?><br><br>
+                        <?php echo "<strong class='font-weight-bold'>Libellè : </strong>". $row['libelle']; ?><br><br>
+                        <?php echo "<strong class='font-weight-bold'> Specialite : </strong>" . $row['specialite']; ?><br><br>
+                        <?php echo "<strong class='font-weight-bold'> Charge de la matière : </strong>" . $row['charge']; ?><br><br>
+                        <?php echo "<strong class='font-weight-bold'> Module : </strong>" . $row['nom_module']; ?><br><br>
+                        <?php echo "<strong class='font-weight-bold'> Semestre : </strong>" . $row['nom_semestre']; ?><br><br>
+                        
+                        <?php
+                        $req_detail = "SELECT id_matiere, groupe.libelle FROM matiere INNER JOIN groupe WHERE id_matiere = $id_matiere";
+                        $req = mysqli_query($conn , $req_detail);
+                        $i = 0;
+                        while($row=mysqli_fetch_assoc($req)){
+                          $i++;
+                          if ($i === 1) {
+                            echo "<strong class='font-weight-bold'> Les groupes : </strong>";
+                              }
+                                echo  $row['libelle'] . " ";
+                        }
+                            ?>
+                         </h4>
+                      </div>
+                    </div>
+                    <!-- alert alert-info  te text-info-->
+                  
+                        <div class="alert alert-info" style="margin-left: 700px; width:400px; height:300px;" > 
+                        <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) affecter(és) à cette matière</strong></strong><br><br>
+                        <h4>
+                        <?php
+                        $req_ens_info = "SELECT id_matiere, nom, prenom FROM matiere INNER JOIN enseignant WHERE id_matiere = $id_matiere";
+                        $req = mysqli_query($conn , $req_ens_info);
+                        $i = 0;
+                        while($row=mysqli_fetch_assoc($req)){
+                          $i++;
+                          if ($i === 1) {
+                            echo "<strong class='font-weight-bold'>  </strong>";
+                              }
+                                echo  $row['nom'] ." ". $row['prenom']."<br><br> ";
+                        }
+                            ?>
+                            </h4>
+                    </div>
+                </div>
+            </div>
           
-          <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br>
-          <?php echo "<strong>Libellè : </strong>". $row['libelle']; ?><br>
-          <?php echo "<strong> Specialite : </strong>" . $row['specialite']; ?><br>
-        </fieldset>
-        <br><br>
+          </fieldset>
+          <?php
+          $req_detail = "SELECT DISTINCT id_matiere, code, matiere.libelle,
+          specialite, charge, nom_semestre,
+          nom_module FROM matiere INNER JOIN 
+          semestre USING(id_semestre) INNER JOIN
+          module USING(id_module) WHERE id_matiere = $id_matiere";
+          $req = mysqli_query($conn , $req_detail);
+          while($row=mysqli_fetch_assoc($req)){
+          ?>
+            <br>
+            <p>
+            <a href="modifier_matiere.php?id_matiere=<?= $row['id_matiere'] ?>" style="margin-left: 100px; " type="submit" class="btn btn-primary">Modifier</a>
+            </p>
+                          
       </div>
     </div>
   </div>
-  <p>
-        <a href="matiere.php" class = "btn btn-primary" >Retour</a>
-        </p>
-
 <?php
     
+}
 }
 include "../nav_bar.php";
 ?>

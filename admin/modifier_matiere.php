@@ -1,19 +1,17 @@
 <?php
 session_start() ;
-$email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
+ if($_SESSION["role"]!="admin"){
+     header("location:authentification.php");
 } 
 include_once "../connexion.php";
+$id_matiere = $_GET['id_matiere'];
+
 $semestre = "SELECT * FROM semestre ";
 $semestre_qry = mysqli_query($conn, $semestre);
 $module = "SELECT * FROM module";
 $module_qry = mysqli_query($conn,$module);
-?>
 
 
-<?php
-$id_matiere = $_GET['id_matiere'];
 $query = "SELECT * FROM `matiere` WHERE id_matiere = $id_matiere  ";
 $result = mysqli_query($conn, $query);
 $student = mysqli_fetch_assoc($result);
@@ -57,11 +55,31 @@ if(isset($_POST['submit'])){
                     
                     </li>
                     <li>Gestion des matiere</li>
-                    <li>Ajouter une matiere</li>
+                    
             </ol>
         </div>
     </div>
-   
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+            <?php
+                $id_matiere = $_GET['id_matiere'];
+                $matiere = "SELECT * FROM matiere WHERE id_matiere = $id_matiere";
+                $matiere_qry = mysqli_query($conn,$matiere);
+                while ($row_matiere = mysqli_fetch_assoc($matiere_qry)) :
+                ?>
+                   
+                   <fieldset class="fsStyle">
+                        <legend class="legendStyle">
+                            <a data-toggle="collapse" data-target="#demo" href="#">Modifier la matière <?= $row_matiere['libelle'] ?></a>
+                        </legend>
+                    </fieldset>
+                
+                    <?php endwhile;?>
+                
+            </div>
+        </div>
+    </div>  
 <div class="form-horizontal">
     <br /><br />
 
@@ -75,21 +93,21 @@ if(isset($_POST['submit'])){
         </p>
         <form action="" method="POST">
         <div class="form-group">
-            <label class="col-md-1">Code de Matiere</label>
-            <div class="col-md-6">
+            <label class="col-md-1">Code de Matière</label>
+            <div class="col-md-3">
                 <input type="text" name="codematieres" class = "form-control" value="<?= $student["code"]; ?>">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-1" >libellé</label>
-            <div class="col-md-6">
+            <div class="col-md-3">
             <input type="text" name="nommatieres" class = "form-control" value="<?php echo $student['libelle']; ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-1" >Semesters</label>
-            <div class="col-md-6" >
+            <div class="col-md-3" >
             <select class = "form-control" id="academic" name="semester">
                   <option selected disabled> Semester</option>
                   <?php while ($row = mysqli_fetch_assoc($semestre_qry)) :                     
@@ -103,9 +121,9 @@ if(isset($_POST['submit'])){
         </div>
         <div class="form-group">
             <label class="col-md-1" >Module</label>
-            <div class="col-md-6" >
+            <div class="col-md-3" >
             <select  name="module" id="mod" class = "form-control">
-            <option selected disabled>Module</option>
+            <option selected disabled>Modules</option>
          
                <?php
                while ($row = mysqli_fetch_assoc($module_qry)) :?>
@@ -116,23 +134,24 @@ if(isset($_POST['submit'])){
         </div>
         <div class="form-group">
             <label class="col-md-1" >deppartement</label>
-            <div class="col-md-6" >
+            <div class="col-md-3" >
             <select  id="deppartement" name="departement" class = "form-control">
                     <option selected disabled>deppartements</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
+                    </div>
             </div>
-        </div>
+ 
+
       </form>
       <div style="overflow-x:auto;">
         <table class="table table-striped table-bordered">
                 <tr>
-                    <th>Les enseignants affectés à cette matière</th>
-                    <th>supprimer</th>
+                    <th class="col-md-4">Les enseignants affectés à cette matière</th>
                 </tr>
             <?php 
 
@@ -144,23 +163,25 @@ if(isset($_POST['submit'])){
             }else {
                 while($row=mysqli_fetch_assoc($req)){
                     ?>
-            <tr>
-                <td><?=$row['nom']?><?=$row['prenom']?></td>
-                <td><a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&id_matiere=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)">Supprimer</a></td>
+                    <?php
+                        $id_matiere = $_GET['id_matiere'];
+                        $matiere = "SELECT * FROM matiere WHERE id_matiere = $id_matiere";
+                        $matiere_qry = mysqli_query($conn,$matiere);
+                        while ($row_matiere = mysqli_fetch_assoc($matiere_qry)) :
+                    ?>
+                   
+                <tr>
+                    <td ><?=$row['nom']." ".$row['prenom']?></td>
+                    <td><a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&id_matiere=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)">Supprimer</a></td>
                 </tr>
+                <?php endwhile;?>
                 <?php
                 }
             }
             ?>
+           
         </div>
- </div>
-</div>
-                
-
-
-
-
-
+        </div>
 <script>
     function myf(){
         document.getElementById("mod").style.display = "none";

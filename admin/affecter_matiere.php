@@ -1,16 +1,4 @@
 <?php
-include_once "../connexion.php";
-$ens = "SELECT * FROM enseignant ";
-$ens_qry = mysqli_query($conn, $ens);
-$groupe = "SELECT * FROM groupe";
-$groupe_qry = mysqli_query($conn,$groupe);
-$type_matiere = "SELECT * FROM type_matiere";
-$type_matiere_qry = mysqli_query($conn,$type_matiere);
-?>
-
-
-
-<?php
 session_start() ;
 $email = $_SESSION['email'];
 if($_SESSION["role"]!="admin"){
@@ -18,17 +6,29 @@ if($_SESSION["role"]!="admin"){
 } 
 ?>
 
+<?php
+include_once "../connexion.php";
+$ens = "SELECT * FROM enseignant ";
+$ens_qry = mysqli_query($conn, $ens);
+$groupe = "SELECT * FROM groupe";
+$groupe_qry = mysqli_query($conn,$groupe);
+$type_matiere = "SELECT * FROM type_matiere";
+$type_matiere_qry = mysqli_query($conn,$type_matiere);
+
+
+
+?>
+
+
+
+
+
+
 
 <?php
 $id_matiere = $_GET['id_matiere'];
 
-function test_input($data){
-        $data = htmlspecialchars($data);
-        $data = trim($data);
-        $data = htmlentities($data);
-        $data = stripcslashes($data);
-        return $data;
-    }
+
     if (isset($_POST['button'])) {
     
         // Vérifiez si les champs enseignant et groupe sont des tableaux
@@ -42,24 +42,20 @@ function test_input($data){
             foreach ($enseignants as $key => $enseignant) {
                 $groupe = $groupes[$key];
                 $type_matiere = $type_matieres[$key];
+
+    
                 if (!empty($enseignant) && !empty($groupe)  && !empty($type_matiere)) {
-                    $detou=mysqli_query($conn,"SELECT * FROM enseigner WHERE id_matiere=$id_matiere and id_ens=$enseignant and id_groupe=$groupe and id_type_matiere=$type_matiere");
-                    if(mysqli_num_rows($detou)==0){
-                        $req = mysqli_query($conn, "INSERT INTO enseigner (`id_matiere`, `id_ens`, `id_groupe`, `id_type_matiere`) VALUES ('$id_matiere', '$enseignant', '$groupe' , '$type_matiere')");
+                    $req = mysqli_query($conn, "INSERT INTO enseigner (`id_matiere`, `id_ens`, `id_groupe`, `id_type_matiere`) VALUES ('$id_matiere', '$enseignant', '$groupe' , '$type_matiere')");
     
                         if (!$req) {
                             $message = "Erreur lors de l'ajout de l'enseignant et du groupe.";
                             break;
                         }
-                       
-                    } 
-                }
-                else {
+                } else {
                     $message = "Veuillez remplir tous les champs.";
                     break;
                 }
-                    }
-                 
+            }
     
             if (!isset($message)) {
                 header("location: matiere.php");
@@ -92,15 +88,15 @@ include "../nav_bar.php";
         var div3 = document.createElement('div');
         var div4 = document.createElement('div');
 
+        div1.className = "col-md-2";
         div2.className = "col-md-2";
-        div2.className = "col-md-3";
         div3.className = "col-md-2";
         div4.className = "col-md-2";
 
       
         // Then add the content (a new input box) of the element.
         var nm =  i;
-        div1.innerHTML = "<label class='col-md-3'> Enseignant " + i + "</label>"
+        div1.innerHTML = "<label class='col-md-2' '> Enseignant " + i + "</label>"
         txtNewInputBox.appendChild(div1);
         div2.innerHTML = "<select  name='enseignant[]' id='modi' class = 'form-control'><option selected disabled> Enseignants </option><?php while ($row_ens = mysqli_fetch_assoc($ens_qry)) :?><option value='<?= $row_ens['id_ens']; ?>'> <?= $row_ens['nom'].' '.$row_ens['prenom']; ?> </option>  <?php endwhile;?></select>";
         txtNewInputBox.appendChild(div2);
@@ -134,7 +130,26 @@ include "../nav_bar.php";
         </div>
     </div>
  
-   
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+            <?php
+                $id_matiere = $_GET['id_matiere'];
+                $matiere = "SELECT * FROM matiere WHERE id_matiere = $id_matiere";
+                $matiere_qry = mysqli_query($conn,$matiere);
+                while ($row_matiere = mysqli_fetch_assoc($matiere_qry)) :
+                ?>
+                    <fieldset class="fsStyle">
+                        <legend class="legendStyle">
+                            <a data-toggle="collapse" data-target="#demo" href="#" >L'affectation d'un enseignant à la matière  <?= $row_matiere['libelle'] ?></a>
+                        </legend>
+                       
+                    </fieldset>
+                    <?php endwhile;?>
+            </div>
+        </div>
+    </div>
     <div class="form-horizontal">
     <br /><br />
 
@@ -152,50 +167,73 @@ include "../nav_bar.php";
             ?>
 
         </p>
-        <form action="" method="POST">
-        <div class="form-group">
-            <label class="col-md-2">Enseignant 1 </label>
-            <div class="col-md-3">
-            <select  name="enseignant[]" id="modi" class = "form-control">
-                <option selected disabled> Enseignants </option>
-                        <?php  while ($row_ens = mysqli_fetch_assoc($ens_qry)) :?>
-                        <option value="<?= $row_ens['id_ens']; ?>"> <?= $row_ens['nom']." ".$row_ens['prenom']; ?> </option>  
-                    <?php endwhile;?>
-                </select>
-            </div>
-            <div class="col-md-2">
-            <select  name="groupe[]" id="modi1" class = "form-control">
-                <option selected disabled> Groupes </option>
-                        <?php  while ($row_groupe = mysqli_fetch_assoc($groupe_qry)) :?>
-                        <option value="<?= $row_groupe['id_groupe']; ?>"> <?= $row_groupe['libelle']; ?> </option>  
-                    <?php endwhile;?>
-                </select>
-            </div>
-            <div class="col-md-2">
-            <select  name="type_matiere[]" id="modi1" class = "form-control">
-                <option selected disabled> Type Matiere </option>
-                        <?php  while ($row_type_matiere = mysqli_fetch_assoc($type_matiere_qry)) :?>
-                        <option value="<?= $row_type_matiere['id_type_matiere']; ?>"> <?= $row_type_matiere['libelle_type']; ?> </option>  
-                    <?php endwhile;?>
-                </select>
-            </div>
+        
+    
+                <form action="" method="POST">
+                <div class="form-group">
+                    <label class="col-md-2">Enseignant 1 </label>
+                    <div class="col-md-2">
+                    <select  name="enseignant[]" id="modi" class = "form-control">
+                        <option selected disabled> Enseignants </option>
+                                <?php  while ($row_ens = mysqli_fetch_assoc($ens_qry)) :?>
+                                <option value="<?= $row_ens['id_ens']; ?>"> <?= $row_ens['nom']." ".$row_ens['prenom']; ?> </option>  
+                            <?php endwhile;?>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                    <select  name="groupe[]" id="modi1" class = "form-control">
+                        <option selected disabled> Groupes </option>
+                                <?php  while ($row_groupe = mysqli_fetch_assoc($groupe_qry)) :?>
+                                <option value="<?= $row_groupe['id_groupe']; ?>"> <?= $row_groupe['libelle']; ?> </option>  
+                            <?php endwhile;?>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                    <select  name="type_matiere[]" id="modi1" class = "form-control">
+                        <option selected disabled> Type Matiere </option>
+                                <?php  while ($row_type_matiere = mysqli_fetch_assoc($type_matiere_qry)) :?>
+                                <option value="<?= $row_type_matiere['id_type_matiere']; ?>"> <?= $row_type_matiere['libelle_type']; ?> </option>  
+                            <?php endwhile;?>
+                        </select>
+                    </div>
+                    <div class="col-md-2">   
+                    <div class="alert alert-info" style="margin-left: 0px; margin-top: 90; width:250px; height:150px; text-align:center;" > 
+                                <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) : </strong></strong><br>
+                                <h4>
+                                <?php
+                                $req_ens_info = "SELECT id_matiere, nom, prenom FROM matiere INNER JOIN enseignant WHERE id_matiere = $id_matiere";
+                                $req = mysqli_query($conn , $req_ens_info);
+                                $i = 0;
+                                while($row=mysqli_fetch_assoc($req)){
+                                $i++;
+                                if ($i === 1) {
+                                    echo "<strong class='font-weight-bold'>  </strong>";
+                                    }
+                                        echo  $row['nom'] ." ". $row['prenom']."<br><br> ";
+                                }
+                                    ?>
+                                    </h4>
+                        </div>
+                        </div>
 
-            <br>  <br> <br>
-            <div class="form-group" id="newElementId">
-            </div>
-            <br>  <br> <br>
-            <div class="col-md-12">
-            <button type="button" onclick="createNewElement();">
-                 Ajouter un enseignant
-            </button>
-            </div>
-            <br>  <br> <br>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" name="button" value="Enregistrer" class="btn-primary"  />
+                    <br>  <br> <br>
+                    <div class="form-group" id="newElementId">
+                    </div>
+                    <br>  <br> <br>
+                    <div class="col-md-12">
+                    <button type="button" onclick="createNewElement();">
+                        Ajouter un enseignant
+                    </button>
+                    </div>
+                    <br>  <br> <br>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" name="button" value="Enregistrer" class="btn-primary"  />
 
-            </div>
-        </div>
-    </form>
+                    </div>
+                </div>
+                        </div>
+                    </form>
 
 
+  
