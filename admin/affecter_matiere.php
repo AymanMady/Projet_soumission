@@ -106,7 +106,7 @@ include "../nav_bar.php";
         txtNewInputBox.appendChild(div2);
         div3.innerHTML = "<select  name='groupe[]' id='modi1' class = 'form-control' ><option selected disabled> Groupes </option><?php while ($row_groupe = mysqli_fetch_assoc($groupe_qry)) :?><option value='<?= $row_groupe['id_groupe']; ?>'> <?= $row_groupe['libelle']; ?> </option>  <?php endwhile;?></select>";
         txtNewInputBox.appendChild(div3);
-        div4.innerHTML = "<select  name='type_matiere[]' id='modi1' class = 'form-control' ><option selected disabled> Type Matiere </option><?php while ($row_type_matiere = mysqli_fetch_assoc($type_matiere_qry)) :?><option value='<?= $row_type_matiere['id_type_matiere']; ?>'> <?= $row_type_matiere['libelle_type']; ?> </option>  <?php endwhile;?></select><br>";
+        div4.innerHTML = "<select  name='type_matiere[]' id='modi1' class = 'form-control' ><option selected disabled> Type Matière </option><?php while ($row_type_matiere = mysqli_fetch_assoc($type_matiere_qry)) :?><option value='<?= $row_type_matiere['id_type_matiere']; ?>'> <?= $row_type_matiere['libelle_type']; ?> </option>  <?php endwhile;?></select><br>";
         txtNewInputBox.appendChild(div4);
         // div4.innerHTML = "<input type='text' class='form-control' name=" + nm + " multiple/><input type='file' name='files' multiple/>";
         // txtNewInputBox.appendChild(div4);

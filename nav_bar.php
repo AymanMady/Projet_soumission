@@ -1,5 +1,6 @@
-
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <!-- Bootstrap -->
     <link href="CSS/bootstrap.css" rel="stylesheet">
     <link href="CSS/modern-business.css" rel="stylesheet">
@@ -10,7 +11,32 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-
+    <style>
+            #myDiv{
+                background-color: #f2f2f2; 
+                display: none;
+                padding: 2px;
+                border-radius: 10px;
+                position: relative;
+                top: 3px;
+                left: 1040;
+                z-index: 9999;
+                width: 210px;
+                height: 300;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                text-align: center;
+            }
+            .logo{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 60%;
+                margin-bottom: 10px;
+                flex-direction: column;
+            }
+           
+            </style>
+    
     <!-- Custom Fonts -->
     <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -33,6 +59,12 @@
 <body>
 <?php
      if($_SESSION["role"]=="ens"){
+        //session_start();
+        $email = $_SESSION['email'];
+        include("connexion.php");
+        $req = mysqli_query($conn, "SELECT * FROM enseignant WHERE email = '$email'");
+            while($row = mysqli_fetch_assoc($req)){
+
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -70,26 +102,29 @@
                         <li  class="dropdown">
                                
                                <!-- <div class="container mt-12"> </div> -->
-                                 <a href="#"><img id="myButton" class="style-scope yt-img-shadow" src="images/supnum.jpg" draggable="false" style="width: 32px; height: 32px; border-radius: 50%;"></a>
+                                 <a href="#"><img title="<?=$row['nom']." ".$row['prenom']?>" id="myButton" class="style-scope yt-img-shadow" src="images/supnum.jpg" draggable="false" style="width: 32px; height: 32px; border-radius: 50%;"></a>
 
                         </li>
-                <style>
-                    h1{
-
-                            text-align: center;
-                    }
-                </style>
-    
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     <br><br>
-<div id="myDiv" class="mt-10 p-7 bg-light position-absolute top-0 end-0" style="display: none;">Contenu du div <br> seftgdrfgfh</div>
+
+    <div id="myDiv" >
+                <div class="logo">
+                    <img title="<?=$row['nom']." ".$row['prenom']?>" id="myButton" class="style-scope yt-img-shadow" src="images/supnum.jpg" draggable="false" style="width: 32px; height: 32px; border-radius: 50%;"><br>
+                    <strong><?=$row['nom']." ".$row['prenom']?></strong><br>
+                    <?php echo $email?> <br> 
+                    <a href="supprimer_session.php">Se déconnecte</a>
+                </div>             
+        </div>
 
 
 <?php
+            }
      }
+
      else if($_SESSION["role"]=="admin"){
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -107,10 +142,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                     
-                        <li >
-                        <a href="inscription.php" >insecripition</a> 
-                        </li>
+                    
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
                             <ul class="dropdown-menu">
@@ -204,28 +236,18 @@
 <script>
   var button = document.getElementById("myButton");
   var div = document.getElementById("myDiv");
-  var divVisible = false; // Variable pour suivre l'état du div
+  var divVisible = false; 
 
   function handleClick() {
     if (!divVisible) {
       div.style.display = "block";
-      divVisible = true; // Le div est maintenant visible
+      divVisible = true; 
     } else {
       div.style.display = "none";
-      divVisible = false; // Le div est maintenant caché
-   
-    var button = document.getElementById("myButton");
-    var div = document.getElementById("myDiv");
-    function handleClick() {
-     
-      if (div.style.display === "block") {
-        div.style.display = "none"; 
-      } else {
-        div.style.display = "block"; 
-      }
+      divVisible = false; 
     }
   }
-}
+
   button.addEventListener("click", handleClick);
 </script>
 </body>
