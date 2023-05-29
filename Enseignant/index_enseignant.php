@@ -4,19 +4,9 @@
  session_start() ;
  $email = $_SESSION['email'];
  if($_SESSION["role"]!="ens"){
-     header("location:authentification.php");
+     header("location:../authentification.php");
  }
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
- 
-<?php 
-include "nav_bar.php";
+ include "../nav_bar.php";
 ?>
 </br></br></br>
 <div class="container" style="position: fixed ;">
@@ -38,7 +28,7 @@ include "nav_bar.php";
               <th>Action</th>
           </tr>
           <?php 
-              include_once "connexion.php";
+              include_once "../connexion.php";
               $req_ens_mail =  "SELECT * FROM matiere,enseigner,enseignant WHERE enseignant.id_ens=enseigner.id_ens and matiere.id_matiere=enseigner.id_matiere and enseignant.email ='$email'";
 
               $req = mysqli_query($conn , $req_ens_mail);
@@ -52,7 +42,7 @@ include "nav_bar.php";
                           <td><?=$row['code']?></td>
                           <td><?=$row['libelle']?></td>
                           <td><?=$row['specialite']?></td>
-                          <td><a href="admin/detail_enseignant_matiere.php?id_matiere=<?=$row['id_matiere']?>">Detailler</a></td>
+                          <td><a href="detail_enseignant_matiere.php?id_matiere=<?=$row['id_matiere']?>">Detailler</a></td>
                           
                       </tr>
                     <?php

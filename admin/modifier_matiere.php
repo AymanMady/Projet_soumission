@@ -182,6 +182,20 @@ if(isset($_POST['submit'])){
            
         </div>
         </div>
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
+            </div>
+        </div>
+      </form>
+ </div>
+</div>
+                
+
+
+
+
+
 <script>
     function myf(){
         document.getElementById("mod").style.display = "none";
