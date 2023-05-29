@@ -51,7 +51,7 @@ $req = mysqli_query($conn , $req_detail);
 while($row=mysqli_fetch_assoc($req)){
 ?>
  <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-md-6">
         <fieldset>
           <legend class="legendStyle">
@@ -72,8 +72,9 @@ while($row=mysqli_fetch_assoc($req)){
                         <?php echo "<strong class='font-weight-bold'> Semestre : </strong>" . $row['nom_semestre']; ?><br><br>
                         
                         <?php
-                        $req_detail = "SELECT id_matiere, groupe.libelle FROM matiere INNER JOIN groupe WHERE id_matiere = $id_matiere";
+                        $req_detail = "SELECT DISTINCT id_matiere, groupe.libelle FROM matiere INNER JOIN groupe WHERE id_matiere = $id_matiere";
                         $req = mysqli_query($conn , $req_detail);
+
                         $i = 0;
                         while($row=mysqli_fetch_assoc($req)){
                           $i++;
@@ -92,17 +93,23 @@ while($row=mysqli_fetch_assoc($req)){
                         <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) affecter(és) à cette matière</strong></strong><br><br>
                         <h4>
                         <?php
-                        $req_ens_info = "SELECT id_matiere, nom, prenom FROM matiere INNER JOIN enseignant WHERE id_matiere = $id_matiere";
+                        $req_ens_info = "SELECT * FROM enseigner NATURAL JOIN enseignant WHERE id_matiere = $id_matiere";
                         $req = mysqli_query($conn , $req_ens_info);
-                        $i = 0;
-                        while($row=mysqli_fetch_assoc($req)){
-                          $i++;
-                          if ($i === 1) {
-                            echo "<strong class='font-weight-bold'>  </strong>";
-                              }
-                                echo  $row['nom'] ." ". $row['prenom']."<br><br> ";
+                        if(mysqli_num_rows($req) == 0){
+                          echo "Il n'y a pas encore des enseignant !" ;
+                        }else{
+                          $i = 0;
+                          while($row=mysqli_fetch_assoc($req)){
+                            $i++;
+                            if ($i === 1) {
+                              echo "<strong class='font-weight-bold'>  </strong>";
+                                }
+                                  echo  $row['nom'] ." ". $row['prenom']."<br><br> ";
+                          }
+                            
+
                         }
-                            ?>
+                        ?>
                             </h4>
                     </div>
                 </div>

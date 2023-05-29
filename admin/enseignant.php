@@ -83,7 +83,7 @@ include "../nav_bar.php";
                             <td><?=$row['nom']?>
                                 <?=$row['prenom']?></td>
                                 <td><?=$row['email']?></td>
-                                <td><a href="detail_enseignant.php?id_ens=<?=$row['id_ens']?>">Detailler</a></td>
+                                <td><a href="detail_enseignant.php?id_ens=<?=$row['id_ens']?>">Détails</a></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>">Modifier</a></td>
                                 <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce enseignant ?`)">Supprimer</a></td>
                             </tr>

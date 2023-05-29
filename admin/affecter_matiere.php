@@ -142,7 +142,7 @@ include "../nav_bar.php";
                 ?>
                     <fieldset class="fsStyle">
                         <legend class="legendStyle">
-                            <a data-toggle="collapse" data-target="#demo" href="#" >L'affectation d'un enseignant à la matière  <?= $row_matiere['libelle'] ?></a>
+                            <a data-toggle="collapse" data-target="#demo" href="#" >L'affectation d'un ou plusieurs enseignants à la matière  <?= $row_matiere['libelle'] ?></a>
                         </legend>
                        
                     </fieldset>
@@ -157,7 +157,7 @@ include "../nav_bar.php";
             <?php 
             $ens = "SELECT * FROM enseignant ";
             $ens_qry = mysqli_query($conn, $ens);
-            $groupe = "SELECT * FROM groupe";
+            $groupe = "SELECT * FROM groupe ";
             $groupe_qry = mysqli_query($conn,$groupe);
             $type_matiere = "SELECT * FROM type_matiere";
             $type_matiere_qry = mysqli_query($conn,$type_matiere);
@@ -197,11 +197,11 @@ include "../nav_bar.php";
                         </select>
                     </div>
                     <div class="col-md-2">   
-                    <div class="alert alert-info" style="margin-left: 0px; margin-top: 90; width:250px; height:150px; text-align:center;" > 
+                    <div class="alert alert-info" style=" margin-top: 60; width:250px; height:130px; text-align:center;" > 
                                 <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) : </strong></strong><br>
                                 <h4>
                                 <?php
-                                $req_ens_info = "SELECT id_matiere, nom, prenom FROM matiere INNER JOIN enseignant WHERE id_matiere = $id_matiere";
+                                $req_ens_info = "SELECT * FROM enseigner NATURAL JOIN enseignant WHERE id_matiere = $id_matiere";
                                 $req = mysqli_query($conn , $req_ens_info);
                                 $i = 0;
                                 while($row=mysqli_fetch_assoc($req)){
