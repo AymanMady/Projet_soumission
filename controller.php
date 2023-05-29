@@ -225,11 +225,10 @@ $alert = "";
                         $_SESSION['role']="admin";
                         }
                     elseif($row['id_role']==2){
-                        header("location:index_enseignant.php");
                         session_start();
                         $_SESSION['email']=$email;
                         $_SESSION['role']="ens";
-
+                        header("location:Enseignant/index_enseignant.php");
                     }   
                     elseif($row['id_role']==3){
                         header("location:index_etudiant.php");

@@ -55,16 +55,16 @@
                             <a href="#" >Soumission</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                <a href="#">Soumission en ligne</a>
+                                <a href="cree_soumission.php">Crée une soumission </a>
                                 </li>
                                 <li>
-                                <a href="#">Soumission limité</a>
+                                <a href="soumission_en_ligne.php">Soumission en ligne</a>
                                 </li>
                                 <li>
-                                <a href="#">Soumission archifer</a>
+                                <a href="soumission_limite.php">Soumission limité</a>
                                 </li>
                                 <li>
-                                <a href="admin/cree_soumission.php">Crée une soumission </a>
+                                <a href="soumission_archiver.php">Soumission archifer</a>
                                 </li>
                             </ul> 
                         <li  class="dropdown">

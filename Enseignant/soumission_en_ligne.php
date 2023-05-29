@@ -16,7 +16,7 @@
 <body>
  
 <?php 
-include "nav_bar.php";
+include "../nav_bar.php";
 ?>
 </br></br></br>
 <div class="container">
@@ -26,7 +26,7 @@ include "nav_bar.php";
                 <li><a href="#">Acceuil</a>
                     
                 </li>
-                <li>Les matières enseignées par l'enseignant <?php //echo $nom_ens ?> </li>
+                <li>Les soumissions en ligne</li>
                    
             </ol>
         </div>
@@ -39,27 +39,29 @@ include "nav_bar.php";
   <table class="table table-striped table-bordered">
           <tr>
               <th>Code</th>
-              <th>Libelle</th>
-              <th>Specialite</th>
-              <th>Action</th>
+              <th>Titre de soumission</th>
+              <th>Date debut </th>
+              <th>Date fin </th>
+              <th colspan="3">Actions</th>
           </tr>
           <?php 
-              include_once "connexion.php";
-              $req_ens_mail =  "SELECT * FROM matiere,enseigner,enseignant WHERE enseignant.id_ens=enseigner.id_ens and matiere.id_matiere=enseigner.id_matiere and enseignant.email ='$email'";
-
-              $req = mysqli_query($conn , $req_ens_mail);
+              include_once "../connexion.php";
+              $req_sous =  "SELECT * FROM soumission inner join matiere using(id_matiere)  WHERE  date_debut <= NOW() AND date_fin >= NOW() AND archive != 1 ";
+              $req = mysqli_query($conn , $req_sous);
               if(mysqli_num_rows($req) == 0){
-                  echo "Il n'y a pas encore des matiere ajouter !" ;
+                  echo "Il n'y a pas encore des soumission ajouter !" ;
                   
               }else {
                   while($row=mysqli_fetch_assoc($req)){
                     ?>
                       <tr>
                           <td><?=$row['code']?></td>
-                          <td><?=$row['libelle']?></td>
-                          <td><?=$row['specialite']?></td>
-                          <td><a href="admin/detail_enseignant_matiere.php?id_matiere=<?=$row['id_matiere']?>">Detailler</a></td>
-                          
+                          <td><?=$row['titre_sous']?></td>
+                          <td><?=$row['date_debut']?></td>
+                          <td><?=$row['date_fin']?></td>
+                          <td><a href="cloturer.php?id_sous=<?=$row['id_sous']?>">Cloturer</a></td>
+                          <td><a href="archiver.php?id_sous=<?=$row['id_sous']?>">Archiver</a></td>
+                          <td><a href="detail_soumission.php?id_sous=<?=$row['id_sous']?>">Detaille</a></td>
                       </tr>
                     <?php
                   }
