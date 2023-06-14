@@ -73,7 +73,7 @@ include "../nav_bar.php";
 
                     include_once "../connexion.php";
                     
-                     $req1 = "SELECT * FROM enseignant;";
+                     $req1 = "SELECT * FROM enseignant  ORDER BY nom ASC ;";
                      
                     $req = mysqli_query($conn , $req1);
                     if(mysqli_num_rows($req) == 0){
