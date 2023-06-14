@@ -89,6 +89,8 @@ CREATE TABLE `enseignant` (
   `Date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(30) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `num_tel` int(20) DEFAULT NULL,
+  `num_whatsapp` int(20) DEFAULT NULL,
   `diplome` varchar(20) DEFAULT NULL,
   `grade` varchar(20) DEFAULT NULL,
   `id_role` int(11) NOT NULL,

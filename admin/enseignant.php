@@ -36,7 +36,7 @@ include "../nav_bar.php";
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-3">
-                                        <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
+                                        <input type="text" name="search" value="" onkeyup="myFunction()" class="search-text form-control" placeholder="Chercher..." />
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info">Filtre</button>
@@ -49,6 +49,8 @@ include "../nav_bar.php";
             <!-- /well -->
         </div>
     </div>
+
+    
     <div class="text-center">
        
     </div>

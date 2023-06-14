@@ -65,6 +65,8 @@ while($row=mysqli_fetch_assoc($req)){
                                                             <br><?php echo "<strong class='font-weight-bold'>Date de naissance : </strong>".$row['Date_naiss']; ?><br>
                                                             <?php echo "<strong class='font-weight-bold'>Lieu de naissance : </strong>". $row['lieu_naiss']; ?><br>
                                                             <?php echo "<strong class='font-weight-bold'>E-mail : </strong>".$row['email']; ?><br>
+                                                            <?php echo "<strong class='font-weight-bold'>Numéro de téléphone : </strong>".$row['num_tel']; ?><br>
+                                                            <?php echo "<strong class='font-weight-bold'>Numéro de WhatsApp : </strong>".$row['num_whatsapp']; ?><br>
                                                             <?php echo "<strong class='font-weight-bold'>Diplôme : </strong>".$row['diplome']; ?><br>
                                                             <?php echo "<strong class='font-weight-bold'>Grade : </strong>".$row['grade']; ?><br>
 

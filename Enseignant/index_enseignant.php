@@ -9,7 +9,7 @@
  include "../nav_bar.php";
 ?>
 </br></br></br>
-<div class="container" style="position: fixed ;">
+<div class="container">
     <div class="row">
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
@@ -19,7 +19,7 @@
             </ol>
         </div>
     </div>
-<div style="overflow-x:auto;" style="position: fixed;" >
+<div style="overflow-x:auto;"  >
   <table class="table table-striped table-bordered">
           <tr>
               <th>Code</th>

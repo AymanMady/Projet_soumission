@@ -15,11 +15,6 @@ if($_SESSION["role"]!="admin"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detailler matiere</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-      h1{
-        
-      }
-    </style>
 </head>
 <body>
     
@@ -89,7 +84,7 @@ while($row=mysqli_fetch_assoc($req)){
                     </div>
                     <!-- alert alert-info  te text-info-->
                   
-                        <div class="alert alert-info" style="margin-left: 700px; width:400px; height:300px;" > 
+                        <div class="alert alert-info" style="margin-left: 600px; width:400px; height:300px;" > 
                         <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) affecter(és) à cette matière</strong></strong><br><br>
                         <h4>
                         <?php
@@ -133,6 +128,7 @@ while($row=mysqli_fetch_assoc($req)){
       </div>
     </div>
   </div>
+</div>
 <?php
     
 }

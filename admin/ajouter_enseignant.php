@@ -24,12 +24,13 @@ if($_SESSION["role"]!="admin"){
         $Date_naiss = test_input($_POST['Date_naiss']); 
         $lieu_naiss =  test_input($_POST['lieu_naiss']);
         $email =  test_input($_POST['email']);
+        $numtel =  test_input($_POST['numtel']);
+        $numwhatsapp =  test_input($_POST['numwhatsapp']);
         $diplome =  test_input($_POST['diplome']);
         $grade =  test_input($_POST['grade']);
-            // test_input(extract($_POST));
            
-           if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
-                $req = "INSERT INTO `enseignant`(`nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `email`, `diplome`, `grade`, `id_role`) values ('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' , '$diplome', '$grade', 2)";
+           if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($numtel) && !empty($diplome) && !empty($grade)  ){
+                $req = "INSERT INTO `enseignant`(`nom`, `prenom`, `Date_naiss`, `lieu_naiss`, `email`,`num_tel`,`num_whatsapp`, `diplome`, `grade`, `id_role`) values ('$nom','$prenom','$Date_naiss', '$lieu_naiss' ,'$email' ,'$numtel' ,'$numwhatsapp' , '$diplome', '$grade', 2)";
             
                 if(mysqli_query($conn , $req)){
                     header('location:enseignant.php');
@@ -106,6 +107,18 @@ if($_SESSION["role"]!="admin"){
             </div>
         </div>
         <div class="form-group">
+            <label class="col-md-1" >Numéro de téléphone</label>
+            <div class="col-md-6" >
+            <input type="text" name="numtel" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Numéro de WhatsApp</label>
+            <div class="col-md-6" >
+            <input type="text" name="numwhatsapp" class = "form-control">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-md-1" >Diplôme</label>
             <div class="col-md-6" >
             <input type="text" name="diplome" class = "form-control">
@@ -120,7 +133,6 @@ if($_SESSION["role"]!="admin"){
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" name="button" value=Enregistrer class="btn-primary"  />
-
             </div>
         </div>
 
