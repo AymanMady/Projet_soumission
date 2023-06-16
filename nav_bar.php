@@ -86,7 +86,10 @@
                                 <a href="soumission_archiver.php">Soumission archifer</a>
                                 </li>
                             </ul> 
-                            <li  class="dropdown">
+                            <li id="potfolio" class="dropdown">   
+                            <a href="index_enseignant.php" >matiere</a>
+                            </ul> 
+                        <li  class="dropdown">
                                
                                <!-- <div class="container mt-12"> </div> -->
                                  <a href="#"><img title="<?=$row['nom']." ".$row['prenom']?>" 

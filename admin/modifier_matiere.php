@@ -142,6 +142,44 @@ if(isset($_POST['submit'])){
                 </select>
             </div>
         </div>
+<<<<<<< HEAD
+    
+      <div style="overflow-x:auto;">
+        <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Les enseignants affectés à cette matière</th>
+                    <th>supprimer</th>
+                </tr>
+            <?php 
+
+            $req1 = "SELECT * FROM enseigner inner join enseignant using(id_ens) inner join matiere using(id_matiere) where id_matiere = '$id_matiere' ";
+            
+            $req = mysqli_query($conn , $req1);
+            if(mysqli_num_rows($req) == 0){
+                echo "Il n'y a pas encore des enseignant affecter !" ;
+            }else {
+                while($row=mysqli_fetch_assoc($req)){
+                    ?>
+            <tr>
+                <td><?=$row['nom']?><?=$row['prenom']?></td>
+                <td><a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&id_matiere=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)">Supprimer</a></td>
+                </tr>
+                <?php
+                }
+            }
+            
+            ?>
+                <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
+            </div>
+        </div>
+      </form>
+        </div>
+ </div>
+</div>
+                
+=======
         <div class="form-group">
             <label class="col-md-1" >deppartement</label>
             <div class="col-md-3" >
@@ -159,6 +197,7 @@ if(isset($_POST['submit'])){
                     <?php 
 
                             $req1 = "SELECT * FROM enseigner inner join enseignant using(id_ens) inner join matiere using(id_matiere) where id_matiere = '$id_matiere' ";
+>>>>>>> cc00cf4cd58472b36d4a480d65d1281074ae7f5e
 
                             $req = mysqli_query($conn , $req1);
                             if(mysqli_num_rows($req) == 0){
