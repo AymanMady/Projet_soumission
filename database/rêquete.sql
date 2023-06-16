@@ -50,17 +50,34 @@ CREATE TABLE `matiere` (
   FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre),
   FOREIGN KEY (id_type_matiere) REFERENCES type_matiere(id_type_matiere)
 );
+CREATE TABLE `enseignant` (
+  `id_ens` int(10) PRIMARY KEY AUTO_INCREMENT ,
+  `nom` varchar(60) DEFAULT NULL,
+  `prenom` varchar(60) DEFAULT NULL,
+  `Date_naiss` date DEFAULT NULL,
+  `lieu_naiss` varchar(30) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `num_tel` int(20) DEFAULT NULL,
+  `num_whatsapp` int(20) DEFAULT NULL,
+  `diplome` varchar(20) DEFAULT NULL,
+  `grade` varchar(20) DEFAULT NULL,
+  `id_role` int(11) NOT NULL,
+  FOREIGN KEY (id_role) REFERENCES role(id_role)
+ 
+);
 
 CREATE TABLE `soumission` (
   `id_sous` int(10) PRIMARY KEY AUTO_INCREMENT ,
   `titre_sous` varchar(50),
   `description_sous` varchar(50),
+  `id_ens` int(10) ,
   `date_debut` datetime NOT NULL,
   `date_fin` datetime NOT NULL,
   `valide` tinyint(1) DEFAULT NULL,
   `archive` tinyint(1) DEFAULT NULL,
   `id_matiere` int(10) DEFAULT NULL,
-  FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere)
+  FOREIGN KEY (id_matiere) REFERENCES matiere(id_matiere),
+   FOREIGN KEY (id_ens) REFERENCES enseignant(id_ens)
 );
 
 
@@ -82,22 +99,7 @@ CREATE TABLE `examen` (
   FOREIGN KEY (id_sous) REFERENCES soumission(id_sous)
 );
 
-CREATE TABLE `enseignant` (
-  `id_ens` int(10) PRIMARY KEY AUTO_INCREMENT ,
-  `nom` varchar(60) DEFAULT NULL,
-  `prenom` varchar(60) DEFAULT NULL,
-  `Date_naiss` date DEFAULT NULL,
-  `lieu_naiss` varchar(30) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `num_tel` int(20) DEFAULT NULL,
-  `num_whatsapp` int(20) DEFAULT NULL,
-  `diplome` varchar(20) DEFAULT NULL,
-  `grade` varchar(20) DEFAULT NULL,
-  `id_role` int(11) NOT NULL,
-  `id_sous` int(10) DEFAULT NULL,
-  FOREIGN KEY (id_role) REFERENCES role(id_role),
-  FOREIGN KEY (id_sous) REFERENCES soumission(id_sous)
-);
+
 
 CREATE TABLE `ens_devoir` (
   `id_ens` int(10) DEFAULT NULL,
@@ -120,12 +122,13 @@ CREATE TABLE `etudiant` (
   `prenom` varchar(60) DEFAULT NULL,
   `lieu_naiss` varchar(100) DEFAULT NULL,
   `Date_naiss` date DEFAULT NULL,
-  `semestre` varchar(50) DEFAULT NULL,
+  `id_semestre` int(10) DEFAULT NULL,
   `annee` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
   `id_groupe` int(10) DEFAULT NULL,
   `id_sous` int(10) DEFAULT NULL,
+   FOREIGN KEY (id_semestre) REFERENCES semestre(id_semestre),
   FOREIGN KEY (id_role) REFERENCES role(id_role),
   FOREIGN KEY (id_groupe) REFERENCES groupe(id_groupe),
   FOREIGN KEY (id_sous) REFERENCES soumission(id_sous)
@@ -176,7 +179,7 @@ FOREIGN KEY (id_matieres) REFERENCES matiere(id_matiere),
 
 
 CREATE TABLE `departement` (
-  `id` int(30) AUTO_INCREMENT PRIMARY key,
+  `id_dep` int(30) AUTO_INCREMENT PRIMARY key,
   `code` text NOT NULL,
   `nom` text NOT NULL
 );
