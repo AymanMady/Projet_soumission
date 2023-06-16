@@ -7,6 +7,9 @@ if($_SESSION["role"]!="ens"){
 }
 
 ?>
+<?php
+    include "../nav_bar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +30,6 @@ if($_SESSION["role"]!="ens"){
             </ol>
         </div>
     </div>
-
     <?php
 
     include_once "../connexion.php";
@@ -37,7 +39,6 @@ if($_SESSION["role"]!="ens"){
     $req = mysqli_query($conn , $req_detail);
     while($row=mysqli_fetch_assoc($req)){
     ?>
-
     <div class="row justify-content-center">
         <div class="col-md-10">
             <fieldset>
@@ -54,17 +55,22 @@ if($_SESSION["role"]!="ens"){
             </fieldset>
             <br><br>
         </div>
+        <div class="alert alert-info" style="margin-left: 600px; width:400px; height:300px;" > 
+            <strong style="letter-spacing: 0.5px; font-size: 15px;width: 100%; height: 100%;text-align: center;"  >Le(s) Fichier(s)</strong><br><br>
+        </div>
     </div>
-
     <?php
     }
-    include "../nav_bar.php";
     ?>
+
+
+
     <p>
         <a href="soumission_en_ligne.php" class="btn btn-primary">Retour</a>
     </p>
 
 </div>
+
 
 </body>
 </html>

@@ -64,7 +64,7 @@ include "../nav_bar.php";
                 <tr>
                     <th>Nom et Prénom</th>
                     <th>E-mail</th>
-                    
+                    <th>Tel et Whatsapp</th>
                     <th colspan="3">Action</th>
                 </tr>
 
@@ -73,7 +73,7 @@ include "../nav_bar.php";
 
                     include_once "../connexion.php";
                     
-                     $req1 = "SELECT * FROM enseignant;";
+                     $req1 = "SELECT * FROM enseignant  ORDER BY nom ASC ;";
                      
                     $req = mysqli_query($conn , $req1);
                     if(mysqli_num_rows($req) == 0){
@@ -82,9 +82,11 @@ include "../nav_bar.php";
                         while($row=mysqli_fetch_assoc($req)){
                             ?>
                            <tr>
-                            <td><?=$row['nom']?>
+                                <td><?=$row['nom']?>
                                 <?=$row['prenom']?></td>
                                 <td><?=$row['email']?></td>
+                                <td><?=$row['num_tel']?>
+                                <?=$row['num_whatsapp']?></td>
                                 <td><a href="detail_enseignant.php?id_ens=<?=$row['id_ens']?>">Détails</a></td>
                                 <td><a href="modifier_enseignant.php?id_ens=<?=$row['id_ens']?>">Modifier</a></td>
                                 <td><a href="supprimer_enseignant.php?id_ens=<?=$row['id_ens']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce enseignant ?`)">Supprimer</a></td>
