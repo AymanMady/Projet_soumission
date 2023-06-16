@@ -48,9 +48,7 @@ include "../nav_bar.php";
             </div>
         </div>
     </div>
-    <div class="text-center">
-       
-    </div> 
+    
     <br>
     <p>
         <a href="ajoute_matiere.php" class = "btn btn-primary" >Nouveau</a>

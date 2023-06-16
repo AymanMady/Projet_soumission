@@ -62,17 +62,16 @@ include "../nav_bar.php";
        
     </div>
     <br>
-    <p>
-        <a href="ajouter_groupe.php" class = "btn btn-primary" >Nouveau</a>
-    </p>
-    
+
+<br>
+
     <div style="overflow-x:auto;">
 
         <table class="table table-striped table-bordered">
             <tr>
                     <th>Libelle</th>
                     <th>Filière</th>
-                    <th colspan="2">action</th>
+                    <th colspan="2">Actions</th>
             </tr>
 
 

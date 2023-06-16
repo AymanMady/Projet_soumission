@@ -51,15 +51,13 @@ if(isset($_POST['submit'])){
         <div class="col-lg-12">
             
             <ol class="breadcrumb">
-            <li><a href="#">Acceuil</a>
-                    
-                    </li>
-                    <li>Gestion des matiere</li>
+                <li><a href="#">Acceuil</a></li>
+                <li>Gestion des matieres</li>
                     
             </ol>
         </div>
     </div>
-    <div class="row">
+<div class="row">
         <div class="col-lg-12">
             <div class="well">
             <?php

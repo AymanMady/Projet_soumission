@@ -159,10 +159,10 @@
                                     <a href="utilisateurs.php">Gestion des utilisateurs</a>
                                 </li>
                                 <li >
-                                    <a href="groupe.php">Gestion des groupe</a>
+                                    <a href="groupe.php">Gestion des groupes</a>
                                 </li>
                                 <li >
-                                    <a href="matiere.php">Gestion des matiere</a>
+                                    <a href="matiere.php">Gestion des matieres</a>
                                 </li>
                             </ul> 
                         </li>
