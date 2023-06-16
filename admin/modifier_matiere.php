@@ -122,12 +122,7 @@ if(isset($_POST['submit'])){
                 </select>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
-            </div>
-        </div>
-      </form>
+    
       <div style="overflow-x:auto;">
         <table class="table table-striped table-bordered">
                 <tr>
@@ -151,7 +146,14 @@ if(isset($_POST['submit'])){
                 <?php
                 }
             }
+            
             ?>
+                <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
+            </div>
+        </div>
+      </form>
         </div>
  </div>
 </div>

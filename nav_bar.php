@@ -67,6 +67,9 @@
                                 <a href="admin/cree_soumission.php">Crée une soumission </a>
                                 </li>
                             </ul> 
+                            <li id="potfolio" class="dropdown">   
+                            <a href="index_enseignant.php" >matiere</a>
+                            </ul> 
                         <li  class="dropdown">
                                
                                <!-- <div class="container mt-12"> </div> -->
