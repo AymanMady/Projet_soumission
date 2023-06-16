@@ -1,8 +1,8 @@
 <?php
 session_start() ;
- if($_SESSION["role"]!="admin"){
-     header("location:authentification.php");
-} 
+//  if($_SESSION["role"]!="admin"){
+//      header("location:authentification.php");
+// } 
 include_once "../connexion.php";
 $id_matiere = $_GET['id_matiere'];
 
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 
 </br>
 </br></br></br>
-<div class="container">
+<div class="container-buld">
     <div class="row">
         <div class="col-lg-12">
             
@@ -91,7 +91,10 @@ if(isset($_POST['submit'])){
             ?>
 
         </p>
+        <div class="row">
+        <div class="col-lg-12">
         <form action="" method="POST">
+
         <div class="form-group">
             <label class="col-md-1">Code de Matière</label>
             <div class="col-md-3">
@@ -119,6 +122,7 @@ if(isset($_POST['submit'])){
                </select>           
                </div>
         </div>
+        <div class="container-buld">
         <div class="form-group">
             <label class="col-md-1" >Module</label>
             <div class="col-md-3" >
@@ -141,57 +145,63 @@ if(isset($_POST['submit'])){
             </div>
         </div>
         <div class="form-group">
+            <label class="col-md-1" >deppartement</label>
+            <div class="col-md-3" >
+            <select  id="deppartement" name="departement" class = "form-control">
+                    <option selected disabled>deppartements</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+        <div class="col-md-offset-1 col-md-12">
+                    <div class="col-md-3">   
+                    <!-- <div class="alert alert-info">  -->
+                    <strong style="letter-spacing: 0.5px; font-size: 15px;">Les enseignants affectés à cette matière </strong><br><br>
+                        <h4>
+                    <?php 
+
+                            $req1 = "SELECT * FROM enseigner inner join enseignant using(id_ens) inner join matiere using(id_matiere) where id_matiere = '$id_matiere' ";
+
+                            $req = mysqli_query($conn , $req1);
+                            if(mysqli_num_rows($req) == 0){
+                                echo "Il n'y a pas encore des enseignant affecter !" ;
+                            }else {
+                                while($row=mysqli_fetch_assoc($req)){
+                                    ?>
+                                    <?php
+                                        $id_matiere = $_GET['id_matiere'];
+                                        $matiere = "SELECT * FROM matiere WHERE id_matiere = $id_matiere";
+                                        $matiere_qry = mysqli_query($conn,$matiere);
+                                        while ($row_matiere = mysqli_fetch_assoc($matiere_qry)) :
+                                    ?>
+                                    <div>
+                                        <?=$row['nom']." ".$row['prenom']?>
+
+                                        <a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&id_matiere=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)"><img style="width: 18px; margin-left:110px;" title="Supprimer" src="images/close.png" alt=""></a><br><br>
+
+                                    </div>
+                                <?php endwhile;?>
+                                <?php
+                                }
+                            }
+                            ?>
+                        </h4>
+                    <!-- </div> -->
+                    </div>
+
+                    </div>
+            </div>
+ 
+                    <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" name="submit" value=Enregistrer class="btn-primary"  />
                     </div>
             </div>
- 
-
-      </form>
-      <div style="overflow-x:auto;">
-        <table class="table table-striped table-bordered">
-                <tr>
-                    <th class="col-md-4">Les enseignants affectés à cette matière</th>
-                </tr>
-            <?php 
-
-            $req1 = "SELECT * FROM enseigner inner join enseignant using(id_ens) inner join matiere using(id_matiere) where id_matiere = '$id_matiere' ";
-            
-            $req = mysqli_query($conn , $req1);
-            if(mysqli_num_rows($req) == 0){
-                echo "Il n'y a pas encore des enseignant affecter !" ;
-            }else {
-                while($row=mysqli_fetch_assoc($req)){
-                    ?>
-                    <?php
-                        $id_matiere = $_GET['id_matiere'];
-                        $matiere = "SELECT * FROM matiere WHERE id_matiere = $id_matiere";
-                        $matiere_qry = mysqli_query($conn,$matiere);
-                        while ($row_matiere = mysqli_fetch_assoc($matiere_qry)) :
-                    ?>
-                   
-                <tr>
-                    <td ><?=$row['nom']." ".$row['prenom']?></td>
-                    <td><a href="supprimer_affectation.php?id_ens=<?=$row['id_ens']?>&id_matiere=<?=$row['id_matiere']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet enseignant ?`)">Supprimer</a></td>
-                </tr>
-                <?php endwhile;?>
-                <?php
-                }
-            }
-            ?>
-           
-        </div>
-        </div>
-            </div>
-        </div>
-      </form>
- </div>
-</div>
-                
-
-
-
-
+    </div>
+    </div>
+ </from> 
+ </div>   
+ </div>   
 
 <script>
     function myf(){

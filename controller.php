@@ -68,7 +68,7 @@ $alert = "";
                             session_start();
                             $_SESSION['nom']= "etudiant";
                             $_SESSION['email']= $email; 
-                            header('location: registration.php');
+                            header('location:registration.php');
                         }
                         else if($role == "enseignant"){
                             session_start();
@@ -161,7 +161,7 @@ $alert = "";
             ]);                
                $result = curl_exec($ch);
                 if ($result) {
-                    $message = "Nous avons envoyé un code de vérification à votre adresse e-mail<br> $email";
+                    $message = "Nous avons envoyé un code de vérification à votre adresse e-mail <br> $email";
 
                     $_SESSION['message'] = $message;
                     header('location: verifier_code.php');
@@ -170,7 +170,7 @@ $alert = "";
                     $errors['otp_errors'] = 'Échec lors de l’envoi du code!';
                 }
             } else {
-                $errors['db_errors'] = "Échec lors de l’insertion de données dans la base de données!";
+                $errors['db_errors'] = "Échec lors de l’insertion de données dans la base de données !";
             }
         }
     }
@@ -238,7 +238,10 @@ $alert = "";
                     $errors['email'] = 'Ce compte n\'est pas activé, vous pouvez contacter l\'administrateur pour active le'; 
                 }
         } else {
-            $errors['email'] = 'Email ou mot de passe incorect';
+            $errors['email'] = '<div class="alert alert-danger row-md-15" id="success-alert">
+        <span aria-hidden="true">&times;</span>
+        <strong>Mot de passe ou Email incorrect ! </strong>
+        </div>';
         }
 
 
@@ -247,10 +250,10 @@ $alert = "";
 
     //    $passwordQuery = "SELECT * FROM utilisateur WHERE login = '$email'and  pwd ='$password'";
     // // ##############################################################
-    //     $alert = '<div class="alert alert-danger  row-md-15" id="success-alert">
-    //     <span aria-hidden="true">&times;</span>
-    //     <strong>Mot de passe ou Email incorrect! </strong>
-    //     </div>';
+        $alert = '<div class="alert alert-danger row-md-15" id="success-alert">
+        <span aria-hidden="true">&times;</span>
+        <strong>Mot de passe ou Email incorrect! </strong>
+        </div>';
     // // ################################################################
     //         $password_check = mysqli_query($conn, $passwordQuery);
     //         if (mysqli_num_rows($password_check) > 0) {
@@ -313,7 +316,7 @@ $alert = "";
                 $updateResult = mysqli_query($conn, $updateQuery) or die("hh");
                 if ($updateResult) {
                        $subject = 'Code de vérification des e-mails';
-                    $message = "notre code de vérification est $code";
+                    $message = "Notre code de vérification est $code";
                  $url = "https://script.google.com/macros/s/AKfycbw2MsBGjkJ7hzw_cnE5jW-CmqHZbibaNjrEz_DNXZZgCXfptPo5B1yy7x37kFrwSZkeFg/exec";
             $ch = curl_init($url);
             curl_setopt_array($ch, [
@@ -333,7 +336,10 @@ $alert = "";
                         $_SESSION['message'] = $message;
                         header('location: verifyEmail.php');
                     } else {
-                        $errors['otp_errors'] = 'Échec lors de l’envoi du code!';
+                        $errors['otp_errors'] =  '<div class="alert alert-danger row-md-15" id="success-alert">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <strong>Échec lors de l’envoi du code ! </strong>
+                                                </div>';
                     }
                 } else {
                     $errors['db_errors'] = "Échec lors de l’insertion de données dans la base de données !";

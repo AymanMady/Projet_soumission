@@ -284,3 +284,21 @@ INSERT INTO `etudiant` (`id_etud`, `matricule`, `nom`, `prenom`, `lieu_naiss`, `
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------
+
+DELIMITER $$
+CREATE PROCEDURE `EnseignantMatiereParGroupe`(id_matiere integer)
+BEGIN 
+	  SELECT DISTINCT 
+      nom, prenom, 
+      libelle, libelle_type
+      FROM groupe
+      NATURAL JOIN enseigner
+      NATURAL JOIN enseignant
+      NATURAL JOIN type_matiere
+      WHERE id_matiere = 2 ORDER BY nom, prenom ASC;
+         
+         
+END $$
+DELIMITER ;
+
+

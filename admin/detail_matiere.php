@@ -2,9 +2,9 @@
 <?php
 session_start() ;
 $email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-}
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// }
 
 ?>
 <!DOCTYPE html>
@@ -88,10 +88,15 @@ while($row=mysqli_fetch_assoc($req)){
                         <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) affecter(és) à cette matière</strong></strong><br><br>
                         <h4>
                         <?php
-                        $req_ens_info = "SELECT * FROM enseigner NATURAL JOIN enseignant WHERE id_matiere = $id_matiere";
+                        $req_ens_info = "SELECT *
+                        FROM groupe
+                        NATURAL JOIN enseigner
+                        NATURAL JOIN enseignant
+                        NATURAL JOIN type_matiere
+                        WHERE id_matiere = $id_matiere ORDER BY nom, prenom ASC";
                         $req = mysqli_query($conn , $req_ens_info);
                         if(mysqli_num_rows($req) == 0){
-                          echo "Il n'y a pas encore des enseignant !" ;
+                          echo "Il n'y a pas encore des enseignant affecter !" ;
                         }else{
                           $i = 0;
                           while($row=mysqli_fetch_assoc($req)){
@@ -99,7 +104,7 @@ while($row=mysqli_fetch_assoc($req)){
                             if ($i === 1) {
                               echo "<strong class='font-weight-bold'>  </strong>";
                                 }
-                                  echo  $row['nom'] ." ". $row['prenom']."<br><br> ";
+                                  echo  $row['nom'] ." ". $row['prenom']." ".$row['libelle']." ".$row['libelle_type']. "<br><br> ";
                           }
                             
 

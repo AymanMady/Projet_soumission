@@ -1,9 +1,9 @@
 <?php
 session_start() ;
 $email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-} 
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// } 
 ?>
 
 <?php
@@ -121,11 +121,11 @@ include "../nav_bar.php";
         <div class="col-lg-12">
             
             <ol class="breadcrumb">
-            <li><a href="#">Acceuil</a>
+            <li><a href="acceuil.php">Acceuil</a>
                     
                     </li>
                     <li>Gestion des matière</li>
-                    <li>Affecter une matière</li>
+                    <li>Affecter un enseignant</li>
             </ol>
         </div>
     </div>
@@ -196,20 +196,33 @@ include "../nav_bar.php";
                             <?php endwhile;?>
                         </select>
                     </div>
-                    <div class="col-md-2">   
-                    <div class="alert alert-info" style=" margin-top: 60; width:250px; height:130px; text-align:center;" > 
-                                <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;"><strong class='font-weight-bold'>Le(s) enseignant(s) : </strong></strong><br>
+                    <div class="col-md-3">   
+                    <div class="alert alert-info"> 
+                                <strong style="letter-spacing: 0.5px; font-size: 15px;  margin: auto;" type="submit" class="btn btn-light" style="border:none;">Le(s) enseignant(s) : </strong><br>
                                 <h4>
                                 <?php
-                                $req_ens_info = "SELECT * FROM enseigner NATURAL JOIN enseignant WHERE id_matiere = $id_matiere";
+                                $req_ens_info = "SELECT DISTINCT 
+                                nom, prenom, 
+                                libelle, libelle_type
+                                FROM groupe
+                                NATURAL JOIN enseigner
+                                NATURAL JOIN enseignant
+                                NATURAL JOIN type_matiere
+                                WHERE id_matiere = $id_matiere ORDER BY nom, prenom ASC";
+
+                                    //CALL `EnseignantMatiereParGroupe`($id_matiere)
+
                                 $req = mysqli_query($conn , $req_ens_info);
+                                if(mysqli_num_rows($req) == 0){
+                                    echo "Il n'y a pas encore des enseignants affectés a cette matière !" ;
+                                  }
                                 $i = 0;
                                 while($row=mysqli_fetch_assoc($req)){
                                 $i++;
                                 if ($i === 1) {
                                     echo "<strong class='font-weight-bold'>  </strong>";
                                     }
-                                        echo  $row['nom'] ." ". $row['prenom']."<br><br> ";
+                                    echo  $row['nom'] ." ". $row['prenom']." ".$row['libelle']." ".$row['libelle_type']. "<br><br> ";
                                 }
                                     ?>
                                     </h4>
@@ -220,7 +233,7 @@ include "../nav_bar.php";
                     <div class="form-group" id="newElementId">
                     </div>
                     <br>  <br> <br>
-                    <div class="col-md-12">
+                    <div class="col-md-12" >
                     <button type="button" onclick="createNewElement();">
                         Ajouter un enseignant
                     </button>

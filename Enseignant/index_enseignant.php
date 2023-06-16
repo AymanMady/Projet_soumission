@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
-                <li><a href="#">Acceuil</a>       
+                <li><a href="acceuil.php">Acceuil</a>       
                 </li>
                 <li>Les matières enseignées par l'enseignant <?php //echo $nom_ens ?> </li>     
             </ol>
@@ -42,7 +42,7 @@
                           <td><?=$row['code']?></td>
                           <td><?=$row['libelle']?></td>
                           <td><?=$row['specialite']?></td>
-                          <td><a href="detail_enseignant_matiere.php?id_matiere=<?=$row['id_matiere']?>">Detailler</a></td>
+                          <td><a href="detail_enseignant_matiere.php?id_matiere=<?=$row['id_matiere']?>">Details</a></td>
                           
                       </tr>
                     <?php

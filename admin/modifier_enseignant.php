@@ -41,7 +41,7 @@ if($_SESSION["role"]!="admin"){
     <div class="row">
         <div class="col-lg-11">
             <ol class="breadcrumb">
-            <li><a href="#">Acceuil</a>
+            <li><a href="acceuil.php">Acceuil</a>
                     </li>
                     <li>Gestion des enseignants</li>
                     <li>Modifier un enseignant</li>

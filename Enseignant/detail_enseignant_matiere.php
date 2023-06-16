@@ -18,25 +18,48 @@ if($_SESSION["role"]!="ens"){
 </head>
 <body>
 </br></br></br>
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-lg-12"> 
+
             <ol class="breadcrumb">
                 <li><a href="acceuil.php">Acceuil</a></li>
-                <li>Détails sur la matière <?php //echo  ?> </li>
+                </li>
+                    <li>Gestion des matière</li>
+                    <li>Détails </li>
             </ol>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+            <?php
+                 include_once "../connexion.php";
+                $id_matiere = $_GET['id_matiere'];
+                $matiere = "SELECT DISTINCT * FROM matiere NATURAL JOIN enseignant WHERE id_matiere = $id_matiere LIMIT 1";
+                $matiere_qry = mysqli_query($conn,$matiere);
+                while ($row_matiere = mysqli_fetch_assoc($matiere_qry)) :
+                ?>
+            <fieldset class="fsStyle">
+                        <legend class="legendStyle">
+                            <a data-toggle="collapse" data-target="#demo" href="#" >Détails sur la matière <?php echo $row_matiere['libelle']." "." Enseigner par "." ".$row_matiere['nom'] ?></a>
+                        </legend>
+                       
+                    </fieldset>
+            <?php endwhile;?>
         </div>
     </div>
+</div>
 
     <?php
 
-    include_once "../connexion.php";
+   
     $id_matiere = $_GET['id_matiere'];
 
-    $req_detail = "SELECT * FROM matiere
-                    INNER JOIN enseigner ON matiere.id_matiere = enseigner.id_matiere
-                    INNER JOIN enseignant ON enseignant.id_ens = enseigner.id_ens
-                    WHERE matiere.id_matiere = $id_matiere";
+    $req_detail = "SELECT DISTINCT matiere.id_matiere, nom, prenom, code, libelle, specialite, email FROM matiere
+                INNER JOIN enseigner ON matiere.id_matiere = enseigner.id_matiere
+                INNER JOIN enseignant ON enseignant.id_ens = enseigner.id_ens
+                WHERE matiere.id_matiere = $id_matiere";
     $req = mysqli_query($conn , $req_detail);
     while($row=mysqli_fetch_assoc($req)){
     ?>
@@ -47,10 +70,10 @@ if($_SESSION["role"]!="ens"){
                 <br><br>
 
                 <h4>
-                <?php echo "<strong>Nom de l'enseignant : </strong>". $row['nom']." ".$row['prenom']; ?><br>
-                <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br>
-                <?php echo "<strong>Libellè : </strong>". $row['libelle']; ?><br>
-                <?php echo "<strong> Specialite : </strong>" . $row['specialite']; ?><br>
+                <?php echo "<strong>Nom de l'enseignant : </strong>". $row['nom']." ".$row['prenom']; ?><br><br>
+                <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br><br>
+                <?php echo "<strong>Libellè : </strong>". $row['libelle']; ?><br><br>
+                <?php echo "<strong> Specialite : </strong>" . $row['specialite']; ?><br><br>
                 <?php echo "<strong> E-mail de l'enseignant : </strong>" . $row['email']; ?><br>
                 </h4>
                
