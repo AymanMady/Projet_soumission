@@ -18,8 +18,8 @@ if($_SESSION["role"]!="admin"){
 
         if(isset($_POST['button'])){ 
         extract($_POST);
-        if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($diplome) && !empty($grade)  ){
-            $req = mysqli_query($conn, "UPDATE enseignant SET   nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', `email` = '$email', diplome = '$diplome', grade = '$grade' WHERE id_ens = $id_ens");
+        if( !empty($nom) && !empty($prenom) && !empty($Date_naiss) && !empty($lieu_naiss)  && !empty($email) && !empty($numtel) && !empty($diplome) && !empty($grade)  ){
+            $req = mysqli_query($conn, "UPDATE enseignant SET   nom = '$nom', prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', `email` = '$email', `num_tel` = '$numtel', `num_whatsapp` = '$numwhatsapp', diplome = '$diplome', grade = '$grade' WHERE id_ens = $id_ens");
             if($req){
                 header('location:enseignant.php');
             }else {
@@ -41,7 +41,7 @@ if($_SESSION["role"]!="admin"){
     <div class="row">
         <div class="col-lg-11">
             <ol class="breadcrumb">
-            <li><a href="#">Acceuil</a>
+            <li><a href="acceuil.php">Acceuil</a>
                     </li>
                     <li>Gestion des enseignants</li>
                     <li>Modifier un enseignant</li>
@@ -91,6 +91,18 @@ if($_SESSION["role"]!="admin"){
             <label class="col-md-1" >E-mail</label>
             <div class="col-md-6" >
             <input type="email" name="email" class = "form-control" value="<?=$row['email']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Numéro de téléphone</label>
+            <div class="col-md-6" >
+            <input type="text" name="numtel" class = "form-control" value="<?=$row['num_tel']?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1" >Numéro de WhatsApp</label>
+            <div class="col-md-6" >
+            <input type="text" name="numwhatsapp" class = "form-control" value="<?=$row['num_whatsapp']?>">
             </div>
         </div>
         <div class="form-group">

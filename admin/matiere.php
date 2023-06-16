@@ -2,9 +2,9 @@
 <?php
 session_start() ;
 $email = $_SESSION['email'];
-if($_SESSION["role"]!="admin"){
-    header("location:authentification.php");
-}
+// if($_SESSION["role"]!="admin"){
+//     header("location:authentification.php");
+// }
 
 include "../nav_bar.php";
 ?>
@@ -35,10 +35,11 @@ include "../nav_bar.php";
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-3">
+                                       
                                         <input type="text" name="search" value="" class="search-text form-control" placeholder="Chercher..." />
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-info">Filtre</button>
+                                <button  type="submit" class="btn btn-info">Filtre</button>
 
                             </div>
                         </div>
@@ -60,7 +61,7 @@ include "../nav_bar.php";
             <th>Code</th>
             <th>Libelle</th>
             <th>Specialite</th>
-            <th colspan="4">Action</th>
+            <th colspan="4">Actions</th>
         </tr>
     <?php
 include_once "../connexion.php";
@@ -83,9 +84,8 @@ if (mysqli_num_rows($matiere_result) == 0) {
                 <td><?= $row['code'] ?></td>
                 <td><?= $row['libelle'] ?></td>
                 <td><?= $row['specialite'] ?></td>               
-                <td><a href="detail_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Detailler</a></td>
+                <td><a href="detail_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Details</a></td>
                 <td><a href="affecter_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Affecter</a></td>
-                <td><a href="modifier_matiere.php?id_matiere=<?= $row['id_matiere'] ?>">Modifier</a></td>
                 <td><a href="supprimer_matiere.php?id_matiere=<?= $row['id_matiere'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette matière ?')">Supprimer</a></td>
             </tr>
             <?php

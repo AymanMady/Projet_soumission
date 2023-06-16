@@ -1,5 +1,6 @@
-
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <!-- Bootstrap -->
     <link href="CSS/bootstrap.css" rel="stylesheet">
     <link href="CSS/modern-business.css" rel="stylesheet">
@@ -10,7 +11,19 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-
+    <style>
+       
+            .logo{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 60%;
+                margin-bottom: 10px;
+                flex-direction: column;
+            }
+           
+            </style>
+    
     <!-- Custom Fonts -->
     <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -33,6 +46,12 @@
 <body>
 <?php
      if($_SESSION["role"]=="ens"){
+        //session_start();
+        $email = $_SESSION['email'];
+        include("connexion.php");
+        $req = mysqli_query($conn, "SELECT * FROM enseignant WHERE email = '$email'");
+            while($row = mysqli_fetch_assoc($req)){
+
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -49,22 +68,22 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                     
+                        
 
-                        <li id="potfolio" class="dropdown">   
-                            <a href="#" >Soumission</a>
+                        <li id="potfolio" class="nav-item dropdown">   
+                            <a class="nav-link dropdown-toggle" href="#" >Soumission</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                <a href="#">Soumission en ligne</a>
+                                <a href="cree_soumission.php">Crée une soumission </a>
                                 </li>
                                 <li>
-                                <a href="#">Soumission limité</a>
+                                <a href="soumission_en_ligne.php">Soumission en ligne</a>
                                 </li>
                                 <li>
-                                <a href="#">Soumission archifer</a>
+                                <a href="soumission_limite.php">Soumission limité</a>
                                 </li>
                                 <li>
-                                <a href="admin/cree_soumission.php">Crée une soumission </a>
+                                <a href="soumission_archiver.php">Soumission archifer</a>
                                 </li>
                             </ul> 
                             <li id="potfolio" class="dropdown">   
@@ -73,26 +92,45 @@
                         <li  class="dropdown">
                                
                                <!-- <div class="container mt-12"> </div> -->
-                                 <a href="#"><img id="myButton" class="style-scope yt-img-shadow" src="images/supnum.jpg" draggable="false" style="width: 32px; height: 32px; border-radius: 50%;"></a>
-
-                        </li>
-                <style>
-                    h1{
-
-                            text-align: center;
-                    }
-                </style>
-    
+                                 <a href="#"><img title="<?=$row['nom']." ".$row['prenom']?>" 
+                                 id="myButton" class="style-scope yt-img-shadow" src="../images/supnum.jpg" 
+                                 draggable="false" style="width: 32px; height: 32px; border-radius: 50%;"></a>
+ 
+                                <ul class="dropdown-menu">
+                                    <li>
+                                    <br>
+                                        <div class="logo">
+                                            <img title="<?=$row['nom']." ".$row['prenom']?>" 
+                                            id="myButton" class="style-scope yt-img-shadow" 
+                                            src="../images/photo_ens.jpg" draggable="false" 
+                                            style="width: 40px; height: 40px; border-radius: 50%;">
+                                            <p></p>
+                                            <a> <strong class='font-weight-bold'><?=$row['nom']." ".$row['prenom']?></strong></a>
+                                           
+                                            <p><?=$row['email']?></p>
+                                        </div> 
+                                    </li>
+                                    <li>
+                                        <a href="#">Gérer votre compte</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"></a>
+                                    </li>
+                                    <li>
+                                        <a href="supprimer_session.php">Se déconnecte</a>
+                                    </li>
+                                </ul>
+                    </li>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     <br><br>
-<div id="myDiv" class="mt-10 p-7 bg-light position-absolute top-0 end-0" style="display: none;">Contenu du div <br> seftgdrfgfh</div>
-
 
 <?php
+            }
      }
+
      else if($_SESSION["role"]=="admin"){
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -110,10 +148,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                     
-                        <li >
-                        <a href="inscription.php" >insecripition</a> 
-                        </li>
+                    
                         <li id="potfolio" class="dropdown">   
                             <a href="#" >Administration</a>
                             <ul class="dropdown-menu">
@@ -133,6 +168,9 @@
                                     <a href="matiere.php">Gestion des matiere</a>
                                 </li>
                             </ul> 
+                        </li>
+                        <li>
+                            <a href="inscription.php">Inscription</a>
                         </li>
                         <li  class="dropdown">
                         <a href="#" >Soummission</a> 
@@ -158,7 +196,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">hello</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
@@ -204,33 +242,7 @@
 <?php
      }
 ?>
-<script>
-  var button = document.getElementById("myButton");
-  var div = document.getElementById("myDiv");
-  var divVisible = false; // Variable pour suivre l'état du div
 
-  function handleClick() {
-    if (!divVisible) {
-      div.style.display = "block";
-      divVisible = true; // Le div est maintenant visible
-    } else {
-      div.style.display = "none";
-      divVisible = false; // Le div est maintenant caché
-   
-    var button = document.getElementById("myButton");
-    var div = document.getElementById("myDiv");
-    function handleClick() {
-     
-      if (div.style.display === "block") {
-        div.style.display = "none"; 
-      } else {
-        div.style.display = "block"; 
-      }
-    }
-  }
-}
-  button.addEventListener("click", handleClick);
-</script>
 </body>
 </html>
 

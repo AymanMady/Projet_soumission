@@ -6,4 +6,7 @@
   if($req){
     header("Location:matiere.php");
   }
+  else{
+    echo "Echec lors de la suppression de l'affectation !!";
+  }
 ?>

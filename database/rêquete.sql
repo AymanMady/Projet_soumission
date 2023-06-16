@@ -89,6 +89,8 @@ CREATE TABLE `enseignant` (
   `Date_naiss` date DEFAULT NULL,
   `lieu_naiss` varchar(30) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `num_tel` int(20) DEFAULT NULL,
+  `num_whatsapp` int(20) DEFAULT NULL,
   `diplome` varchar(20) DEFAULT NULL,
   `grade` varchar(20) DEFAULT NULL,
   `id_role` int(11) NOT NULL,
@@ -282,3 +284,21 @@ INSERT INTO `etudiant` (`id_etud`, `matricule`, `nom`, `prenom`, `lieu_naiss`, `
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------
+
+DELIMITER $$
+CREATE PROCEDURE `EnseignantMatiereParGroupe`(id_matiere integer)
+BEGIN 
+	  SELECT DISTINCT 
+      nom, prenom, 
+      libelle, libelle_type
+      FROM groupe
+      NATURAL JOIN enseigner
+      NATURAL JOIN enseignant
+      NATURAL JOIN type_matiere
+      WHERE id_matiere = 2 ORDER BY nom, prenom ASC;
+         
+         
+END $$
+DELIMITER ;
+
+

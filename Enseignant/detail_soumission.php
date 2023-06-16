@@ -7,6 +7,9 @@ if($_SESSION["role"]!="ens"){
 }
 
 ?>
+<?php
+    include "../nav_bar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,52 +26,51 @@ if($_SESSION["role"]!="ens"){
         <div class="col-lg-12"> 
             <ol class="breadcrumb">
                 <li><a href="acceuil.php">Acceuil</a></li>
-                <li>Détails sur la matière <?php //echo  ?> </li>
+                <li>Détails sur la soumission  <?php //echo  ?> </li>
             </ol>
         </div>
     </div>
-
     <?php
 
     include_once "../connexion.php";
-    $id_matiere = $_GET['id_matiere'];
+    $id_sous = $_GET['id_sous'];
 
-    $req_detail = "SELECT * FROM matiere
-                    INNER JOIN enseigner ON matiere.id_matiere = enseigner.id_matiere
-                    INNER JOIN enseignant ON enseignant.id_ens = enseigner.id_ens
-                    WHERE matiere.id_matiere = $id_matiere";
+    $req_detail = "SELECT * FROM soumission inner join matiere using(id_matiere) WHERE id_sous = $id_sous";
     $req = mysqli_query($conn , $req_detail);
     while($row=mysqli_fetch_assoc($req)){
     ?>
-
     <div class="row justify-content-center">
         <div class="col-md-10">
             <fieldset>
                 <br><br>
 
                 <h4>
-                <?php echo "<strong>Nom de l'enseignant : </strong>". $row['nom']." ".$row['prenom']; ?><br>
-                <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br>
-                <?php echo "<strong>Libellè : </strong>". $row['libelle']; ?><br>
-                <?php echo "<strong> Specialite : </strong>" . $row['specialite']; ?><br>
-                <?php echo "<strong> E-mail de l'enseignant : </strong>" . $row['email']; ?><br>
-                <?php echo "<strong> Diplôme : </strong>" . $row['diplome']; ?><br>
+                <?php echo "<strong>Titre : </strong>". $row['titre_sous']; ?><br><br>
+                <?php echo "<strong>Description : </strong>". $row['description_sous'];  ?><br><br>
+                <?php echo "<strong>Code de la matiere : </strong>". $row['code']; ?><br><br>
+                <?php echo "<strong>Date de  début : </strong>". $row['date_debut']; ?><br><br>
+                <?php echo "<strong>Date de  fin : </strong>" . $row['date_fin']; ?><br><br>
                 </h4>
                
             </fieldset>
             <br><br>
         </div>
+        <div class="alert alert-info" style="margin-left: 600px; width:400px; height:300px;" > 
+            <strong style="letter-spacing: 0.5px; font-size: 15px;width: 100%; height: 100%;text-align: center;"  >Le(s) Fichier(s)</strong><br><br>
+        </div>
     </div>
-
     <?php
     }
-    include "../nav_bar.php";
     ?>
+
+
+
     <p>
-        <a href="../index_enseignant.php" class="btn btn-primary">Retour</a>
+        <a href="soumission_en_ligne.php" class="btn btn-primary">Retour</a>
     </p>
 
-</div> <!-- Fermeture de la div container -->
+</div>
+
 
 </body>
 </html>
