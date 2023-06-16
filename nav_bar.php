@@ -163,6 +163,9 @@
                                 </li>
                             </ul> 
                         </li>
+                        <li>
+                            <a href="inscription.php">Inscription</a>
+                        </li>
                         <li  class="dropdown">
                         <a href="#" >Soummission</a> 
                         </li>
